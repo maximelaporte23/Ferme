@@ -1,1 +1,1 @@
-python3 sample_player_client.py -a localhost -p $1
+python3 main.py -a localhost -p $1
