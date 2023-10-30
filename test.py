@@ -1,4 +1,8 @@
 import argparse
+import math
+
+from chronobio.game.constants import CLIMATE_DISASTER_THRESHOLD
+from chronobio.game.game import Game
 
 game = Game()
 game.add_player("Vincent")
