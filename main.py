@@ -59,14 +59,7 @@ if __name__ == "__main__":
         help="location where server listens",
         default=16210,
     )
-    parser.add_argument(
-        "-u",
-        "--username",
-        type=str,
-        help="name of the user",
-        default="unknown",
-        required=True,
-    )
+
     args = parser.parse_args()
 
     client = PlayerGameClient(args.address, args.port, "Ferme").run()
