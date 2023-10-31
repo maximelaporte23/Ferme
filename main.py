@@ -28,17 +28,16 @@ class PlayerGameClient(Client):
                     self.add_command("0 ACHETER_CHAMP")
                 for _ in range(32):
                     self.add_command("0 EMPLOYER")
+                self.add_command("26 SEMER OIGNON 1")
             
             if game_data["day"] >= 1:
                 if game_data["day"] == 1:
-                    self.add_command("26 SEMER OIGNON 1")
-                if game_data["day"] == 2:
                     self.add_command("26 SEMER PATATE 2")
-                if game_data["day"] == 3:
+                if game_data["day"] == 2:
                     self.add_command("26 SEMER TOMATE 3")
-                if game_data["day"] == 4:
+                if game_data["day"] == 3:
                     self.add_command("26 SEMER POIREAU 4")
-                if game_data["day"] == 5:
+                if game_data["day"] == 4:
                     self.add_command("26 SEMER COURGETTE 5")
 
                 for OUVRIER in range(1, 26):
