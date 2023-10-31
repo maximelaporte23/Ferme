@@ -41,6 +41,7 @@ class PlayerGameClient(Client):
                     self.add_command(f"{OUVRIER} ARROSER {4}")
                 for OUVRIER in range(21, 26):
                     self.add_command(f"{OUVRIER} ARROSER {5}")
+                self.add_command("31 CUISINER") 
             
             if game_data["day"] >= 1:
                 if game_data["day"] == 1:
