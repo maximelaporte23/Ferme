@@ -30,9 +30,16 @@ class PlayerGameClient(Client):
                     self.add_command("0 EMPLOYER")
             
             if game_data["day"] >= 1:
-                legumes = ["PATATE", "OIGNON", "POIREAU", "TOMATE", "COURGETTE"]
-                for jour, legume in enumerate(legumes, start=1):
-                    self.add_command(f"26 SEMER {legume} CHAMP {jour}")
+                if game_data["day"] == 1:
+                    self.add_command("26 SEMER OIGNON 1")
+                if game_data["day"] == 2:
+                    self.add_command("26 SEMER PATATE 2")
+                if game_data["day"] == 3:
+                    self.add_command("26 SEMER TOMATE 3")
+                if game_data["day"] == 4:
+                    self.add_command("26 SEMER POIREAU 4")
+                if game_data["day"] == 5:
+                    self.add_command("26 SEMER COURGETTE 5")
 
                 for OUVRIER in range(1, 26):
                     CHAMP = ((OUVRIER - 1) % 5) + 1
