@@ -26,17 +26,22 @@ class PlayerGameClient(Client):
                 self.add_command("0 EMPRUNTER 100000")
                 for _ in range(5):
                     self.add_command("0 ACHETER_CHAMP")
-                for _ in range(28):
+                for _ in range(32):
                     self.add_command("0 EMPLOYER")
-                self.add_command("26 SEMER OIGNON 1")
-                self.add_command("27 SEMER PATATE 3")
-                self.add_command("28 SEMER COURGETTE 4")
-                for OUVRIER in range(1, 26):
-                    CHAMP = ((OUVRIER - 1) % 5) + 1
-                    self.add_command(f"{OUVRIER} ARROSER {CHAMP}")
-                
-                
 
+            legumes = ["PATATE", "OIGNON", "POIREAU", "TOMATE", "COURGETTE"]
+            for jour, legume in enumerate(legumes, start=1):
+                self.add_command(f"26 SEMER {legume} CHAMP {jour}")
+
+            for OUVRIER in range(1, 26):
+                CHAMP = ((OUVRIER - 1) % 5) + 1
+                self.add_command(f"{OUVRIER} ARROSER {CHAMP}")
+
+            if 3 <= game_data["day"] <= 7:
+                self.add_command(f"{game_data['day'] + 24} STOCKER {game_data['day'] - 2}")
+            
+            if 8 <= game_data["day"] <= 28:
+                self.add_command("31 CUISINER")
             self.send_commands()
 
     def add_command(self: "PlayerGameClient", command: str) -> None:
