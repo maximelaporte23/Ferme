@@ -26,9 +26,8 @@ class PlayerGameClient(Client):
                 self.add_command("0 EMPRUNTER 100000")
                 for _ in range(5):
                     self.add_command("0 ACHETER_CHAMP")
-                self.add_command("0 EMPLOYER")
-                self.add_command("0 EMPLOYER")
-                self.add_command("0 EMPLOYER")
+                for _ in range(25):
+                    self.add_command("0 EMPLOYER")
                 self.add_command("1 SEMER PATATE 3")
 
             self.send_commands()
