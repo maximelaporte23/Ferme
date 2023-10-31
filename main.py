@@ -55,22 +55,16 @@ class PlayerGameClient(Client):
                     self.add_command("26 SEMER COURGETTE 5")
                     for OUVRIER in range(6, 11):
                         self.add_command(f"{OUVRIER} ARROSER {2}")
-                    self.add_command("27 STOCKER 1 1")
                 if game_data["day"] == 5:
                     for OUVRIER in range(11, 16):
                         self.add_command(f"{OUVRIER} ARROSER {3}")
-                    self.add_command("28 STOCKER 2 2")
                 if game_data["day"] == 6:
                     for OUVRIER in range(16, 21):
-                        self.add_command(f"{OUVRIER} ARROSER {4}")
-                    self.add_command("29 STOCKER 3 3")        
+                        self.add_command(f"{OUVRIER} ARROSER {4}")       
                 if game_data["day"] == 8:
                     for OUVRIER in range(21, 26):
                         self.add_command(f"{OUVRIER} ARROSER {5}")
-                    self.add_command("27 STOCKER 4 1")
-                if game_data["day"] == 9:
-                    self.add_command("27 STOCKER 4 1")
-                if 10 <= game_data["day"] <= 30:
+                if 9 <= game_data["day"] <= 29:
                     self.add_command("31 CUISINER")  
             self.send_commands()
 
