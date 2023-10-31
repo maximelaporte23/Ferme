@@ -40,9 +40,12 @@ class PlayerGameClient(Client):
                 if game_data["day"] == 4:
                     self.add_command("26 SEMER COURGETTE 5")
 
-                for OUVRIER in range(1, 26):
-                    CHAMP = ((OUVRIER - 1) % 5) + 1
-                    self.add_command(f"{OUVRIER} ARROSER {CHAMP}")
+                if NEEDED_WATER < 10:
+                    for OUVRIER in range(1, 26):
+                        CHAMP = ((OUVRIER - 1) % 5) + 1
+                        self.add_command(f"{OUVRIER} ARROSER {CHAMP}")
+                else:
+                    pass
 
                 if 3 <= game_data["day"] <= 7:
                     self.add_command(f"{game_data['day'] + 24} STOCKER {game_data['day'] - 2}")
