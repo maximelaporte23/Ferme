@@ -3,6 +3,7 @@ class Game:
         self.commands = []
         self.farmer = []
         self.fields = []
+        self.vegetable_index = 0
 
     def cook(self, stock):
         if (
@@ -14,21 +15,28 @@ class Game:
         ):
             for OUVRIER in range(31, 36):
                 self.add_command(f"{OUVRIER} CUISINER")
-
-    def distribute_sawer(self):
-        self.add_command("26 SEMER POIREAU 1")
-        self.add_command("27 SEMER POIREAU 2")
-        self.add_command("28 SEMER POIREAU 2")
-        self.add_command("29 SEMER POIREAU 4")
-        self.add_command("30 SEMER POIREAU 5")
     
     def saw(self, fields):
         vegetables = ["PATATE", "TOMATE", "OIGNON", "COURGETTE", "POIREAU"]
-        for i in range(len(fields)):
-            field = fields[i]
-            vegetable_to_seed = vegetables[i % len(vegetables)]
-            if field["content"] == "NONE":
-                self.add_command(f"{26 + i} SEMER {vegetable_to_seed} {i + 1}")
+        vegetable_to_seed = vegetables[self.vegetable_index]
+
+        field1 = fields[0]
+        field2 = fields[1]
+        field3 = fields[2]
+        field4 = fields[3]
+        field5 = fields[4]
+        if field1["content"] == "NONE":
+            self.add_command(f"35 SEMER {vegetable_to_seed} 1")
+        if field2["content"] == "NONE":
+            self.add_command(f"36 SEMER {vegetable_to_seed} 2")
+        if field3["content"] == "NONE":
+            self.add_command(f"37 SEMER {vegetable_to_seed} 3")
+        if field4["content"] == "NONE":
+            self.add_command(f"38 SEMER {vegetable_to_seed} 4")
+        if field5["content"] == "NONE":
+            self.add_command(f"39 SEMER {vegetable_to_seed} 5")
+        
+        self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
     
     def water(
         self,

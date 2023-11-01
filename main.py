@@ -39,13 +39,14 @@ class PlayerGameClient(Client):
                     self.add_command("0 EMPLOYER")
                 for _ in range(3):
                     self.add_command("0 ACHETER_TRACTEUR")
-                for OUVRIER in range(1, 26):
-                    CHAMP = ((OUVRIER - 1) % 5) + 1
-                    self.add_command(f"{OUVRIER} ARROSER {CHAMP}")
-                for OUVRIER in range(26, 31):
-                    self.add_command(f"{OUVRIER} SEMER POIREAU {CHAMP}")
-                for OUVRIER in range(32, 37):
-                    self.add_command(f"{OUVRIER} CUISINER")
+                for sprinkler in range(1, 26):
+                    champ = ((sprinkler - 1) % 5) + 1
+                    self.add_command(f"{sprinkler} ARROSER {champ}")
+                for seeder in range(26, 31):
+                    champ = ((seeder - 1) % 5) + 1
+                    self.add_command(f"{seeder} SEMER POIREAU {champ}")
+                for cook in range(32, 37):
+                    self.add_command(f"{cook} CUISINER")
 
             if game_data["day"] >= 5:
                 self.saw(fields=fields)
