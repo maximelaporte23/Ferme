@@ -33,7 +33,6 @@ class PlayerGameClient(Client):
                     self.add_command("0 EMPLOYER")
                 for _ in range(3):
                     self.add_command("0 ACHETER_TRACTEUR")
-                self.add_command("26 SEMER PATATE 1")
                 self.add_command("27 SEMER PATATE 3")
                 self.add_command("28 SEMER PATATE 4")
                 for OUVRIER in range(1, 26):
