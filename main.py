@@ -41,9 +41,9 @@ class PlayerGameClient(Client):
                     self.add_command("0 ACHETER_TRACTEUR")
                 for OUVRIER in range(1, 26):
                     CHAMP = ((OUVRIER - 1) % 5) + 1
-                    self.add_command("{OUVRIER} ARROSER {CHAMP}")
+                    self.add_command(f"{OUVRIER} ARROSER {CHAMP}")
                 for OUVRIER in range(26, 31):
-                    self.add_command("{OUVRIER} SEMER POIREAU {CHAMP}")
+                    self.add_command(f"{OUVRIER} SEMER POIREAU {CHAMP}")
                 for OUVRIER in range(32, 37):
                     self.add_command(f"{OUVRIER} CUISINER")
 
