@@ -30,6 +30,7 @@ class PlayerGameClient(Client):
             soup_factory = farms["soup_factory"]
             farmers = farms["employees"]
 
+            print("aaaaaaaaaaaaaa")
             print(type(fields), fields)
 
 #             if game_data["day"] == 0:
