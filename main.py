@@ -41,12 +41,12 @@ class PlayerGameClient(Client):
                 for OUVRIER in range(32, 37):
                     self.add_command(f"{OUVRIER} CUISINER")
             
-            for field in self.fields:
-                if field.content == Vegetable.NONE:
+            for field in my_farm["fields"]:
+                if field[1] == Vegetable.NONE:
                     next_vegetable = Vegetable(self.vegetable_index)
-                    field.content = next_vegetable
-                    field.add_command(f"26 SEMER {next_vegetable.name} {field.location.value}")
+                    self.add_command(f"26 SEMER {next_vegetable.name} 1")
                     self.vegetable_index = (self.vegetable_index + 1) % len(Vegetable)
+
             self.send_commands()
 
     def add_command(self: "PlayerGameClient", command: str) -> None:
