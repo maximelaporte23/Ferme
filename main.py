@@ -26,48 +26,20 @@ class PlayerGameClient(Client):
                 self.add_command("0 EMPRUNTER 300000")
                 for _ in range(5):
                     self.add_command("0 ACHETER_CHAMP")
-                for _ in range(31):
+                for _ in range(36):
                     self.add_command("0 EMPLOYER")
                 for _ in range(3):
                     self.add_command("0 ACHETER_TRACTEUR")
-                self.add_command("26 SEMER OIGNON 1")
-                for OUVRIER in range(1, 6):
-                    self.add_command(f"{OUVRIER} ARROSER {1}")
-                for OUVRIER in range(6, 11):
-                    self.add_command(f"{OUVRIER} ARROSER {2}")
-                for OUVRIER in range(11, 16):
-                    self.add_command(f"{OUVRIER} ARROSER {3}")
-                for OUVRIER in range(16, 21):
-                    self.add_command(f"{OUVRIER} ARROSER {4}")
-                for OUVRIER in range(21, 26):
-                    self.add_command(f"{OUVRIER} ARROSER {5}")
-                self.add_command("31 CUISINER") 
+                self.add_command("26 SEMER PATATE 1")
+                self.add_command("27 SEMER PATATE 3")
+                self.add_command("28 SEMER PATATE 4")
+                for OUVRIER in range(1, 26):
+                    arrosage = (OUVRIER - 1) // 5 + 1
+                    self.add_command(f"{OUVRIER} ARROSER {arrosage}")
+                for OUVRIER in range(32, 37):
+                    self.add_command(f"{OUVRIER} CUISINER")
             
-            if game_data["day"] >= 1:
-                if game_data["day"] == 1:
-                    self.add_command("26 SEMER PATATE 2")
-                if game_data["day"] == 2:
-                    self.add_command("26 SEMER TOMATE 3")
-                if game_data["day"] == 3:
-                    self.add_command("26 SEMER POIREAU 4")
-                    for OUVRIER in range(1, 6):
-                        self.add_command(f"{OUVRIER} ARROSER {1}")
-                if game_data["day"] == 4:
-                    self.add_command("26 SEMER COURGETTE 5")
-                    for OUVRIER in range(6, 11):
-                        self.add_command(f"{OUVRIER} ARROSER {2}")
-                if game_data["day"] == 5:
-                    for OUVRIER in range(11, 16):
-                        self.add_command(f"{OUVRIER} ARROSER {3}")
-                if game_data["day"] == 6:
-                    for OUVRIER in range(16, 21):
-                        self.add_command(f"{OUVRIER} ARROSER {4}")
-                    self.add_command("26 STOCKER 1 1")        
-                if game_data["day"] == 8:
-                    for OUVRIER in range(21, 26):
-                        self.add_command(f"{OUVRIER} ARROSER {5}")
-                if 9 <= game_data["day"] <= 29:
-                    self.add_command("31 CUISINER")  
+
             self.send_commands()
 
     def add_command(self: "PlayerGameClient", command: str) -> None:
