@@ -3,6 +3,7 @@ from typing import NoReturn
 from vegetable import Vegetable
 from location import Location
 from field import Field
+from game import Game
 
 from chronobio.network.client import Client
 
@@ -23,11 +24,15 @@ class PlayerGameClient(Client):
                     break
             else:
                 raise ValueError(f"My farm is not found ({self.username})")
-            
             print(my_farm)
 
+            farms = my_farm
+            fields = farms["fields"]
+            soup_factory = farms["soup_factory"]
+            farmers = farms["employees"]
+
             if game_data["day"] == 0:
-                self.add_command("0 EMPRUNTER 300000")
+                self.add_command("0 EMPRUNTER 150000")
                 for _ in range(5):
                     self.add_command("0 ACHETER_CHAMP")
                 for _ in range(36):
@@ -37,10 +42,26 @@ class PlayerGameClient(Client):
                 for OUVRIER in range(1, 26):
                     CHAMP = ((OUVRIER - 1) % 5) + 1
                     self.add_command("{OUVRIER} ARROSER {CHAMP}")
-                for OUVRIER in range(31, 36):
+                for OUVRIER in range(26, 31):
+                    self.add_command("{OUVRIER} SEMER POIREAU {CHAMP}")
+                for OUVRIER in range(32, 37):
                     self.add_command(f"{OUVRIER} CUISINER")
-            
-            
+
+            if game_data["day"] >= 5:
+                self.saw(fields=fields)
+                self.cook(stock=soup_factory["stock"])
+                for farmer in farmers:
+                    for field in fields:
+                        if field["location"] == "FIELD1":
+                            self.game.water(
+                                need_water_1=field["needed_water"],
+                                need_water_2=3,
+                                need_water_3=3,
+                                need_water_4=3,
+                                need_water_5=3,
+                                farmer_id=farmer["id"],
+                                farmer_location=farmer["location"],
+                            )
 
             self.send_commands()
 
