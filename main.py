@@ -1,5 +1,8 @@
 import argparse
 from typing import NoReturn
+from vegetable import Vegetable
+from location import Location
+from field import Field
 
 from chronobio.network.client import Client
 
@@ -39,7 +42,12 @@ class PlayerGameClient(Client):
                 for OUVRIER in range(32, 37):
                     self.add_command(f"{OUVRIER} CUISINER")
             
-
+            for field in self.fields:
+                if field.content == Vegetable.NONE:
+                    next_vegetable = Vegetable(self.vegetable_index)
+                    field.content = next_vegetable
+                    field.add_command(f"26 SEMER {next_vegetable.name} {field.location.value}")
+                    self.vegetable_index = (self.vegetable_index + 1) % len(Vegetable)
             self.send_commands()
 
     def add_command(self: "PlayerGameClient", command: str) -> None:
