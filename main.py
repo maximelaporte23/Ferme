@@ -16,14 +16,21 @@ class PlayerGameClient(Client):
 
     def run(self: "PlayerGameClient") -> NoReturn:
         while True:
-            game_data = self.read_json()
+            game_data: dict = self.read_json()
             for farm in game_data["farms"]:
                 if farm["name"] == self.username:
                     my_farm = farm
                     break
             else:
                 raise ValueError(f"My farm is not found ({self.username})")
-            print(my_farm)
+            #print(my_farm)
+
+            farms = my_farm
+            fields = farms["fields"]
+            soup_factory = farms["soup_factory"]
+            farmers = farms["employees"]
+
+            print(type(fields), fields)
 
             if game_data["day"] == 0:
                 self.add_command("0 EMPRUNTER 300000")
@@ -36,16 +43,34 @@ class PlayerGameClient(Client):
                 self.add_command("27 SEMER PATATE 3")
                 self.add_command("28 SEMER PATATE 4")
                 for OUVRIER in range(1, 26):
-                    arrosage = (OUVRIER - 1) // 5 + 1
-                    self.add_command(f"{OUVRIER} ARROSER {arrosage}")
+                    CHAMP = ((OUVRIER - 1) % 5) + 1
+                    self.add_command("{OUVRIER} ARROSER {CHAMP}")
                 for OUVRIER in range(32, 37):
                     self.add_command(f"{OUVRIER} CUISINER")
             
-            for field in my_farm["fields"]:
-                if Location.FIELD1 == Vegetable.NONE:
+            for field in game_data["fields"]:
+                if Location.fields[0] == Vegetable.NONE:
                     next_vegetable = Vegetable(self.vegetable_index)
                     self.add_command(f"26 SEMER {next_vegetable.name} 1")
                     self.vegetable_index = (self.vegetable_index + 1) % len(Vegetable)
+            
+            if game_data["day"] >= 2:
+                for OUVRIER in range(1, 6):
+                    self.add_command(f"{OUVRIER} ARROSER 1")
+            if game_data["day"] >= 3:
+                for OUVRIER in range(6, 11):
+                    self.add_command(f"{OUVRIER} ARROSER 2")
+            if game_data["day"] >= 4:
+                for OUVRIER in range(11, 16):
+                    self.add_command(f"{OUVRIER} ARROSER 3")
+            if game_data["day"] >= 5:
+                for OUVRIER in range(16, 21):
+                    self.add_command(f"{OUVRIER} ARROSER 4")
+            if game_data["day"] >= 6:
+                for OUVRIER in range(21, 26):
+                    self.add_command(f"{OUVRIER} ARROSER 5")
+            
+
 
             self.send_commands()
 
