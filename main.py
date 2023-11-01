@@ -34,35 +34,12 @@ class PlayerGameClient(Client):
                     self.add_command("0 EMPLOYER")
                 for _ in range(3):
                     self.add_command("0 ACHETER_TRACTEUR")
-                self.add_command("27 SEMER PATATE 3")
-                self.add_command("28 SEMER PATATE 4")
                 for OUVRIER in range(1, 26):
                     CHAMP = ((OUVRIER - 1) % 5) + 1
                     self.add_command("{OUVRIER} ARROSER {CHAMP}")
-                for OUVRIER in range(32, 37):
+                for OUVRIER in range(31, 36):
                     self.add_command(f"{OUVRIER} CUISINER")
             
-            for field in game_data["fields"]:
-                if Location.fields[0] == Vegetable.NONE:
-                    next_vegetable = Vegetable(self.vegetable_index)
-                    self.add_command(f"26 SEMER {next_vegetable.name} 1")
-                    self.vegetable_index = (self.vegetable_index + 1) % len(Vegetable)
-            
-            if game_data["day"] >= 2:
-                for OUVRIER in range(1, 6):
-                    self.add_command(f"{OUVRIER} ARROSER 1")
-            if game_data["day"] >= 3:
-                for OUVRIER in range(6, 11):
-                    self.add_command(f"{OUVRIER} ARROSER 2")
-            if game_data["day"] >= 4:
-                for OUVRIER in range(11, 16):
-                    self.add_command(f"{OUVRIER} ARROSER 3")
-            if game_data["day"] >= 5:
-                for OUVRIER in range(16, 21):
-                    self.add_command(f"{OUVRIER} ARROSER 4")
-            if game_data["day"] >= 6:
-                for OUVRIER in range(21, 26):
-                    self.add_command(f"{OUVRIER} ARROSER 5")
             
 
             self.send_commands()
