@@ -42,7 +42,7 @@ class PlayerGameClient(Client):
                     self.add_command(f"{OUVRIER} CUISINER")
             
             for field in my_farm["fields"]:
-                if field[1] == Vegetable.NONE:
+                if Location.FIELD1 == Vegetable.NONE:
                     next_vegetable = Vegetable(self.vegetable_index)
                     self.add_command(f"26 SEMER {next_vegetable.name} 1")
                     self.vegetable_index = (self.vegetable_index + 1) % len(Vegetable)
