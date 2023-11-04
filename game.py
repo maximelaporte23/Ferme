@@ -15,7 +15,7 @@ class Game:
         ):
             for OUVRIER in range(31, 36):
                 self.add_command(f"{OUVRIER} CUISINER")
-    
+
     def saw(self, fields):
         vegetables = ["PATATE", "TOMATE", "OIGNON", "COURGETTE", "POIREAU"]
         vegetable_to_seed = vegetables[self.vegetable_index]
@@ -35,9 +35,9 @@ class Game:
             self.add_command(f"38 SEMER {vegetable_to_seed} 4")
         if field5["content"] == "NONE":
             self.add_command(f"39 SEMER {vegetable_to_seed} 5")
-        
+
         self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
-    
+
     def water(
         self,
         need_water_1,
@@ -63,4 +63,3 @@ class Game:
         if need_water_5 != 0:
             if farmer_id > 20 and farmer_id <= 25:
                 self.add_command(f"{farmer_id} ARROSER 5")
-    

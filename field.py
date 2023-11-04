@@ -17,3 +17,8 @@ class Field:
 
     def is_sowable(self):
         return self.content == Vegetable.NONE and self.bought
+
+    def water(self):
+        if not self.watered:
+            self.needed_water += 1
+            self.watered = True
