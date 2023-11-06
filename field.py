@@ -4,7 +4,7 @@ from location import Location
 
 class Field:
     def __init__(self: "Field", location: Location) -> None:
-        self.content = Vegetable.NONE
+        self.content: Vegetable = Vegetable.NONE
         self.needed_water = 0
         self.bought = False
         self.location = location
@@ -18,7 +18,8 @@ class Field:
     def is_sowable(self):
         return self.content == Vegetable.NONE and self.bought
 
-    def water(self):
-        if not self.watered:
-            self.needed_water += 1
-            self.watered = True
+    def is_sown(self):
+        return self.content != Vegetable.NONE
+
+    def is_watered(self):
+        return self.needed_water == 0 and self.is_sown()
