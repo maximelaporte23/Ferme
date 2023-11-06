@@ -132,7 +132,7 @@ class Game:
             self.add_command("38 STOCKER 3 3")
             return True
 
-    def stocker_field4_5(
+    def stocker_field4(
         self, content, need_water, farmer_id, farmer_pos, stock_done, nb_field
     ):
         if (
@@ -140,11 +140,19 @@ class Game:
             and content != "NONE"
             and farmer_id == 39
         ):
-            if nb_field == 4:
-                self.add_command("39 STOCKER 4 4")
-            if nb_field == 5:
-                self.add_command("39 STOCKER 5 4")
+            self.add_command("39 STOCKER 4 4")
             return True
          
+    def stocker_field5(
+        self, content, need_water, farmer_id, farmer_pos, stock_done, nb_field
+    ):
+        if (
+            need_water == 0
+            and content != "NONE"
+            and farmer_id == 40
+        ):
+            self.add_command("40 STOCKER 5 5")
+            return True
+    
     def add_command(self: "Game", command: str) -> None:
         self.commands.append(command)

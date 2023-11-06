@@ -11,14 +11,15 @@ class PlayerGameClient(Client):
     ) -> None:
         super().__init__(server_addr, port, username, spectator=False)
         self._commands: list[str] = []
-        self.nb_of_farmers = 39
+        self.nb_of_farmers = 40
         self.nb_of_cook = 5
-        self.nb_of_stocker = 4
+        self.nb_of_stocker = 5
         self.nb_of_sawer = 5
         self.tractor1_done = False
         self.tractor2_done = False
         self.tractor3_done = False
-        self.tractor4_5_done = False
+        self.tractor4_done = False
+        self.tractor5_done = False
         self.game = Game()
 
     def run(self: "PlayerGameClient") -> NoReturn:
@@ -41,7 +42,7 @@ class PlayerGameClient(Client):
                 self.game.add_command("0 EMPRUNTER 250000")
                 for _ in range(5):
                     self.game.add_command("0 ACHETER_CHAMP")
-                for _ in range(4):
+                for _ in range(5):
                     self.game.add_command("0 ACHETER_TRACTEUR")
                 self.game.hire_farmers(self.nb_of_farmers)
                 self.game.hire_sawer(self.nb_of_sawer)
@@ -91,21 +92,21 @@ class PlayerGameClient(Client):
                                 stock_done=self.tractor3_done,
                             )
                         if field["location"] == "FIELD4":
-                            self.tractor4_5_done = self.game.stocker_field4_5(
+                            self.tractor4_done = self.game.stocker_field4(
                                 content=field["content"],
                                 need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
-                                stock_done=self.tractor4_5_done,
+                                stock_done=self.tractor4_done,
                                 nb_field=4,
                             )
                         if field["location"] == "FIELD5":
-                            self.tractor4_5_done = self.game.stocker_field4_5(
+                            self.tractor5_done = self.game.stocker_field5(
                                 content=field["content"],
                                 need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
-                                stock_done=self.tractor4_5_done,
+                                stock_done=self.tractor5_done,
                                 nb_field=5,
                             )
 
