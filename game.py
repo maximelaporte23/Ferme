@@ -5,17 +5,25 @@ class Game:
         self.fields = []
         self.vegetable_index = 0
 
-    def hire_farmers(self, nb_farmers):
+    def hire_farmers(self):
+        nb_farmers = 25
         for _ in range(nb_farmers):
             self.add_command("0 EMPLOYER")
 
-    def hire_sawer(self, nb_sawers):
+    def hire_sawer(self):
+        nb_sawers = 5
         for _ in range(nb_sawers):
             self.add_command("0 EMPLOYER")
             
-    def hire_cook(self, nb_cook):
-        for _ in range(nb_cook):
-            self.add_command("0 EMPLOYER")        
+    def hire_cook(self):
+        nb_cooks = 5
+        for _ in range(nb_cooks):
+            self.add_command("0 EMPLOYER")
+
+    def hire_stocker(self):
+        nb_stockers = 5
+        for _ in range(nb_stockers):
+            self.add_command("0 EMPLOYER")         
 
     def distribute_sawer(self):
         self.add_command("26 SEMER PATATE 1")
