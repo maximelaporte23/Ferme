@@ -31,7 +31,7 @@ class PlayerGameClient(Client):
 
             farms = my_farm
             fields = farms["fields"]
-            stock = farms["stock"]
+            stock = farms["stocks"]
             farmers = farms["employees"]
 
             if game_data["day"] == 0:
