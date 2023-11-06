@@ -255,11 +255,11 @@ class Game:
             return True
 
     def fire(self):
-        for OUVRIER in range(1, 39):
+        for OUVRIER in range(1, 40):
             self.add_command(f"0 LICENCIER {OUVRIER}")     
 
     def end_game(self):
-        for OUVRIER in range(39, 49):
+        for OUVRIER in range(40, 50):
             self.add_command(f"{OUVRIER} CUISINER")
 
     def add_command(self: "Game", command: str) -> None:
