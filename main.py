@@ -98,6 +98,8 @@ class PlayerGameClient(Client):
                                 farmer_pos=farmer["location"],
                                 stock_done=self.tractor5_done,
                             )
+            if game_data["day"] >= 30:
+                self.game.cook()
 
             self.send_commands()
 
