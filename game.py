@@ -61,15 +61,15 @@ class Game:
         field4 = fields[3]
         field5 = fields[4]
         if field1["content"] == "NONE":
-            self.add_command(f"35 SEMER {vegetable_to_seed} 1")
+            self.add_command(f"26 SEMER {vegetable_to_seed} 1")
         if field2["content"] == "NONE":
-            self.add_command(f"36 SEMER {vegetable_to_seed} 2")
+            self.add_command(f"27 SEMER {vegetable_to_seed} 2")
         if field3["content"] == "NONE":
-            self.add_command(f"37 SEMER {vegetable_to_seed} 3")
+            self.add_command(f"28 SEMER {vegetable_to_seed} 3")
         if field4["content"] == "NONE":
-            self.add_command(f"38 SEMER {vegetable_to_seed} 4")
+            self.add_command(f"29 SEMER {vegetable_to_seed} 4")
         if field5["content"] == "NONE":
-            self.add_command(f"39 SEMER {vegetable_to_seed} 5")
+            self.add_command(f"30 SEMER {vegetable_to_seed} 5")
 
         self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
 
@@ -98,6 +98,60 @@ class Game:
         if need_water_5 != 0:
             if farmer_id > 20 and farmer_id <= 25:
                 self.add_command(f"{farmer_id} ARROSER 5")
-       
+
+    def stocker_field1(
+            self, content, need_water, farmer_id, farmer_pos, stock_done
+    ):
+        if (
+            need_water == 0
+            and content != "NONE"
+            and farmer_id == 36
+            and farmer_pos == "SOUP_FACTORY"
+        ):
+            self.add_command("36 STOCKER 1 1")
+            return True
+
+    def stocker_field2(
+            self, content, need_water, farmer_id, farmer_pos, stock_done
+    ):
+        if (
+            need_water == 0
+            and content != "NONE"
+            and farmer_id == 37
+            and farmer_pos == "SOUP_FACTORY"
+            and not stock_done
+        ):
+            self.add_command("37 STOCKER 2 2")
+            return True
+
+    def stocker_field3(
+            self, content, need_water, farmer_id, farmer_pos, stock_done
+    ):
+        if (
+            need_water == 0
+            and content != "NONE"
+            and farmer_id == 38
+            and farmer_pos == "SOUP_FACTORY"
+            and not stock_done
+        ):
+            self.add_command("38 STOCKER 3 3")
+            return True
+
+    def stocker_field4_5(
+        self, content, need_water, farmer_id, farmer_pos, stock_done, nb_field
+    ):
+        if (
+            need_water == 0
+            and content != "NONE"
+            and farmer_id == 39
+            and farmer_pos == "SOUP_FACTORY"
+            and not stock_done
+        ):
+            if nb_field == 4:
+                self.add_command("39 STOCKER 4 4")
+            if nb_field == 5:
+                self.add_command("39 STOCKER 5 4")
+            return True
+         
     def add_command(self: "Game", command: str) -> None:
         self.commands.append(command)

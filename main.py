@@ -11,10 +11,14 @@ class PlayerGameClient(Client):
     ) -> None:
         super().__init__(server_addr, port, username, spectator=False)
         self._commands: list[str] = []
-        self.nb_of_farmers = 38
+        self.nb_of_farmers = 39
         self.nb_of_cook = 5
-        self.nb_of_stocker = 3
+        self.nb_of_stocker = 4
         self.nb_of_sawer = 5
+        self.tractor1_done = False
+        self.tractor2_done = False
+        self.tractor3_done = False
+        self.tractor4_5_done = False
         self.game = Game()
 
     def run(self: "PlayerGameClient") -> NoReturn:
@@ -34,10 +38,10 @@ class PlayerGameClient(Client):
             farmers = farms["employees"]
 
             if game_data["day"] == 0:
-                self.game.add_command("0 EMPRUNTER 150000")
+                self.game.add_command("0 EMPRUNTER 250000")
                 for _ in range(5):
                     self.game.add_command("0 ACHETER_CHAMP")
-                for _ in range(3):
+                for _ in range(4):
                     self.game.add_command("0 ACHETER_TRACTEUR")
                 self.game.hire_farmers(self.nb_of_farmers)
                 self.game.hire_sawer(self.nb_of_sawer)
@@ -62,6 +66,47 @@ class PlayerGameClient(Client):
                                 need_water_5=3,
                                 farmer_id=farmer["id"],
                                 farmer_location=farmer["location"],
+                            )
+                            self.tractor1_done = self.game.stocker_field1(
+                                content=field["content"],
+                                need_water=field["needed_water"],
+                                farmer_id=farmer["id"],
+                                farmer_pos=farmer["location"],
+                                stock_done=self.tractor1_done,
+                            )
+                        if field["location"] == "FIELD2":
+                            self.tractor2_done = self.game.stocker_field2(
+                                content=field["content"],
+                                need_water=field["needed_water"],
+                                farmer_id=farmer["id"],
+                                farmer_pos=farmer["location"],
+                                stock_done=self.tractor2_done,
+                            )
+                        if field["location"] == "FIELD3":
+                            self.tractor3_done = self.game.stocker_field3(
+                                content=field["content"],
+                                need_water=field["needed_water"],
+                                farmer_id=farmer["id"],
+                                farmer_pos=farmer["location"],
+                                stock_done=self.tractor3_done,
+                            )
+                        if field["location"] == "FIELD4":
+                            self.tractor4_5_done = self.game.stocker_field4_5(
+                                content=field["content"],
+                                need_water=field["needed_water"],
+                                farmer_id=farmer["id"],
+                                farmer_pos=farmer["location"],
+                                stock_done=self.tractor4_5_done,
+                                nb_field=4,
+                            )
+                        if field["location"] == "FIELD5":
+                            self.tractor4_5_done = self.game.stocker_field4_5(
+                                content=field["content"],
+                                need_water=field["needed_water"],
+                                farmer_id=farmer["id"],
+                                farmer_pos=farmer["location"],
+                                stock_done=self.tractor4_5_done,
+                                nb_field=5,
                             )
 
             self.send_commands()
