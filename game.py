@@ -33,11 +33,11 @@ class Game:
 
     def cook(self, stock):
         if (
-            stock["PATATE"] != 0
-            and stock["COURGETTE"] != 0
-            and stock["TOMATE"] != 0
-            and stock["OIGNON"] != 0
-            and stock["POIREAU"] != 0
+            stock["PATATE"] != "NONE"
+            and stock["COURGETTE"] != "NONE"
+            and stock["TOMATE"] != "NONE"
+            and stock["OIGNON"] != "NONE"
+            and stock["POIREAU"] != "NONE"
         ):
             for OUVRIER in range(31, 36):
                 self.add_command(f"{OUVRIER} CUISINER")
