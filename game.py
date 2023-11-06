@@ -31,16 +31,9 @@ class Game:
         self.add_command("34 CUISINER")
         self.add_command("35 CUISINER")
 
-    def cook(self, stock):
-        if (
-            stock["PATATE"] != "NONE"
-            and stock["COURGETTE"] != "NONE"
-            and stock["TOMATE"] != "NONE"
-            and stock["OIGNON"] != "NONE"
-            and stock["POIREAU"] != "NONE"
-        ):
-            for OUVRIER in range(31, 36):
-                self.add_command(f"{OUVRIER} CUISINER")
+    def cook(self):
+        for OUVRIER in range(31, 36):
+            self.add_command(f"{OUVRIER} CUISINER")
 
     def saw(self, fields):
         vegetables = ["PATATE", "TOMATE", "OIGNON", "COURGETTE", "POIREAU"]
