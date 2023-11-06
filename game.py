@@ -258,16 +258,16 @@ class Game:
             self.add_command(f"0 LICENCIER {OUVRIER}")     
 
     def end_game(self):
+        self.add_command("71 CUISINER")
+        self.add_command("72 CUISINER")
+        self.add_command("73 CUISINER")
+        self.add_command("74 CUISINER")
+        self.add_command("75 CUISINER")
+        self.add_command("76 CUISINER")
         self.add_command("77 CUISINER")
         self.add_command("78 CUISINER")
         self.add_command("79 CUISINER")
         self.add_command("80 CUISINER")
-        self.add_command("81 CUISINER")
-        self.add_command("82 CUISINER")
-        self.add_command("83 CUISINER")
-        self.add_command("84 CUISINER")
-        self.add_command("85 CUISINER")
-        self.add_command("86 CUISINER")
 
     def add_command(self: "Game", command: str) -> None:
         self.commands.append(command)
