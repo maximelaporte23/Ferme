@@ -48,7 +48,7 @@ class PlayerGameClient(Client):
 
             if game_data["day"] >= 5:
                 self.game.saw(fields=fields)
-                self.game.cook(stock)
+                self.game.cook(stock=stock)
                 for farmer in farmers:
                     for field in fields:
                         if field["location"] == "FIELD1":
