@@ -37,11 +37,11 @@ class PlayerGameClient(Client):
                 self.game.add_command("0 EMPRUNTER 150000")
                 for _ in range(5):
                     self.game.add_command("0 ACHETER_CHAMP")
+                for _ in range(3):
+                    self.game.add_command("0 ACHETER_TRACTEUR")
                 self.game.hire_farmers(self.nb_of_farmers)
                 self.game.hire_sawer(self.nb_of_sawer)
                 self.game.hire_cook(self.nb_of_cook)
-                for _ in range(3):
-                    self.game.add_command("0 ACHETER_TRACTEUR")
                 self.game.distribute_farmers(
                     self.nb_of_farmers, self.nb_of_cook, self.nb_of_stocker
                 )
