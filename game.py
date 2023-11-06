@@ -119,7 +119,6 @@ class Game:
             and content != "NONE"
             and farmer_id == 37
             and farmer_pos == "SOUP_FACTORY"
-            and not stock_done
         ):
             self.add_command("37 STOCKER 2 2")
             return True
@@ -132,7 +131,6 @@ class Game:
             and content != "NONE"
             and farmer_id == 38
             and farmer_pos == "SOUP_FACTORY"
-            and not stock_done
         ):
             self.add_command("38 STOCKER 3 3")
             return True
@@ -145,7 +143,6 @@ class Game:
             and content != "NONE"
             and farmer_id == 39
             and farmer_pos == "SOUP_FACTORY"
-            and not stock_done
         ):
             if nb_field == 4:
                 self.add_command("39 STOCKER 4 4")
