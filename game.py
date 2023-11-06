@@ -18,11 +18,11 @@ class Game:
             self.add_command("0 EMPLOYER")        
 
     def distribute_sawer(self):
-        self.add_command("26 SEMER POIREAU 1")
-        self.add_command("27 SEMER POIREAU 2")
-        self.add_command("28 SEMER POIREAU 2")
-        self.add_command("29 SEMER POIREAU 4")
-        self.add_command("30 SEMER POIREAU 5")
+        self.add_command("26 SEMER PATATE 1")
+        self.add_command("27 SEMER PATATE 2")
+        self.add_command("28 SEMER PATATE 2")
+        self.add_command("29 SEMER PATATE 4")
+        self.add_command("30 SEMER PATATE 5")
 
     def distribute_farmers(self, nb_employees, nb_of_cook, nb_of_stocker):
         farmer_num = 0
