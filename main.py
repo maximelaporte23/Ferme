@@ -71,7 +71,7 @@ class PlayerGameClient(Client):
         self.game.commands.append(command)
 
     def send_commands(self: "PlayerGameClient") -> None:
-        data = {"commands": self._commands}
+        data = {"commands": self.game.commands}
         print("sending", data)
         self.send_json(data)
         self.game.commands.clear()
