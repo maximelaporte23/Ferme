@@ -165,7 +165,7 @@ class PlayerGameClient(Client):
             #    self.game.cook()
 
             if game_data["day"] == 1740:
-                for _ in range(1, 11):
+                for _ in range(1, 21):
                     self.game.add_command("0 EMPLOYER")
                 self.game.end_game()
 
