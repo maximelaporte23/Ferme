@@ -11,7 +11,7 @@ class PlayerGameClient(Client):
     ) -> None:
         super().__init__(server_addr, port, username, spectator=False)
         self._commands: list[str] = []
-        self.nb_of_farmers = 25
+        self.nb_of_farmers = 35
         self.nb_of_cook = 5
         self.nb_of_stocker = 0
         self.nb_of_sawer = 5
