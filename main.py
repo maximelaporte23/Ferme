@@ -14,6 +14,14 @@ class PlayerGameClient(Client):
     ) -> None:
         super().__init__(server_addr, port, username, spectator=False)
         self._commands: list[str] = []
+        self.nb_of_farmers = 25
+        self.nb_of_cook = 5
+        self.nb_of_stocker = 0
+        self.nb_of_sawer = 5
+        self.tractor1_done = False
+        self.tractor2_done = False
+        self.tractor3_done = False
+
         self.game = Game()
 
     def run(self: "PlayerGameClient") -> NoReturn:
@@ -67,8 +75,8 @@ class PlayerGameClient(Client):
 
             self.send_commands()
 
-    def add_command(self: "PlayerGameClient", command: str) -> None:
-        self.game.commands.append(command)
+    #def add_command(self: "PlayerGameClient", command: str) -> None:
+    #    self.game.commands.append(command)
 
     def send_commands(self: "PlayerGameClient") -> None:
         data = {"commands": self.game.commands}
