@@ -103,11 +103,6 @@ class PlayerGameClient(Client):
 
             if game_data["day"] == 60:
                 self.game.fire()
-                self.game.add_command("0 EMPRUNTER 250000")
-                for _ in range(5):
-                    self.game.add_command("0 ACHETER_CHAMP")
-                for _ in range(5):
-                    self.game.add_command("0 ACHETER_TRACTEUR")
                 for _ in range(1, 39):
                     self.game.add_command("0 EMPLOYER")
                 self.game.distribute_sawer()
