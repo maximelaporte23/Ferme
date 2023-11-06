@@ -170,7 +170,7 @@ class PlayerGameClient(Client):
                 self.game.end_game()
 
             if game_data["day"] >= 1746:
-                for OUVRIER in range(39, 49):
+                for OUVRIER in range(39, 59):
                     self.game.add_command(f"{OUVRIER} CUISINER")
 
             self.send_commands()
