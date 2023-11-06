@@ -278,6 +278,12 @@ class Game:
         self.add_command("56 CUISINER")
         self.add_command("57 CUISINER")
         self.add_command("58 CUISINER")
+        self.add_command("59 CUISINER")
+        self.add_command("60 CUISINER")
+        self.add_command("61 CUISINER")
+        self.add_command("62 CUISINER")
+        self.add_command("63 CUISINER")
+        self.add_command("64 CUISINER")
 
     def add_command(self: "Game", command: str) -> None:
         self.commands.append(command)
