@@ -11,9 +11,9 @@ class PlayerGameClient(Client):
     ) -> None:
         super().__init__(server_addr, port, username, spectator=False)
         self._commands: list[str] = []
-        self.nb_of_farmers = 35
+        self.nb_of_farmers = 38
         self.nb_of_cook = 5
-        self.nb_of_stocker = 0
+        self.nb_of_stocker = 3
         self.nb_of_sawer = 5
         self.game = Game()
 
@@ -46,11 +46,7 @@ class PlayerGameClient(Client):
                     self.nb_of_farmers, self.nb_of_cook, self.nb_of_stocker
                 )
                 self.game.distribute_sawer()
-                self.game.commands("31 CUISINER")
-                self.game.commands("32 CUISINER")
-                self.game.commands("33 CUISINER")
-                self.game.commands("34 CUISINER")
-                self.game.commands("35 CUISINER")
+                self.game.distribute_cook()
 
             if game_data["day"] >= 5:
                 self.game.saw(fields=fields)
