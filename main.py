@@ -39,7 +39,7 @@ class PlayerGameClient(Client):
                     self.game.add_command("0 ACHETER_CHAMP")
                 for _ in range(5):
                     self.game.add_command("0 ACHETER_TRACTEUR")
-                for _ in range(1, 39):
+                for _ in range(1, 40):
                     self.game.add_command("0 EMPLOYER")
                 self.game.distribute_sawer()
                 self.game.distribute_farmers()
