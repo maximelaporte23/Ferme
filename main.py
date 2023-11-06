@@ -47,10 +47,10 @@ class PlayerGameClient(Client):
                 self.game.hire_farmers(self.nb_of_farmers)
                 self.game.hire_sawer(self.nb_of_sawer)
                 self.game.hire_cook(self.nb_of_cook)
-                self.game.distribute_farmers(
-                    self.nb_of_farmers, self.nb_of_cook, self.nb_of_stocker
-                )
-                #self.game.distribute_sawer()
+                #self.game.distribute_farmers(
+                #    self.nb_of_farmers, self.nb_of_cook, self.nb_of_stocker
+                #)
+                self.game.distribute_sawer()
                 self.game.distribute_cook()
 
             if game_data["day"] >= 5:
