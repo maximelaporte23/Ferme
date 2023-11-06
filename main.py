@@ -39,13 +39,13 @@ class PlayerGameClient(Client):
                     self.game.add_command("0 ACHETER_CHAMP")
                 for _ in range(5):
                     self.game.add_command("0 ACHETER_TRACTEUR")
-                for _ in range(1, 41):
+                for _ in range(1, 39):
                     self.game.add_command("0 EMPLOYER")
                 self.game.distribute_sawer()
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
 
-            if game_data["day"] >= 5:
+            if game_data["day"] >= 5 and game_data["day"] != (900 and 901 and 902 and 903 and 904):
                 self.game.saw(fields=fields)
                 for farmer in farmers:
                     for field in fields:
@@ -101,6 +101,19 @@ class PlayerGameClient(Client):
             if game_data["day"] >= 30:
                 self.game.cook()
 
+            if game_data["day"] == 900:
+                self.game.fire()
+                self.game.add_command("0 EMPRUNTER 250000")
+                for _ in range(5):
+                    self.game.add_command("0 ACHETER_CHAMP")
+                for _ in range(5):
+                    self.game.add_command("0 ACHETER_TRACTEUR")
+                for _ in range(1, 39):
+                    self.game.add_command("0 EMPLOYER")
+                self.game.distribute_sawer()
+                self.game.distribute_farmers()
+                self.game.distribute_cook()
+            
             self.send_commands()
 
     def send_commands(self: "PlayerGameClient") -> None:

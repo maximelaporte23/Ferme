@@ -32,7 +32,7 @@ class Game:
         self.add_command("35 CUISINER")
 
     def cook(self):
-        for OUVRIER in range(31, 36):
+        for OUVRIER in range(31, 34):
             self.add_command(f"{OUVRIER} CUISINER")
 
     def saw(self, fields):
@@ -131,5 +131,9 @@ class Game:
             self.add_command("40 STOCKER 5 5")
             return True
     
+    def fire(self):
+        for OUVRIER in range(1, 39):
+            self.add_command(f"0 LICENCIER {OUVRIER}")
+
     def add_command(self: "Game", command: str) -> None:
         self.commands.append(command)
