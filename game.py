@@ -75,7 +75,7 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == 36
+            and farmer_id == 34
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
             self.add_command("34 STOCKER 1 1")
@@ -87,7 +87,7 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == 37
+            and farmer_id == 35
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
             self.add_command("35 STOCKER 2 2")
@@ -99,7 +99,7 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == 38
+            and farmer_id == 36
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
             self.add_command("36 STOCKER 3 3")
@@ -111,7 +111,7 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == 39
+            and farmer_id == 37
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
             self.add_command("37 STOCKER 4 4")
@@ -123,7 +123,7 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == 40
+            and farmer_id == 38
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
             self.add_command("38 STOCKER 5 5")
