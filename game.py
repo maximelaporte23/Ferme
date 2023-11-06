@@ -47,6 +47,7 @@ class Game:
         self.add_command("31 CUISINER")
         self.add_command("32 CUISINER")
         self.add_command("33 CUISINER")
+        self.add_command("34 CUISINER")
 
     def distribute_cook_2(self):
         self.add_command("69 CUISINER")
@@ -54,7 +55,7 @@ class Game:
         self.add_command("71 CUISINER")
 
     def cook(self):
-        for OUVRIER in range(31, 34):
+        for OUVRIER in range(31, 35):
             self.add_command(f"{OUVRIER} CUISINER")
 
     def cook_2(self):
@@ -258,7 +259,7 @@ class Game:
             self.add_command(f"0 LICENCIER {OUVRIER}")     
 
     def end_game(self):
-        for OUVRIER in range(39, 69):
+        for OUVRIER in range(39, 49):
             self.add_command(f"{OUVRIER} CUISINER")
 
     def add_command(self: "Game", command: str) -> None:
