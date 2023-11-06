@@ -46,7 +46,11 @@ class PlayerGameClient(Client):
                     self.nb_of_farmers, self.nb_of_cook, self.nb_of_stocker
                 )
                 self.game.distribute_sawer()
-                self.game.distribute_cook()
+                self.game.commands("31 CUISINER")
+                self.game.commands("32 CUISINER")
+                self.game.commands("33 CUISINER")
+                self.game.commands("34 CUISINER")
+                self.game.commands("35 CUISINER")
 
             if game_data["day"] >= 5:
                 self.game.saw(fields=fields)
