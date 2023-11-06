@@ -1,8 +1,5 @@
 import argparse
 from typing import NoReturn
-#from vegetable import Vegetable
-#from location import Location
-#from field import Field
 from game import Game
 
 from chronobio.network.client import Client
@@ -14,6 +11,10 @@ class PlayerGameClient(Client):
     ) -> None:
         super().__init__(server_addr, port, username, spectator=False)
         self._commands: list[str] = []
+        self.nb_of_farmers = 25
+        self.nb_of_cook = 5
+        self.nb_of_stocker = 0
+        self.nb_of_sawer = 5
         self.game = Game()
 
     def run(self: "PlayerGameClient") -> NoReturn:
@@ -40,14 +41,10 @@ class PlayerGameClient(Client):
                     self.game.add_command("0 EMPLOYER")
                 for _ in range(3):
                     self.game.add_command("0 ACHETER_TRACTEUR")
-                for sprinkler in range(1, 26):
-                    champ = ((sprinkler - 1) % 5) + 1
-                    self.game.add_command(f"{sprinkler} ARROSER {champ}")
-                for seeder in range(26, 31):
-                    champ = ((seeder - 1) % 5) + 1
-                    self.game.add_command(f"{seeder} SEMER POIREAU {champ}")
-                for cook in range(32, 37):
-                    self.game.add_command(f"{cook} CUISINER")
+                self.game.distribute_farmers(
+                    self.nb_of_farmers, self.nb_of_cook, self.nb_of_stocker
+                )
+                self.game.distribute_sawer()
 
             if game_data["day"] >= 5:
                 self.game.saw(fields=fields)
@@ -66,7 +63,7 @@ class PlayerGameClient(Client):
                             )
 
             self.send_commands()
-            
+
     def send_commands(self: "PlayerGameClient") -> None:
         data = {"commands": self.game.commands}
         print("sending", data)
