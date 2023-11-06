@@ -23,7 +23,7 @@ class Game:
         self.add_command("28 SEMER PATATE 3")
         self.add_command("29 SEMER PATATE 4")
         self.add_command("30 SEMER PATATE 5")
-              
+ 
     def distribute_cook(self):
         self.add_command("31 CUISINER")
         self.add_command("32 CUISINER")
@@ -31,16 +31,16 @@ class Game:
         self.add_command("34 CUISINER")
         self.add_command("35 CUISINER")
 
-    #def cook(self, stock):
-    #    if (
-    #        stock["PATATE"] != 0
-    #        and stock["COURGETTE"] != 0
-    #        and stock["TOMATE"] != 0
-    #        and stock["OIGNON"] != 0
-    #        and stock["POIREAU"] != 0
-    #    ):
-    #        for OUVRIER in range(31, 36):
-    #            self.add_command(f"{OUVRIER} CUISINER")
+    def cook(self, stock):
+        if (
+            stock["PATATE"] != 0
+            and stock["COURGETTE"] != 0
+            and stock["TOMATE"] != 0
+            and stock["OIGNON"] != 0
+            and stock["POIREAU"] != 0
+        ):
+            for OUVRIER in range(31, 36):
+                self.add_command(f"{OUVRIER} CUISINER")
 
     def saw(self, fields):
         vegetables = ["PATATE", "TOMATE", "OIGNON", "COURGETTE", "POIREAU"]
