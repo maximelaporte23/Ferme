@@ -100,7 +100,7 @@ class Game:
                 self.add_command(f"{farmer_id} ARROSER 5")
 
     def stocker_field1(
-            self, content, need_water, farmer_id, farmer_pos, stock_done
+            self, content, need_water, farmer_id, farmer_pos, nb_field
     ):
         if (
             need_water == 0
@@ -112,7 +112,7 @@ class Game:
             return True
 
     def stocker_field2(
-            self, content, need_water, farmer_id, farmer_pos, stock_done
+            self, content, need_water, farmer_id, farmer_pos, nb_field
     ):
         if (
             need_water == 0
@@ -124,7 +124,7 @@ class Game:
             return True
 
     def stocker_field3(
-            self, content, need_water, farmer_id, farmer_pos, stock_done
+            self, content, need_water, farmer_id, farmer_pos, nb_field
     ):
         if (
             need_water == 0
@@ -136,7 +136,7 @@ class Game:
             return True
 
     def stocker_field4(
-        self, content, need_water, farmer_id, farmer_pos, stock_done, nb_field
+        self, content, need_water, farmer_id, farmer_pos, nb_field
     ):
         if (
             need_water == 0
@@ -148,7 +148,7 @@ class Game:
             return True
          
     def stocker_field5(
-        self, content, need_water, farmer_id, farmer_pos, stock_done, nb_field
+        self, content, need_water, farmer_id, farmer_pos, nb_field
     ):
         if (
             need_water == 0
