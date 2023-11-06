@@ -80,7 +80,7 @@ class Game:
             and farmer_id == 36
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("36 STOCKER 1 1")
+            self.add_command("34 STOCKER 1 1")
             return True
 
     def stocker_field2(
@@ -92,7 +92,7 @@ class Game:
             and farmer_id == 37
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("37 STOCKER 2 2")
+            self.add_command("35 STOCKER 2 2")
             return True
 
     def stocker_field3(
@@ -104,7 +104,7 @@ class Game:
             and farmer_id == 38
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("38 STOCKER 3 3")
+            self.add_command("36 STOCKER 3 3")
             return True
 
     def stocker_field4(
@@ -116,7 +116,7 @@ class Game:
             and farmer_id == 39
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("39 STOCKER 4 4")
+            self.add_command("37 STOCKER 4 4")
             return True
          
     def stocker_field5(
@@ -128,7 +128,7 @@ class Game:
             and farmer_id == 40
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("40 STOCKER 5 5")
+            self.add_command("38 STOCKER 5 5")
             return True
     
     def fire(self):
