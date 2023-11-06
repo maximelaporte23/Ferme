@@ -23,7 +23,7 @@ class Game:
         self.add_command("28 SEMER PATATE 3")
         self.add_command("29 SEMER PATATE 4")
         self.add_command("30 SEMER PATATE 5")
- 
+              
     def distribute_cook(self):
         self.add_command("31 CUISINER")
         self.add_command("32 CUISINER")
