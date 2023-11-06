@@ -254,20 +254,20 @@ class Game:
             return True
 
     def fire(self):
-        for OUVRIER in range(1, 31):
+        for OUVRIER in range(1, 39):
             self.add_command(f"0 LICENCIER {OUVRIER}")     
 
     def end_game(self):
-        self.add_command("71 CUISINER")
-        self.add_command("72 CUISINER")
-        self.add_command("73 CUISINER")
-        self.add_command("74 CUISINER")
-        self.add_command("75 CUISINER")
-        self.add_command("76 CUISINER")
-        self.add_command("77 CUISINER")
-        self.add_command("78 CUISINER")
-        self.add_command("79 CUISINER")
-        self.add_command("80 CUISINER")
+        self.add_command("39 CUISINER")
+        self.add_command("40 CUISINER")
+        self.add_command("41 CUISINER")
+        self.add_command("42 CUISINER")
+        self.add_command("43 CUISINER")
+        self.add_command("44 CUISINER")
+        self.add_command("45 CUISINER")
+        self.add_command("46 CUISINER")
+        self.add_command("47 CUISINER")
+        self.add_command("48 CUISINER")
 
     def add_command(self: "Game", command: str) -> None:
         self.commands.append(command)
