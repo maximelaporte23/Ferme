@@ -20,19 +20,15 @@ class Game:
     def distribute_sawer(self):
         self.add_command("26 SEMER PATATE 1")
         self.add_command("27 SEMER PATATE 2")
-        self.add_command("28 SEMER PATATE 2")
+        self.add_command("28 SEMER PATATE 3")
         self.add_command("29 SEMER PATATE 4")
         self.add_command("30 SEMER PATATE 5")
 
-    def distribute_farmers(self, nb_employees, nb_of_cook, nb_of_stocker):
-        farmer_num = 0
+    def distribute_farmers(self):
         for field_num in range(1, 6):
-            for _ in range(5):
-                farmer_num += 1
-                self.add_command(f"{farmer_num} SEMER POIREAU {field_num}")
-                if farmer_num >= nb_employees - nb_of_cook - nb_of_stocker:
-                    return
-    
+            for farmer_num in range(5):
+                self.add_command(f"{farmer_num} ARROSER {field_num}")
+                
     def distribute_cook(self):
         self.add_command("31 CUISINER")
         self.add_command("32 CUISINER")
