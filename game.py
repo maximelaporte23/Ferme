@@ -12,6 +12,10 @@ class Game:
     def hire_sawer(self, nb_sawers):
         for _ in range(nb_sawers):
             self.add_command("0 EMPLOYER")
+            
+    def hire_cook(self, nb_cook):
+        for _ in range(nb_cook):
+            self.add_command("0 EMPLOYER")        
 
     def distribute_sawer(self):
         self.add_command("35 SEMER POIREAU 1")
