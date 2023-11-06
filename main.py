@@ -14,6 +14,7 @@ class PlayerGameClient(Client):
     ) -> None:
         super().__init__(server_addr, port, username, spectator=False)
         self._commands: list[str] = []
+        self.game = Game()
 
     def run(self: "PlayerGameClient") -> NoReturn:
         while True:
@@ -32,25 +33,25 @@ class PlayerGameClient(Client):
             farmers = farms["employees"]
 
             if game_data["day"] == 0:
-                self.add_command("0 EMPRUNTER 150000")
+                self.game.add_command("0 EMPRUNTER 150000")
                 for _ in range(5):
-                    self.add_command("0 ACHETER_CHAMP")
+                    self.game.add_command("0 ACHETER_CHAMP")
                 for _ in range(36):
-                    self.add_command("0 EMPLOYER")
+                    self.game.add_command("0 EMPLOYER")
                 for _ in range(3):
-                    self.add_command("0 ACHETER_TRACTEUR")
+                    self.game.add_command("0 ACHETER_TRACTEUR")
                 for sprinkler in range(1, 26):
                     champ = ((sprinkler - 1) % 5) + 1
-                    self.add_command(f"{sprinkler} ARROSER {champ}")
+                    self.game.add_command(f"{sprinkler} ARROSER {champ}")
                 for seeder in range(26, 31):
                     champ = ((seeder - 1) % 5) + 1
-                    self.add_command(f"{seeder} SEMER POIREAU {champ}")
+                    self.game.add_command(f"{seeder} SEMER POIREAU {champ}")
                 for cook in range(32, 37):
-                    self.add_command(f"{cook} CUISINER")
+                    self.game.add_command(f"{cook} CUISINER")
 
             if game_data["day"] >= 5:
-                self.saw(fields=fields)
-                self.cook(stock=soup_factory["stock"])
+                self.game.saw(fields=fields)
+                self.game.cook(stock=soup_factory["stock"])
                 for farmer in farmers:
                     for field in fields:
                         if field["location"] == "FIELD1":
@@ -67,13 +68,13 @@ class PlayerGameClient(Client):
             self.send_commands()
 
     def add_command(self: "PlayerGameClient", command: str) -> None:
-        self._commands.append(command)
+        self.game.commands.append(command)
 
     def send_commands(self: "PlayerGameClient") -> None:
         data = {"commands": self._commands}
         print("sending", data)
         self.send_json(data)
-        self._commands.clear()
+        self.game.commands.clear()
 
 
 if __name__ == "__main__":
