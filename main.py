@@ -41,9 +41,6 @@ class PlayerGameClient(Client):
                 for _ in range(5):
                     self.game.add_command("0 ACHETER_TRACTEUR")
                 self.game.hire_farmers()
-                self.game.hire_sawer()
-                self.game.hire_cook()
-                self.game.hire_stocker()
                 self.game.distribute_farmers()
                 self.game.distribute_sawer()
                 self.game.distribute_cook()

@@ -6,24 +6,13 @@ class Game:
         self.vegetable_index = 0
 
     def hire_farmers(self):
-        nb_farmers = 25
-        for _ in range(nb_farmers):
-            self.add_command("0 EMPLOYER")
+        for _ in range(1, 41):
+            self.add_command("0 EMPLOYER")       
 
-    def hire_sawer(self):
-        nb_sawers = 5
-        for _ in range(nb_sawers):
-            self.add_command("0 EMPLOYER")
-            
-    def hire_cook(self):
-        nb_cooks = 5
-        for _ in range(nb_cooks):
-            self.add_command("0 EMPLOYER")
-
-    def hire_stocker(self):
-        nb_stockers = 5
-        for _ in range(nb_stockers):
-            self.add_command("0 EMPLOYER")         
+    def distribute_farmers(self):
+        for field_num in range(1, 6):
+            for farmer_num in range(5):
+                self.add_command(f"{farmer_num} ARROSER {field_num}")
 
     def distribute_sawer(self):
         self.add_command("26 SEMER PATATE 1")
@@ -31,12 +20,7 @@ class Game:
         self.add_command("28 SEMER PATATE 3")
         self.add_command("29 SEMER PATATE 4")
         self.add_command("30 SEMER PATATE 5")
-
-    def distribute_farmers(self):
-        for field_num in range(1, 6):
-            for farmer_num in range(5):
-                self.add_command(f"{farmer_num} ARROSER {field_num}")
-                
+              
     def distribute_cook(self):
         self.add_command("31 CUISINER")
         self.add_command("32 CUISINER")
