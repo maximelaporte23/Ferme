@@ -101,28 +101,28 @@ class PlayerGameClient(Client):
             if game_data["day"] >= 30:
                 self.game.cook()
             
-            if game_data["day"] == 90:
+            if game_data["day"] == 900:
                 self.game.fire()
                 for _ in range(1, 39):
                     self.game.add_command("0 EMPLOYER")
-                # self.game.distribute_sawer_2()
-                # self.game.distribute_farmers_2()
+                self.game.distribute_sawer_2()
+                self.game.distribute_farmers_2()
                 # self.game.distribute_cook_2()
 
-                # if game_data["day"] >= 905:
-                    # self.game.saw_2(fields=fields)
-                    # for farmer in farmers:
-                        # for field in fields:
-                            # if field["location"] == "FIELD1":
-                                # self.game.water_2(
-                                #     need_water_1=field["needed_water"],
-                                #     need_water_2=3,
-                                #     need_water_3=3,
-                                #     need_water_4=3,
-                                #     need_water_5=3,
-                                #     farmer_id=farmer["id"],
-                                #     farmer_location=farmer["location"],
-                                # )
+            if game_data["day"] >= 905:
+                self.game.saw_2(fields=fields)
+                for farmer in farmers:
+                    for field in fields:
+                        if field["location"] == "FIELD1":
+                            self.game.water_2(
+                                need_water_1=field["needed_water"],
+                                need_water_2=3,
+                                need_water_3=3,
+                                need_water_4=3,
+                                need_water_5=3,
+                                farmer_id=farmer["id"],
+                                farmer_location=farmer["location"],
+                            )
                                 # self.tractor1_done = self.game.stocker_field1_2(
                                 #     content=field["content"],
                                 #     need_water=field["needed_water"],

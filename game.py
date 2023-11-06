@@ -255,9 +255,7 @@ class Game:
     
     def fire(self):
         for OUVRIER in range(1, 31):
-            self.add_command(f"0 LICENCIER {OUVRIER}")
-        for OUVRIER in range(32, 39):
-            self.add_command(f"0 LICENCIER {OUVRIER}")        
+            self.add_command(f"0 LICENCIER {OUVRIER}")     
 
     def end_game(self):
         self.add_command("77 CUISINER")
