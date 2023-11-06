@@ -162,7 +162,7 @@ class PlayerGameClient(Client):
                                 farmer_pos=farmer["location"],
                                 stock_done=self.tractor5_done,
                             )
-                # self.game.cook()
+                self.game.cook()
 
             if game_data["day"] == 1740:
                 for _ in range(1, 11):
