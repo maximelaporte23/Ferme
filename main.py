@@ -101,7 +101,7 @@ class PlayerGameClient(Client):
             if game_data["day"] >= 30:
                 self.game.cook()
             
-            if game_data["day"] == 900:
+            if game_data["day"] == 90:
                 self.game.fire()
                 for _ in range(1, 39):
                     self.game.add_command("0 EMPLOYER")
