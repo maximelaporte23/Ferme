@@ -143,7 +143,7 @@ class Game:
             and farmer_id == 35
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("34 STOCKER 1 1")
+            self.add_command("35 STOCKER 1 1")
             return True
 
     def stocker_field1_2(
@@ -167,7 +167,7 @@ class Game:
             and farmer_id == 36
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("35 STOCKER 2 2")
+            self.add_command("36 STOCKER 2 2")
             return True
 
     def stocker_field2_2(
@@ -191,7 +191,7 @@ class Game:
             and farmer_id == 37
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("36 STOCKER 3 3")
+            self.add_command("37 STOCKER 3 3")
             return True
 
     def stocker_field3_2(
@@ -215,7 +215,7 @@ class Game:
             and farmer_id == 38
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("37 STOCKER 4 4")
+            self.add_command("38 STOCKER 4 4")
             return True
 
     def stocker_field4_2(
@@ -239,7 +239,7 @@ class Game:
             and farmer_id == 39
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("38 STOCKER 5 5")
+            self.add_command("39 STOCKER 5 5")
             return True
 
     def stocker_field5_2(
@@ -259,7 +259,7 @@ class Game:
             self.add_command(f"0 LICENCIER {OUVRIER}")     
 
     def end_game(self):
-        for OUVRIER in range(40, 50):
+        for OUVRIER in range(40, 60):
             self.add_command(f"{OUVRIER} CUISINER")
 
     def add_command(self: "Game", command: str) -> None:
