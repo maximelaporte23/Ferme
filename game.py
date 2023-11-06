@@ -28,8 +28,6 @@ class Game:
         self.add_command("31 CUISINER")
         self.add_command("32 CUISINER")
         self.add_command("33 CUISINER")
-        self.add_command("34 CUISINER")
-        self.add_command("35 CUISINER")
 
     def cook(self):
         for OUVRIER in range(31, 34):
