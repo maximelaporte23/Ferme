@@ -45,7 +45,7 @@ class PlayerGameClient(Client):
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
 
-            if game_data["day"] >= 5 and game_data["day"] != (60 and 61 and 62 and 63 and 64):
+            if game_data["day"] >= 5:
                 self.game.saw(fields=fields)
                 for farmer in farmers:
                     for field in fields:
@@ -101,13 +101,13 @@ class PlayerGameClient(Client):
             if game_data["day"] >= 30:
                 self.game.cook()
 
-            if game_data["day"] == 60:
-                self.game.fire()
-                for _ in range(1, 39):
-                    self.game.add_command("0 EMPLOYER")
-                self.game.distribute_sawer()
-                self.game.distribute_farmers()
-                self.game.distribute_cook()
+            #if game_data["day"] == 60:
+            #    self.game.fire()
+            #    for _ in range(1, 39):
+            #        self.game.add_command("0 EMPLOYER")
+            #    self.game.distribute_sawer()
+            #    self.game.distribute_farmers()
+            #    self.game.distribute_cook()
             
             self.send_commands()
 

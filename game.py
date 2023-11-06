@@ -129,9 +129,9 @@ class Game:
             self.add_command("38 STOCKER 5 5")
             return True
     
-    def fire(self):
-        for OUVRIER in range(1, 39):
-            self.add_command(f"0 LICENCIER {OUVRIER}")
+    #def fire(self):
+    #    for OUVRIER in range(1, 39):
+    #        self.add_command(f"0 LICENCIER {OUVRIER}")
 
     def add_command(self: "Game", command: str) -> None:
         self.commands.append(command)
