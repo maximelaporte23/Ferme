@@ -63,3 +63,6 @@ class Game:
         if need_water_5 != 0:
             if farmer_id > 20 and farmer_id <= 25:
                 self.add_command(f"{farmer_id} ARROSER 5")
+        
+    def add_command(self: "Game", command: str) -> None:
+        self.commands.append(command)
