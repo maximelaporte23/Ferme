@@ -106,6 +106,7 @@ class Game:
             need_water == 0
             and content != "NONE"
             and farmer_id == 36
+            and farmer_pos == "SOUP_FACTORY"
         ):
             self.add_command("36 STOCKER 1 1")
             return True
@@ -117,6 +118,7 @@ class Game:
             need_water == 0
             and content != "NONE"
             and farmer_id == 37
+            and farmer_pos == "SOUP_FACTORY"
         ):
             self.add_command("37 STOCKER 2 2")
             return True
@@ -128,6 +130,7 @@ class Game:
             need_water == 0
             and content != "NONE"
             and farmer_id == 38
+            and farmer_pos == "SOUP_FACTORY"
         ):
             self.add_command("38 STOCKER 3 3")
             return True
@@ -139,6 +142,7 @@ class Game:
             need_water == 0
             and content != "NONE"
             and farmer_id == 39
+            and farmer_pos == "SOUP_FACTORY"
         ):
             self.add_command("39 STOCKER 4 4")
             return True
@@ -150,6 +154,7 @@ class Game:
             need_water == 0
             and content != "NONE"
             and farmer_id == 40
+            and farmer_pos == "SOUP_FACTORY"
         ):
             self.add_command("40 STOCKER 5 5")
             return True
