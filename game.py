@@ -84,8 +84,7 @@ class Game:
         self, content, need_water, farmer_id, farmer_pos, stock_done
     ):
         if (
-            need_water == 5
-            and content != "NONE"
+            content != "NONE"
             and farmer_id == 35
             and ((farmer_pos == "SOUP_FACTORY" and need_water == 5) or (farmer_pos == "FARM" and need_water == 0))
         ):
