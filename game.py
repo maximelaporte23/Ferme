@@ -55,21 +55,9 @@ class Game:
         vegetables = ["PATATE", "TOMATE", "OIGNON", "COURGETTE", "POIREAU"]
         vegetable_to_seed = vegetables[self.vegetable_index]
 
-        field1 = fields[0]
-        field2 = fields[1]
-        field3 = fields[2]
-        field4 = fields[3]
-        field5 = fields[4]
-        if field1["content"] == "NONE":
-            self.add_command(f"26 SEMER {vegetable_to_seed} 1")
-        if field2["content"] == "NONE":
-            self.add_command(f"27 SEMER {vegetable_to_seed} 2")
-        if field3["content"] == "NONE":
-            self.add_command(f"28 SEMER {vegetable_to_seed} 3")
-        if field4["content"] == "NONE":
-            self.add_command(f"29 SEMER {vegetable_to_seed} 4")
-        if field5["content"] == "NONE":
-            self.add_command(f"30 SEMER {vegetable_to_seed} 5")
+        for i, field in enumerate(fields):
+            if field["content"] == "NONE":
+                self.add_command(f"{26 + i} SEMER {vegetable_to_seed} {i + 1}")
 
         self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
 
