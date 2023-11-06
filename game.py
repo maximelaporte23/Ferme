@@ -6,9 +6,16 @@ class Game:
         self.vegetable_index = 0
 
     def distribute_farmers(self):
-        for field_num in range(1, 6):
-            for farmer_num in range(5):
-                self.add_command(f"{farmer_num} ARROSER {field_num}")
+        for farmer_num in range(1, 6):
+            self.add_command(f"{farmer_num} ARROSER 1")
+        for farmer_num in range(6, 11):
+            self.add_command(f"{farmer_num} ARROSER 2")
+        for farmer_num in range(11, 16):
+            self.add_command(f"{farmer_num} ARROSER 3")
+        for farmer_num in range(16, 21):
+            self.add_command(f"{farmer_num} ARROSER 4")
+        for farmer_num in range(21, 26):
+            self.add_command(f"{farmer_num} ARROSER 5")
 
     def distribute_sawer(self):
         self.add_command("26 SEMER PATATE 1")

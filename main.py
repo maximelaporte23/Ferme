@@ -42,8 +42,8 @@ class PlayerGameClient(Client):
                     self.game.add_command("0 ACHETER_TRACTEUR")
                 for _ in range(1, 41):
                     self.game.add_command("0 EMPLOYER")
-                self.game.distribute_farmers()
                 self.game.distribute_sawer()
+                self.game.distribute_farmers()
                 self.game.distribute_cook()
 
             if game_data["day"] >= 5:
