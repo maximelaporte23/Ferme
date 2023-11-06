@@ -5,10 +5,6 @@ class Game:
         self.fields = []
         self.vegetable_index = 0
 
-    def hire_farmers(self):
-        for _ in range(1, 41):
-            self.add_command("0 EMPLOYER")       
-
     def distribute_farmers(self):
         for field_num in range(1, 6):
             for farmer_num in range(5):
