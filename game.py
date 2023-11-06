@@ -254,7 +254,7 @@ class Game:
             return True
     
     def fire(self):
-        for OUVRIER in range(1, 39):
+        for OUVRIER in range(1, 20):
             self.add_command(f"0 LICENCIER {OUVRIER}")
 
     def end_game(self):
