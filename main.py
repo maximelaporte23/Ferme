@@ -11,7 +11,7 @@ class PlayerGameClient(Client):
     ) -> None:
         super().__init__(server_addr, port, username, spectator=False)
         self._commands: list[str] = []
-        self.nb_of_farmers = 40
+        self.nb_of_farmers = 25
         self.nb_of_cook = 5
         self.nb_of_stocker = 5
         self.nb_of_sawer = 5
@@ -47,9 +47,7 @@ class PlayerGameClient(Client):
                 self.game.hire_farmers(self.nb_of_farmers)
                 self.game.hire_sawer(self.nb_of_sawer)
                 self.game.hire_cook(self.nb_of_cook)
-                self.game.distribute_farmers(
-                    self.nb_of_farmers, self.nb_of_cook, self.nb_of_stocker
-                )
+                self.game.distribute_farmers()
                 self.game.distribute_sawer()
                 self.game.distribute_cook()
 
