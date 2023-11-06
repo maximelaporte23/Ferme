@@ -101,12 +101,12 @@ class PlayerGameClient(Client):
             if game_data["day"] >= 30:
                 self.game.cook()
             
-            if game_data["day"] == 1770:
+            if game_data["day"] == 1740:
                 for _ in range(1, 11):
                     self.game.add_command("0 EMPLOYER")
                 self.game.end_game()
                     
-            if game_data["day"] >= 1776:
+            if game_data["day"] >= 1746:
                 for OUVRIER in range(39, 49):
                     self.game.add_command(f"{OUVRIER} CUISINER")
 

@@ -73,7 +73,7 @@ class Game:
         self, content, need_water, farmer_id, farmer_pos, stock_done
     ):
         if (
-            need_water == 0
+            need_water == 5
             and content != "NONE"
             and farmer_id == 34
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
@@ -85,7 +85,7 @@ class Game:
         self, content, need_water, farmer_id, farmer_pos, stock_done
     ):
         if (
-            need_water == 0
+            need_water == 5
             and content != "NONE"
             and farmer_id == 35
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
