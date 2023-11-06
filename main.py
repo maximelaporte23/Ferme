@@ -98,7 +98,6 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                                 stock_done=self.tractor4_done,
-                                nb_field=4,
                             )
                         if field["location"] == "FIELD5":
                             self.tractor5_done = self.game.stocker_field5(
@@ -107,7 +106,6 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                                 stock_done=self.tractor5_done,
-                                nb_field=5,
                             )
 
             self.send_commands()
