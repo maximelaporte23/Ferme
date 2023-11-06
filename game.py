@@ -73,10 +73,9 @@ class Game:
         self, content, need_water, farmer_id, farmer_pos, stock_done
     ):
         if (
-            need_water == 5
-            and content != "NONE"
+            content != "NONE"
             and farmer_id == 34
-            and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
+            and ((farmer_pos == "SOUP_FACTORY" and need_water == 5) or (farmer_pos == "FARM" and need_water == 0))
         ):
             self.add_command("34 STOCKER 1 1")
             return True
@@ -88,7 +87,7 @@ class Game:
             need_water == 5
             and content != "NONE"
             and farmer_id == 35
-            and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
+            and ((farmer_pos == "SOUP_FACTORY" and need_water == 5) or (farmer_pos == "FARM" and need_water == 0))
         ):
             self.add_command("35 STOCKER 2 2")
             return True
