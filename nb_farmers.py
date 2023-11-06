@@ -8,9 +8,6 @@ class Farmer:
     def farmers_in_field_1(self, id, field):
         field.farmers = Farmer(2, 1)
 
-    def sow(self, field: int, vegetable):
-        self.free = False
-
 
 def nb_farmers_on_field(farmers, field):
     compteur = 0

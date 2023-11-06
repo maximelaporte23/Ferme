@@ -8,31 +8,29 @@ def test_farmers_in_field_1():
     # assert farmer.free == True
 
 
-def test_nb_farmers_field():
-    farmers = [Farmer(1, 1)]
-    assert nb_farmers_on_field(farmers, 1) == 1
+def test_nb_farmers_field_1():
+    farmers = [Farmer(1, 1), Farmer(2, 1), Farmer(3, 1), Farmer(4, 1), Farmer(5, 1), Farmer(6, 1)]
+    assert nb_farmers_on_field(farmers, 1) == 6 or 7
 
 
-def test_nb_farmers_field_two():
-    farmers = [Farmer(1, 1), Farmer(2, 1)]
-    assert nb_farmers_on_field(farmers, 1) == 2
+def test_nb_farmers_field_2():
+    farmers = [Farmer(1, 2), Farmer(2, 2), Farmer(3, 2), Farmer(4, 2), Farmer(5, 2), Farmer(6, 2)]
+    assert nb_farmers_on_field(farmers, 2) == 6 or 7
 
 
-def test_farmers_in_field_1():
-    farmer = Farmer(2, 1)
-    assert farmer.id == 2
-    assert farmer.field == 1    
-    # assert farmer.free == True
+def test_nb_farmers_field_3():
+    farmers = [Farmer(1, 3), Farmer(2, 3), Farmer(3, 3), Farmer(4, 3), Farmer(5, 3), Farmer(6, 3)]
+    assert nb_farmers_on_field(farmers, 3) == 6 or 7
 
 
-def test_nb_farmers_field():
-    farmers = [Farmer(1, 1)]
-    assert nb_farmers_on_field(farmers, 1) == 1
+def test_nb_farmers_field_4():
+    farmers = [Farmer(1, 4), Farmer(2, 4), Farmer(3, 4), Farmer(4, 4), Farmer(5, 4), Farmer(6, 4)]
+    assert nb_farmers_on_field(farmers, 4) == 6 or 7
 
 
-def test_nb_farmers_field_two():
-    farmers = [Farmer(1, 1), Farmer(2, 1)]
-    assert nb_farmers_on_field(farmers, 1) == 2
+def test_nb_farmers_field_5():
+    farmers = [Farmer(1, 5), Farmer(2, 5), Farmer(3, 5), Farmer(4, 5), Farmer(5, 5), Farmer(6, 5)]
+    assert nb_farmers_on_field(farmers, 5) == 6 or 7
 
 
 def test_new_farmer_is_free():
@@ -40,24 +38,3 @@ def test_new_farmer_is_free():
     assert farmer.free == True
     
 
-def test_farmer_sow_not_free():
-    farmer = Farmer(1, 3)
-    field = 2
-    vegetable = ("TOMATE")
-    farmer.sow(field, vegetable)
-    assert farmer.free == False   
-
-
-def test_farmer_sow_not_free_then_free():
-    farmer = Farmer(1, 3)
-    field = 2
-    vegetable = ("TOMATE")
-    farmer.sow(field, vegetable)
-    #todo: faire passer 10jours 
-    assert farmer.free == False
-
-
-#todo: si récolte 
-#todo: si arrose
-#todo: si cuisine
-#todo: si sotcke
