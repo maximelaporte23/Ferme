@@ -45,7 +45,7 @@ class PlayerGameClient(Client):
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
 
-            if game_data["day"] >= 5: #and game_data["day"] <= 899:
+            if game_data["day"] >= 5 and game_data["day"] <= 89:
                 self.game.saw(fields=fields)
                 for farmer in farmers:
                     for field in fields:
@@ -84,7 +84,7 @@ class PlayerGameClient(Client):
                             )
                         if field["location"] == "FIELD4":
                             self.tractor4_done = self.game.stocker_field4(
-                                content=field["content"],
+                                content=field["cmy_farmontent"],
                                 need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
@@ -101,10 +101,10 @@ class PlayerGameClient(Client):
             if game_data["day"] >= 30:
                 self.game.cook()
 
-            #if game_data["day"] == 900:
-            #    self.game.fire()
-            #    for _ in range(1, 31):
-            #        self.game.add_command("0 EMPLOYER")
+            if game_data["day"] == 90:
+                self.game.fire()
+                for _ in range(1, 31):
+                    self.game.add_command("0 EMPLOYER")
             #    self.game.distribute_sawer_2()
             #    self.game.distribute_farmers_2()
             #    self.game.distribute_cook_2()
