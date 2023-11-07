@@ -84,7 +84,7 @@ class PlayerGameClient(Client):
                             )
                         if field["location"] == "FIELD4":
                             self.tractor4_done = self.game.stocker_field4(
-                                content=field["cmy_farmontent"],
+                                content=field["content"],
                                 need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
