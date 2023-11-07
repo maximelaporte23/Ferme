@@ -83,35 +83,22 @@ class PlayerGameClient(Client):
                                 farmer_pos=farmer["location"],
                                 stock_done=self.tractor3_done,
                             )
-                        if field["location"] == "FIELD4" and field["needed_water"] == 0:
+                        if field["location"] == "FIELD4":
                             self.tractor4_done = self.game.stocker_field4(
                                 content=field["content"],
+                                need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                                 stock_done=self.tractor4_done,
                             )
-                        if field["location"] == "FIELD5" and field["needed_water"] == 5:
-                            self.tractor4_done = self.game.moove_t4(
-                                content=field["content"],
-                                farmer_id=farmer["id"],
-                                farmer_pos=farmer["location"],
-                                stock_done=self.tractor5_done,
-                            )
-                        if field["location"] == "FIELD5" and field["needed_water"] == 0:
+                        if field["location"] == "FIELD5":
                             self.tractor5_done = self.game.stocker_field5(
                                 content=field["content"],
+                                need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                                 stock_done=self.tractor5_done,
                             )
-                        if field["location"] == "FIELD5" and field["needed_water"] == 5:
-                            self.tractor5_done = self.game.moove_t5(
-                                content=field["content"],
-                                farmer_id=farmer["id"],
-                                farmer_pos=farmer["location"],
-                                stock_done=self.tractor5_done,
-                            )
-              
             if game_data["day"] >= 30 and game_data["day"] <= 899:
                 self.game.cook()
 
@@ -160,30 +147,18 @@ class PlayerGameClient(Client):
                                 farmer_pos=farmer["location"],
                                 stock_done=self.tractor3_done,
                             )
-                        if field["location"] == "FIELD4" and field["needed_water"] == 0:
+                        if field["location"] == "FIELD4":
                             self.tractor4_done = self.game.stocker_field4_2(
                                 content=field["content"],
+                                need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                                 stock_done=self.tractor4_done,
                             )
-                        if field["location"] == "FIELD5" and field["needed_water"] == 5:
-                            self.tractor4_done = self.game.moove_t4_2(
-                                content=field["content"],
-                                farmer_id=farmer["id"],
-                                farmer_pos=farmer["location"],
-                                stock_done=self.tractor5_done,
-                            )
-                        if field["location"] == "FIELD5" and field["needed_water"] == 0:
+                        if field["location"] == "FIELD5":
                             self.tractor5_done = self.game.stocker_field5_2(
                                 content=field["content"],
-                                farmer_id=farmer["id"],
-                                farmer_pos=farmer["location"],
-                                stock_done=self.tractor5_done,
-                            )
-                        if field["location"] == "FIELD5" and field["needed_water"] == 5:
-                            self.tractor5_done = self.game.moove_t5_2(
-                                content=field["content"],
+                                need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                                 stock_done=self.tractor5_done,
