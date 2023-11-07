@@ -70,7 +70,7 @@ class Game:
         for i, field in enumerate(fields):
             if field["content"] == "NONE":
                 self.add_command(f"{26 + i} SEMER {vegetable_to_seed} {i + 1}")
-        
+
         self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
 
     def saw_2(self, fields):
@@ -80,9 +80,9 @@ class Game:
         for i, field in enumerate(fields):
             if field["content"] == "NONE":
                 self.add_command(f"{65 + i} SEMER {vegetable_to_seed} {i + 1}")
-        
+
         self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
-        
+
     def water(
         self,
         need_water_1,
@@ -156,7 +156,7 @@ class Game:
             need_water == 5
             and content != "NONE"
             and farmer_id == 35
-            and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
+            and farmer_pos == "SOUP_FACTORY"
         ):
             self.add_command("35 ARROSER 3")
             return True
@@ -182,7 +182,7 @@ class Game:
             need_water == 5
             and content != "NONE"
             and farmer_id == 74
-            and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
+            and farmer_pos == "SOUP_FACTORY"
         ):
             self.add_command("74 ARROSER 3")
             return True
@@ -208,7 +208,7 @@ class Game:
             need_water == 5
             and content != "NONE"
             and farmer_id == 36
-            and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
+            and farmer_pos == "SOUP_FACTORY"
         ):
             self.add_command("36 ARROSER 3")
             return True
