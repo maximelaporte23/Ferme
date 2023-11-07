@@ -37,11 +37,11 @@ class Game:
         self.add_command("30 SEMER PATATE 5")
 
     def distribute_sawer_2(self):
-        self.add_command("65 SEMER PATATE 1")
-        self.add_command("66 SEMER PATATE 2")
-        self.add_command("67 SEMER PATATE 3")
-        self.add_command("68 SEMER PATATE 4")
-        self.add_command("69 SEMER PATATE 5")
+        self.add_command("65 ARROSER 1")
+        self.add_command("66 ARROSER 2")
+        self.add_command("67 ARROSER 3")
+        self.add_command("68 ARROSER 4")
+        self.add_command("69 ARROSER 5")
 
     def distribute_cook(self):
         self.add_command("31 CUISINER")
