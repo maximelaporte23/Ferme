@@ -1,5 +1,8 @@
 class Game:
     def __init__(self: "Game") -> None:
+        self.commands = []
+        self.farmer = []
+        self.fields = []
         self.vegetable_index = 0
 
     def distribute_farmers(self):
