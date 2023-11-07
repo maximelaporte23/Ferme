@@ -1,9 +1,21 @@
+from field import Field
+from location import Location
+from vegetable import Vegetable
+
+
 class Game:
     def __init__(self: "Game") -> None:
         self.commands = []
         self.farmer = []
-        self.fields = []
+        self.fields: list[Field] = [Field(Location.FIELD1), Field(Location.FIELD2), Field(Location.FIELD3), Field(Location.FIELD4), Field(Location.FIELD5)]
         self.vegetable_index = 0
+
+    def update_fields(self, fields_json):
+        for index, field_json in enumerate(fields_json):
+            field = self.fields[index]
+            field.needed_water = fields_json["needed_water"]
+            field.bought = fields_json["bought"]
+            field.content = Vegetable[fields_json["content"]]
 
     def distribute_farmers(self):
         for farmer_num in range(1, 6):
