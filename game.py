@@ -9,6 +9,7 @@ class Game:
         self.farmer = []
         self.fields: list[Field] = [Field(Location.FIELD1), Field(Location.FIELD2), Field(Location.FIELD3), Field(Location.FIELD4), Field(Location.FIELD5)]
         self.vegetable_index = 0
+        self.team = 0
 
     def update_fields(self, fields_json):
         for index, field_json in enumerate(fields_json):
@@ -17,83 +18,49 @@ class Game:
             field.bought = field_json["bought"]
             field.content = Vegetable[field_json["content"]]
 
+    def nbt(self, number):
+        return 39 * self.team + number
+
     def distribute_farmers(self):
         for farmer_num in range(1, 6):
-            self.add_command(f"{farmer_num} ARROSER 1")
+            self.add_command(f"{self.nbt(farmer_num)} ARROSER 1")
         for farmer_num in range(6, 11):
-            self.add_command(f"{farmer_num} ARROSER 2")
+            self.add_command(f"{self.nbt(farmer_num)} ARROSER 2")
         for farmer_num in range(11, 16):
-            self.add_command(f"{farmer_num} ARROSER 3")
+            self.add_command(f"{self.nbt(farmer_num)} ARROSER 3")
         for farmer_num in range(16, 21):
-            self.add_command(f"{farmer_num} ARROSER 4")
+            self.add_command(f"{self.nbt(farmer_num)} ARROSER 4")
         for farmer_num in range(21, 26):
-            self.add_command(f"{farmer_num} ARROSER 5")
+            self.add_command(f"{self.nbt(farmer_num)} ARROSER 5")
 
-    def distribute_farmers_2(self):
-        for farmer_num in range(40, 45):
-            self.add_command(f"{farmer_num} ARROSER 1")
-        for farmer_num in range(45, 50):
-            self.add_command(f"{farmer_num} ARROSER 2")
-        for farmer_num in range(50, 55):
-            self.add_command(f"{farmer_num} ARROSER 3")
-        for farmer_num in range(55, 60):
-            self.add_command(f"{farmer_num} ARROSER 4")
-        for farmer_num in range(60, 65):
-            self.add_command(f"{farmer_num} ARROSER 5")
+    def distribute_sawer(self, fields_json):
+        for field in fields_json:  
+            for farmer_num in range(26, 31):
+                self.add_command(f"{farmer_num} SEMER PATATE {field}")
 
-    def distribute_sawer(self):
-        self.add_command("26 SEMER PATATE 1")
-        self.add_command("27 SEMER PATATE 2")
-        self.add_command("28 SEMER PATATE 3")
-        self.add_command("29 SEMER PATATE 4")
-        self.add_command("30 SEMER PATATE 5")
+    def distribute_sawer_2(self, fields_json):
+        for field in fields_json:  
+            for farmer_num in range(65, 70):
+                self.add_command(f"{farmer_num} ARROSER {field}")
 
-    def distribute_sawer_2(self):
-        self.add_command("65 ARROSER 1")
-        self.add_command("66 ARROSER 2")
-        self.add_command("67 ARROSER 3")
-        self.add_command("68 ARROSER 4")
-        self.add_command("69 ARROSER 5")
-
-    def distribute_cook(self):
-        self.add_command("31 CUISINER")
-        self.add_command("32 CUISINER")
-        self.add_command("33 CUISINER")
-        self.add_command("34 CUISINER")
-
-    def distribute_cook_2(self):
-        self.add_command("70 CUISINER")
-        self.add_command("71 CUISINER")
-        self.add_command("72 CUISINER")
-        self.add_command("73 CUISINER")
+    def distribute_cook(self):  
+        for farmer_num in range(31, 35):
+            self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
     def cook(self):
-        for OUVRIER in range(31, 35):
-            self.add_command(f"{OUVRIER} CUISINER")
+        for farmer_num in range(31, 35):
+            self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
-    def cook_2(self):
-        for OUVRIER in range(70, 74):
-            self.add_command(f"{OUVRIER} CUISINER")
-
-    def saw(self, fields):
+    def saw(self, fields_json):
+        farmer_num = 26
         vegetables = ["PATATE", "TOMATE", "OIGNON", "COURGETTE", "POIREAU"]
         vegetable_to_seed = vegetables[self.vegetable_index]
 
-        for i, field in enumerate(fields):
+        for i, field in enumerate(fields_json):
             if field["content"] == "NONE":
-                self.add_command(f"{26 + i} SEMER {vegetable_to_seed} {i + 1}")
+                self.add_command(f"{self.nbt(farmer_num) + i} SEMER {vegetable_to_seed} {i + 1}")
 
-        self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
-
-    def saw_2(self, fields):
-        vegetables = ["PATATE", "TOMATE", "OIGNON", "COURGETTE", "POIREAU"]
-        vegetable_to_seed = vegetables[self.vegetable_index]
-
-        for i, field in enumerate(fields):
-            if field["content"] == "NONE":
-                self.add_command(f"{65 + i} SEMER {vegetable_to_seed} {i + 1}")
-
-        self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
+                self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
 
     def water(
         self,
@@ -106,20 +73,20 @@ class Game:
         farmer_location,
     ):
         if need_water_1 != 0:
-            if farmer_id <= 5 or 40 <= farmer_id <= 44:
-                self.add_command(f"{farmer_id} ARROSER 1")
+            if farmer_id <= 5:
+                self.add_command(f"{self.nbt(farmer_id)} ARROSER 1")
         if need_water_2 != 0:
-            if 5 < farmer_id <= 10 or 44 < farmer_id <= 49:
-                self.add_command(f"{farmer_id} ARROSER 2")
+            if 5 < farmer_id <= 10:
+                self.add_command(f"{self.nbt(farmer_id)} ARROSER 2")
         if need_water_3 != 0:
-            if 10 < farmer_id <= 15 or 49 < farmer_id <= 54:
-                self.add_command(f"{farmer_id} ARROSER 3")
+            if 10 < farmer_id <= 15:
+                self.add_command(f"{self.nbt(farmer_id)} ARROSER 3")
         if need_water_4 != 0:
-            if 15 < farmer_id <= 20 or 54 < farmer_id <= 59:
-                self.add_command(f"{farmer_id} ARROSER 4")
+            if 15 < farmer_id <= 20:
+                self.add_command(f"{self.nbt(farmer_id)} ARROSER 4")
         if need_water_5 != 0:
-            if 20 < farmer_id <= 25 or 59 < farmer_id <= 64:
-                self.add_command(f"{farmer_id} ARROSER 5")
+            if 20 < farmer_id <= 25:
+                self.add_command(f"{self.nbt(farmer_id)} ARROSER 5")
 
     def stocker_field1(self, content, need_water, farmer_id, farmer_pos):
         if content != "NONE" and (farmer_id == 35 or farmer_id == 74):
