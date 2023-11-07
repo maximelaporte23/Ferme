@@ -70,8 +70,10 @@ class Game:
         for i, field in enumerate(fields):
             if field["content"] == "NONE":
                 self.add_command(f"{26 + i} SEMER {vegetable_to_seed} {i + 1}")
-
-        self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
+        if self.vegetable_index > 4:
+            self.vegetable_index = 0
+        else:
+            self.vegetable_index = (self.vegetable_index + 1)
 
     def saw_2(self, fields):
         vegetables = ["PATATE", "TOMATE", "OIGNON", "COURGETTE", "POIREAU"]
@@ -80,9 +82,11 @@ class Game:
         for i, field in enumerate(fields):
             if field["content"] == "NONE":
                 self.add_command(f"{65 + i} SEMER {vegetable_to_seed} {i + 1}")
-
-        self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
-
+        if self.vegetable_index > 4:
+            self.vegetable_index = 0
+        else:
+            self.vegetable_index = (self.vegetable_index + 1)
+        
     def water(
         self,
         need_water_1,
