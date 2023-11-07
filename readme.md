@@ -77,3 +77,49 @@ Dans le répertoire .github dans le répertoire de "ferme", nous avons mis dans 
 
 
 # Le plan d'action
+
+
+
+# Théorie VS Pratique
+
+### Théorie :
+
+Lors du développement du projet nous devions prendre en compte plusieurs éléments :
+    • Achat champs 
+    • Achat tracteurs 
+    • Gestion des employés 
+    • Gestion des licenciements 
+    • Gestion des déplacements 
+    • Gestion production soupe 
+    • Vente de légumes du champ
+
+### Gestion champs/tracteurs
+Nous avons opté pour un achat des 5 champs soit une dépense de 50 000€ et l'achat de 5 tracteurs soit 150 000€, soit un total de 200 000€ lors du jour 0.
+
+### Gestion des employés
+Pour la gestion des employés nous avons opté pour la stratégie suivante:
+    • Licenciement le 30 du mois (à tester le 29)
+    • Embauche le 30 du mois
+Nous embauchons 40 salariés le jour 0.
+
+### Gestion des licenciements
+Pour licencier une fois en 5 ans :
+Pour la gestion des licenciements, nous avons calculé le pourcentage d’augmentation pour chaque mois et nous en avons déduit que de licencier les ouvriers à 30 mois (2,5 ans) est le plus optimal.
+
+Pour licencier plusieurs fois en 5 ans, l’optimisation est celle ci-dessous :
+Pour la gestion des licenciements nous avons fait une simulation sur plusieurs durées tels que 6 mois, 7 mois, 1an, 2ans... Au final lors de cette simulation de coût nous en avons déduit que le coût de revient optimal est une gestion de licenciement sur une durée de 1 an et 3 mois.
+
+### Explication pattern
+Lorsque nous avons un groupe d'employés sur un champ nous avons les actions suivantes effectuées :
+    • 1 employé plante 1 des 5 légumes (Dès qu’un légume est planté, le prochain dans la liste est planté, un légume après l’autre)
+    • 5 employés arrosent le champ 
+Lorsqu'un tracteur est appelé sur un champ c'est pour stocker la récolte dans l'usine. Les 4 cuisiniers produisent en permanence des soupes. Ensuite, au bout de 4 ans, 3 cuisiniers supplémentaires sont embauchés pour vider les stocks dans l’usine à soupe.
+
+### Gestion de la production soupe
+Dans un premier temps, nous avons déterminé le nombre de légumes que nous arrivons à stocker au mieux afin de déterminer le nombre d’employé nécessaire. Nous produisons 90000 légumes au mieux, sans catastrophes naturelles. Pour une production de soupe de 5 légumes, cela fait un consommation de 18000 légumes. Nous avons donc employé 6 cuisiniers afin d’exploiter au mieux le stock de l’usine.
+
+Nous avons employé 3 cuisiniers dans un premier temps afin de gonfler les stocks de légumes dans l’usine à soupe. Au bout de la dernière année, nous embauchons 5 cuisiniers afin de vider les stocks et d’augmenter les bénéfices.
+
+### Scores obtenus
+Mode Local : 3 500 000
+Mode Réseau : 2 000 000
