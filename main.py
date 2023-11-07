@@ -49,7 +49,7 @@ class PlayerGameClient(Client):
                     self.game.add_command("0 ACHETER_TRACTEUR")
                 for _ in range(1, 40):
                     self.game.add_command("0 EMPLOYER")
-                #self.game.distribute_sawer()
+                self.game.distribute_sawer()
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
 
@@ -113,7 +113,7 @@ class PlayerGameClient(Client):
                 self.game.fire()
                 for _ in range(1, 40):
                     self.game.add_command("0 EMPLOYER")
-                self.game.distribute_sawer_2()
+                #self.game.distribute_sawer_2()
                 self.game.distribute_farmers_2()
                 self.game.distribute_cook_2()
 
