@@ -1,9 +1,16 @@
 import argparse
+import logging
 
 from typing import NoReturn
 from game import Game
 
 from chronobio.network.client import Client
+
+logging.basicConfig(filename='file.log', encoding='utf-8', level=logging.DEBUG)
+logging.debug('This message should go to the log file')
+logging.info('So should this')
+logging.warning('And this, too')
+logging.error('And non-ASCII stuff, too, like Øresund and Malmö')
 
 
 class PlayerGameClient(Client):
