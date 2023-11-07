@@ -1,16 +1,9 @@
 import argparse
-import logging
 
 from typing import NoReturn
 from game import Game
 
 from chronobio.network.client import Client
-
-logging.basicConfig(filename='file.log', encoding='utf-8', level=logging.DEBUG)
-logging.debug('Ce message devrait être enregistré dans le fichier journal')
-logging.info('Celui-ci aussi')
-logging.warning('Et celui-ci également')
-logging.error('Ainsi que des caractères non-ASCII, comme Øresund et Malmö')
 
 
 class PlayerGameClient(Client):
@@ -42,7 +35,7 @@ class PlayerGameClient(Client):
             farmers = farms["employees"]
 
             if game_data["day"] == 0:
-                self.game.add_command("0 EMPRUNTER 250000")
+                self.game.add_command("0 EMPRUNTER 150000")
                 for _ in range(5):
                     self.game.add_command("0 ACHETER_CHAMP")
                 for _ in range(5):
