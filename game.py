@@ -13,9 +13,9 @@ class Game:
     def update_fields(self, fields_json):
         for index, field_json in enumerate(fields_json):
             field = self.fields[index]
-            field.needed_water = fields_json["needed_water"]
-            field.bought = fields_json["bought"]
-            field.content = Vegetable[fields_json["content"]]
+            field.needed_water = field_json["needed_water"]
+            field.bought = field_json["bought"]
+            field.content = Vegetable[field_json["content"]]
 
     def distribute_farmers(self):
         for farmer_num in range(1, 6):
