@@ -18,15 +18,15 @@ class Game:
             self.add_command(f"{farmer_num} ARROSER 5")
 
     def distribute_farmers_2(self):
-        for farmer_num in range(39, 44):
+        for farmer_num in range(40, 45):
             self.add_command(f"{farmer_num} ARROSER 1")
-        for farmer_num in range(44, 49):
+        for farmer_num in range(45, 50):
             self.add_command(f"{farmer_num} ARROSER 2")
-        for farmer_num in range(49, 54):
+        for farmer_num in range(50, 55):
             self.add_command(f"{farmer_num} ARROSER 3")
-        for farmer_num in range(54, 59):
+        for farmer_num in range(55, 60):
             self.add_command(f"{farmer_num} ARROSER 4")
-        for farmer_num in range(59, 64):
+        for farmer_num in range(60, 65):
             self.add_command(f"{farmer_num} ARROSER 5")
 
     def distribute_sawer(self):
