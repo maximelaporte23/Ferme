@@ -33,19 +33,39 @@ class Game:
         for farmer_num in range(21, 26):
             self.add_command(f"{self.nbt(farmer_num)} ARROSER 5")
 
-    def distribute_sawer(self, fields):
-        for field in fields:
-            for farmer_num in range(26, 31):
-                self.add_command(f"{farmer_num} SEMER PATATE {field}")
+    def distribute_sawer(self):
+        self.add_command("26 SEMER PATATE 1")
+        self.add_command("27 SEMER PATATE 2")
+        self.add_command("28 SEMER PATATE 3")
+        self.add_command("29 SEMER PATATE 4")
+        self.add_command("30 SEMER PATATE 5")
+        #for field in fields:
+        #    for farmer_num in range(26, 31):
+        #        self.add_command(f"{farmer_num} SEMER PATATE {field}")
 
-    def distribute_sawer_2(self, fields):
-        for field in fields:
-            for farmer_num in range(65, 70):
-                self.add_command(f"{farmer_num} ARROSER {field}")
+    def distribute_sawer_2(self):
+        self.add_command("65 ARROSER 1")
+        self.add_command("66 ARROSER 2")
+        self.add_command("67 ARROSER 3")
+        self.add_command("68 ARROSER 4")
+        self.add_command("69 ARROSER 5")
+        #for field in fields:
+        #    for farmer_num in range(65, 70):
+        #        self.add_command(f"{farmer_num} ARROSER {field}")
 
     def distribute_cook(self):
-        for farmer_num in range(31, 35):
-            self.add_command(f"{self.nbt(farmer_num)} CUISINER")
+        self.add_command("31 CUISINER")
+        self.add_command("32 CUISINER")
+        self.add_command("33 CUISINER")
+        self.add_command("34 CUISINER")
+        #for farmer_num in range(31, 35):
+        #    self.add_command(f"{self.nbt(farmer_num)} CUISINER")
+    
+    def distribute_cook_2(self):
+        self.add_command("70 CUISINER")
+        self.add_command("71 CUISINER")
+        self.add_command("72 CUISINER")
+        self.add_command("73 CUISINER")
 
     def cook(self):
         for farmer_num in range(31, 35):
