@@ -69,8 +69,9 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                             )
-                        if field["location"] == "FIELD3":
-                            self.game.stocker_field3(
+                        if field["location"] in ("FIELD3", "FIELD4", "FIELD5"):
+                            self.game.stocker_field3_4_5(
+                                field_pos=field["location"],
                                 content=field["content"],
                                 need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
