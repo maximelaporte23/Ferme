@@ -148,168 +148,57 @@ class Game:
                 self.add_command(f"{farmer_id} ARROSER 5")
 
     def stocker_field1(self, content, need_water, farmer_id, farmer_pos, stock_done):
-        if (
-            need_water == 0
-            and content != "NONE"
-            and farmer_id == 35
-            and farmer_pos == "FIELD3"
-        ):
-            self.add_command("35 STOCKER 1 1")
-            return True
-        elif (
-            need_water == 0
-            and content != "NONE"
-            and farmer_id == 35
-            and farmer_pos == "FARM"
-        ):
-            self.add_command("35 STOCKER 1 1")
-            return True
-        elif (
-            need_water == 5
-            and content != "NONE"
-            and farmer_id == 35
-            and farmer_pos == "SOUP_FACTORY"
-        ):
-            self.add_command("35 ARROSER 3")
-            return True
-
-    def stocker_field1_2(self, content, need_water, farmer_id, farmer_pos, stock_done):
-        if (
-            need_water == 0
-            and content != "NONE"
-            and farmer_id == 74
-            and farmer_pos == "FIELD3"
-        ):
-            self.add_command("74 STOCKER 1 1")
-            return True
-        elif (
-            need_water == 0
-            and content != "NONE"
-            and farmer_id == 74
-            and farmer_pos == "FARM"
-        ):
-            self.add_command("74 STOCKER 1 1")
-            return True
-        elif (
-            need_water == 5
-            and content != "NONE"
-            and farmer_id == 74
-            and farmer_pos == "SOUP_FACTORY"
-        ):
-            self.add_command("74 ARROSER 3")
-            return True
+        if content != "NONE" and (farmer_id == 35 or farmer_id == 74):
+            if need_water == 0 and farmer_pos in ("FIELD3", "FARM"):
+                self.add_command(f"{farmer_id} STOCKER 1 1")
+                return True
+            if need_water == 5 and farmer_pos == "SOUP_FACTORY":
+                self.add_command(f"{farmer_id} ARROSER 3")
+                return True
+        return False
 
     def stocker_field2(self, content, need_water, farmer_id, farmer_pos, stock_done):
-        if (
-            need_water == 0
-            and content != "NONE"
-            and farmer_id == 36
-            and farmer_pos == "FIELD3"
-        ):
-            self.add_command("36 STOCKER 2 2")
-            return True
-        elif (
-            need_water == 0
-            and content != "NONE"
-            and farmer_id == 36
-            and farmer_pos == "FARM"
-        ):
-            self.add_command("36 STOCKER 2 2")
-            return True
-        elif (
-            need_water == 5
-            and content != "NONE"
-            and farmer_id == 36
-            and farmer_pos == "SOUP_FACTORY"
-        ):
-            self.add_command("36 ARROSER 3")
-            return True
-
-    def stocker_field2_2(self, content, need_water, farmer_id, farmer_pos, stock_done):
-        if (
-            need_water == 0
-            and content != "NONE"
-            and farmer_id == 75
-            and farmer_pos == "FIELD3"
-        ):
-            self.add_command("75 STOCKER 2 2")
-            return True
-        elif (
-            need_water == 0
-            and content != "NONE"
-            and farmer_id == 75
-            and farmer_pos == "FARM"
-        ):
-            self.add_command("75 STOCKER 2 2")
-            return True
-        elif (
-            need_water == 5
-            and content != "NONE"
-            and farmer_id == 75
-            and farmer_pos == "SOUP_FACTORY"
-        ):
-            self.add_command("75 ARROSER 3")
-            return True
+        if content != "NONE" and (farmer_id == 36 or farmer_id == 75):
+            if need_water == 0 and farmer_pos in ("FIELD3", "FARM"):
+                self.add_command(f"{farmer_id} STOCKER 2 2")
+                return True
+            if need_water == 5 and farmer_pos == "SOUP_FACTORY":
+                self.add_command(f"{farmer_id} ARROSER 3")
+                return True
+        return False
 
     def stocker_field3(self, content, need_water, farmer_id, farmer_pos, stock_done):
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == 37
+            and (farmer_id == 37 or farmer_id == 76)
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("37 STOCKER 3 3")
+            self.add_command(f"{farmer_id} STOCKER 3 3")
             return True
-
-    def stocker_field3_2(self, content, need_water, farmer_id, farmer_pos, stock_done):
-        if (
-            need_water == 0
-            and content != "NONE"
-            and farmer_id == 76
-            and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
-        ):
-            self.add_command("76 STOCKER 3 3")
-            return True
+        return False
 
     def stocker_field4(self, content, need_water, farmer_id, farmer_pos, stock_done):
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == 38
+            and (farmer_id == 38 or farmer_id == 77)
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("38 STOCKER 4 4")
+            self.add_command(f"{farmer_id} STOCKER 4 4")
             return True
-
-    def stocker_field4_2(self, content, need_water, farmer_id, farmer_pos, stock_done):
-        if (
-            need_water == 0
-            and content != "NONE"
-            and farmer_id == 77
-            and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
-        ):
-            self.add_command("77 STOCKER 4 4")
-            return True
+        return False
 
     def stocker_field5(self, content, need_water, farmer_id, farmer_pos, stock_done):
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == 39
+            and (farmer_id == 39 or farmer_id == 78)
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("39 STOCKER 5 5")
+            self.add_command(f"{farmer_id} STOCKER 5 5")
             return True
-
-    def stocker_field5_2(self, content, need_water, farmer_id, farmer_pos, stock_done):
-        if (
-            need_water == 0
-            and content != "NONE"
-            and farmer_id == 78
-            and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
-        ):
-            self.add_command("78 STOCKER 5 5")
-            return True
+        return False
 
     def fire(self):
         for OUVRIER in range(1, 40):
