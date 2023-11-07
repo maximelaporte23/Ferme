@@ -113,9 +113,9 @@ class PlayerGameClient(Client):
                 self.game.fire()
                 for _ in range(1, 40):
                     self.game.add_command("0 EMPLOYER")
-            #    self.game.distribute_sawer_2()
-            #    self.game.distribute_farmers_2()
-            #    self.game.distribute_cook_2()
+                self.game.distribute_sawer_2()
+                self.game.distribute_farmers_2()
+                self.game.distribute_cook_2()
 
             #if game_data["day"] >= 95:
             #    self.game.saw_2(fields=fields)
