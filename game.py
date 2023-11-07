@@ -109,22 +109,22 @@ class Game:
                 self.add_command(f"{self.nbt(farmer_id)} ARROSER 5")
 
     def stocker_field1(self, content, need_water, farmer_id, farmer_pos):
-        if content != "NONE" and (farmer_id == 35 or farmer_id == 74):
+        if content != "NONE" and farmer_id == 35:
             if need_water == 0 and farmer_pos in ("FIELD3", "FARM"):
-                self.add_command(f"{farmer_id} STOCKER 1 1")
+                self.add_command(f"{self.nbt(farmer_id)} STOCKER 1 1")
                 return True
             if need_water == 5 and farmer_pos == "SOUP_FACTORY":
-                self.add_command(f"{farmer_id} ARROSER 3")
+                self.add_command(f"{self.nbt(farmer_id)} ARROSER 3")
                 return True
         return False
 
     def stocker_field2(self, content, need_water, farmer_id, farmer_pos):
-        if content != "NONE" and (farmer_id == 36 or farmer_id == 75):
+        if content != "NONE" and farmer_id == 36:
             if need_water == 0 and farmer_pos in ("FIELD3", "FARM"):
-                self.add_command(f"{farmer_id} STOCKER 2 2")
+                self.add_command(f"{self.nbt(farmer_id)} STOCKER 2 2")
                 return True
             if need_water == 5 and farmer_pos == "SOUP_FACTORY":
-                self.add_command(f"{farmer_id} ARROSER 3")
+                self.add_command(f"{self.nbt(farmer_id)} ARROSER 3")
                 return True
         return False
 
@@ -133,20 +133,20 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and (farmer_id == 34 + field_index or farmer_id == 73 + field_index)
+            and farmer_id == 34 + field_index
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
+            self.add_command(f"{self.nbt(farmer_id)} STOCKER {field_index} {field_index}")
             return True
         return False
 
     def fire(self):
-        for OUVRIER in range(1, 40):
-            self.add_command(f"0 LICENCIER {OUVRIER}")
+        for farmer_id in range(1, 40):
+            self.add_command(f"0 LICENCIER {farmer_id}")
 
     def end_game(self):
-        for OUVRIER in range(79, 82):
-            self.add_command(f"{OUVRIER} CUISINER")
+        for farmer_id in range(79, 82):
+            self.add_command(f"{farmer_id} CUISINER")
 
     def add_command(self: "Game", command: str) -> None:
         self.commands.append(command)
