@@ -77,20 +77,6 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                             )
-                        if field["location"] == "FIELD4":
-                            self.game.stocker_field4(
-                                content=field["content"],
-                                need_water=field["needed_water"],
-                                farmer_id=farmer["id"],
-                                farmer_pos=farmer["location"],
-                            )
-                        if field["location"] == "FIELD5":
-                            self.game.stocker_field5(
-                                content=field["content"],
-                                need_water=field["needed_water"],
-                                farmer_id=farmer["id"],
-                                farmer_pos=farmer["location"],
-                            )
             if game_data["day"] >= 30 and game_data["day"] <= 899:
                 self.game.cook()
 
