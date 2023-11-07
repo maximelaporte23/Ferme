@@ -93,20 +93,20 @@ class Game:
         farmer_location,
     ):
         if need_water_1 != 0:
-            if farmer_id <= 5:
-                self.add_command(f"{self.nbt(farmer_id)} ARROSER 1")
+            if farmer_id <= 5 or 40 < farmer_id <= 44:
+                self.add_command(f"{farmer_id} ARROSER 1")
         if need_water_2 != 0:
-            if 5 < farmer_id <= 10:
-                self.add_command(f"{self.nbt(farmer_id)} ARROSER 2")
+            if 5 < farmer_id <= 10 or 44 < farmer_id <= 49:
+                self.add_command(f"{farmer_id} ARROSER 2")
         if need_water_3 != 0:
-            if 10 < farmer_id <= 15:
-                self.add_command(f"{self.nbt(farmer_id)} ARROSER 3")
+            if 10 < farmer_id <= 15 or 49 < farmer_id <= 54:
+                self.add_command(f"{farmer_id} ARROSER 3")
         if need_water_4 != 0:
-            if 15 < farmer_id <= 20:
-                self.add_command(f"{self.nbt(farmer_id)} ARROSER 4")
+            if 15 < farmer_id <= 20 or 54 < farmer_id <= 59:
+                self.add_command(f"{farmer_id} ARROSER 4")
         if need_water_5 != 0:
-            if 20 < farmer_id <= 25:
-                self.add_command(f"{self.nbt(farmer_id)} ARROSER 5")
+            if 20 < farmer_id <= 25 or 59 < farmer_id <= 64:
+                self.add_command(f"{farmer_id} ARROSER 5")
 
     def stocker_field1(self, content, need_water, farmer_id, farmer_pos):
         if content != "NONE" and (farmer_id == 35 or farmer_id == 74):
