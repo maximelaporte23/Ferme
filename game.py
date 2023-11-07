@@ -33,17 +33,17 @@ class Game:
         for farmer_num in range(21, 26):
             self.add_command(f"{self.nbt(farmer_num)} ARROSER 5")
 
-    def distribute_sawer(self, fields_json):
-        for field in fields_json:  
+    def distribute_sawer(self, fields):
+        for field in fields:
             for farmer_num in range(26, 31):
                 self.add_command(f"{farmer_num} SEMER PATATE {field}")
 
-    def distribute_sawer_2(self, fields_json):
-        for field in fields_json:  
+    def distribute_sawer_2(self, fields):
+        for field in fields:
             for farmer_num in range(65, 70):
                 self.add_command(f"{farmer_num} ARROSER {field}")
 
-    def distribute_cook(self):  
+    def distribute_cook(self):
         for farmer_num in range(31, 35):
             self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
@@ -51,12 +51,12 @@ class Game:
         for farmer_num in range(31, 35):
             self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
-    def saw(self, fields_json):
+    def saw(self, fields):
         farmer_num = 26
         vegetables = ["PATATE", "TOMATE", "OIGNON", "COURGETTE", "POIREAU"]
         vegetable_to_seed = vegetables[self.vegetable_index]
 
-        for i, field in enumerate(fields_json):
+        for i, field in enumerate(fields):
             if field["content"] == "NONE":
                 self.add_command(f"{self.nbt(farmer_num) + i} SEMER {vegetable_to_seed} {i + 1}")
 
