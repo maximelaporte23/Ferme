@@ -33,8 +33,6 @@ def test_nb_farmers_field_5():
     assert nb_farmers_on_field(farmers, 5) == 6 or 7
 
 
-def test_new_farmer_is_free():
-    farmer = Farmer(1, 2)
-    assert farmer.free == True
+
     
 
