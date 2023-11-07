@@ -239,7 +239,7 @@ class Game:
             self.add_command(f"0 LICENCIER {OUVRIER}")
 
     def end_game(self):
-        for OUVRIER in range(40, 60):
+        for OUVRIER in range(77, 82):
             self.add_command(f"{OUVRIER} CUISINER")
 
     def add_command(self: "Game", command: str) -> None:
