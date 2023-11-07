@@ -37,11 +37,11 @@ class Game:
         self.add_command("30 SEMER PATATE 5")
 
     def distribute_sawer_2(self):
-        self.add_command("64 SEMER PATATE 1")
-        self.add_command("65 SEMER PATATE 2")
-        self.add_command("66 SEMER PATATE 3")
-        self.add_command("67 SEMER PATATE 4")
-        self.add_command("68 SEMER PATATE 5")
+        self.add_command("65 ARROSER 1")
+        self.add_command("66 ARROSER 2")
+        self.add_command("67 ARROSER 3")
+        self.add_command("68 ARROSER 4")
+        self.add_command("69 ARROSER 5")
 
     def distribute_cook(self):
         self.add_command("31 CUISINER")
@@ -50,16 +50,17 @@ class Game:
         self.add_command("34 CUISINER")
 
     def distribute_cook_2(self):
-        self.add_command("69 CUISINER")
         self.add_command("70 CUISINER")
         self.add_command("71 CUISINER")
+        self.add_command("72 CUISINER")
+        self.add_command("73 CUISINER")
 
     def cook(self):
         for OUVRIER in range(31, 35):
             self.add_command(f"{OUVRIER} CUISINER")
 
     def cook_2(self):
-        for OUVRIER in range(69, 71):
+        for OUVRIER in range(70, 74):
             self.add_command(f"{OUVRIER} CUISINER")
 
     def saw(self, fields):
@@ -78,7 +79,7 @@ class Game:
 
         for i, field in enumerate(fields):
             if field["content"] == "NONE":
-                self.add_command(f"{64 + i} SEMER {vegetable_to_seed} {i + 1}")
+                self.add_command(f"{65 + i} SEMER {vegetable_to_seed} {i + 1}")
 
         self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
 
@@ -119,19 +120,19 @@ class Game:
         farmer_location,
     ):
         if need_water_1 != 0:
-            if farmer_id >= 39 and farmer_id <= 43:
+            if farmer_id >= 40 and farmer_id <= 44:
                 self.add_command(f"{farmer_id} ARROSER 1")
         if need_water_2 != 0:
-            if farmer_id > 43 and farmer_id <= 48:
+            if farmer_id > 44 and farmer_id <= 49:
                 self.add_command(f"{farmer_id} ARROSER 2")
         if need_water_3 != 0:
-            if farmer_id > 48 and farmer_id <= 53:
+            if farmer_id > 49 and farmer_id <= 54:
                 self.add_command(f"{farmer_id} ARROSER 3")
         if need_water_4 != 0:
-            if farmer_id > 53 and farmer_id <= 58:
+            if farmer_id > 54 and farmer_id <= 59:
                 self.add_command(f"{farmer_id} ARROSER 4")
         if need_water_5 != 0:
-            if farmer_id > 58 and farmer_id <= 63:
+            if farmer_id > 59 and farmer_id <= 64:
                 self.add_command(f"{farmer_id} ARROSER 5")
 
     def stocker_field1(self, content, need_water, farmer_id, farmer_pos, stock_done):
@@ -148,10 +149,10 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == 72
+            and farmer_id == 74
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("72 STOCKER 1 1")
+            self.add_command("74 STOCKER 1 1")
             return True
 
     def stocker_field2(self, content, need_water, farmer_id, farmer_pos, stock_done):
@@ -168,10 +169,10 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == 73
+            and farmer_id == 75
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("73 STOCKER 2 2")
+            self.add_command("75 STOCKER 2 2")
             return True
 
     def stocker_field3(self, content, need_water, farmer_id, farmer_pos, stock_done):
@@ -188,50 +189,82 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == 74
+            and farmer_id == 76
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("74 STOCKER 3 3")
+            self.add_command("76 STOCKER 3 3")
             return True
 
     def stocker_field4(self, content, need_water, farmer_id, farmer_pos, stock_done):
         if (
-            need_water == 0
+            need_water == 5
             and content != "NONE"
             and farmer_id == 38
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
+        ):
+            self.add_command("38 ARROSER 3")
+            return True
+        elif (
+            need_water == 0
+            and content != "NONE"
+            and farmer_id == 38
+            and farmer_pos == "FIELD3"
         ):
             self.add_command("38 STOCKER 4 4")
             return True
 
     def stocker_field4_2(self, content, need_water, farmer_id, farmer_pos, stock_done):
         if (
-            need_water == 0
+            need_water == 5
             and content != "NONE"
-            and farmer_id == 75
+            and farmer_id == 77
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("75 STOCKER 4 4")
+            self.add_command("77 ARROSER 3")
+            return True
+        elif (
+            need_water == 0
+            and content != "NONE"
+            and farmer_id == 77
+            and farmer_pos == "FIELD3"
+        ):
+            self.add_command("77 STOCKER 4 4")
             return True
 
     def stocker_field5(self, content, need_water, farmer_id, farmer_pos, stock_done):
         if (
-            need_water == 0
+            need_water == 5
             and content != "NONE"
             and farmer_id == 39
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
+        ):
+            self.add_command("39 ARROSER 3")
+            return True
+        elif (
+            need_water == 0
+            and content != "NONE"
+            and farmer_id == 39
+            and farmer_pos == "FIELD3"
         ):
             self.add_command("39 STOCKER 5 5")
             return True
 
     def stocker_field5_2(self, content, need_water, farmer_id, farmer_pos, stock_done):
         if (
-            need_water == 0
+            need_water == 5
             and content != "NONE"
-            and farmer_id == 76
+            and farmer_id == 78
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command("76 STOCKER 5 5")
+            self.add_command("78 ARROSER 3")
+            return True
+        elif (
+            need_water == 0
+            and content != "NONE"
+            and farmer_id == 78
+            and farmer_pos == "FIELD3"
+        ):
+            self.add_command("78 STOCKER 5 5")
             return True
 
     def fire(self):
@@ -239,7 +272,7 @@ class Game:
             self.add_command(f"0 LICENCIER {OUVRIER}")
 
     def end_game(self):
-        for OUVRIER in range(77, 82):
+        for OUVRIER in range(79, 84):
             self.add_command(f"{OUVRIER} CUISINER")
 
     def add_command(self: "Game", command: str) -> None:
