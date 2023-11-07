@@ -117,7 +117,7 @@ class PlayerGameClient(Client):
                 self.game.distribute_farmers_2()
                 self.game.distribute_cook_2()
 
-            if game_data["day"] >= 90:
+            if game_data["day"] >= 95:
                 self.game.saw_2(fields=fields)
                 for farmer in farmers:
                     for field in fields:
