@@ -106,45 +106,19 @@ class Game:
         farmer_location,
     ):
         if need_water_1 != 0:
-            if farmer_id <= 5:
+            if farmer_id <= 5 or 40 <= farmer_id <= 44:
                 self.add_command(f"{farmer_id} ARROSER 1")
         if need_water_2 != 0:
-            if farmer_id > 5 and farmer_id <= 10:
+            if 5 < farmer_id <= 10 or 44 < farmer_id <= 49:
                 self.add_command(f"{farmer_id} ARROSER 2")
         if need_water_3 != 0:
-            if farmer_id > 10 and farmer_id <= 15:
+            if 10 < farmer_id <= 15 or 49 < farmer_id <= 54:
                 self.add_command(f"{farmer_id} ARROSER 3")
         if need_water_4 != 0:
-            if farmer_id > 15 and farmer_id <= 20:
+            if 15 < farmer_id <= 20 or 54 < farmer_id <= 59:
                 self.add_command(f"{farmer_id} ARROSER 4")
         if need_water_5 != 0:
-            if farmer_id > 20 and farmer_id <= 25:
-                self.add_command(f"{farmer_id} ARROSER 5")
-
-    def water_2(
-        self,
-        need_water_1,
-        need_water_2,
-        need_water_3,
-        need_water_4,
-        need_water_5,
-        farmer_id,
-        farmer_location,
-    ):
-        if need_water_1 != 0:
-            if farmer_id >= 40 and farmer_id <= 44:
-                self.add_command(f"{farmer_id} ARROSER 1")
-        if need_water_2 != 0:
-            if farmer_id > 44 and farmer_id <= 49:
-                self.add_command(f"{farmer_id} ARROSER 2")
-        if need_water_3 != 0:
-            if farmer_id > 49 and farmer_id <= 54:
-                self.add_command(f"{farmer_id} ARROSER 3")
-        if need_water_4 != 0:
-            if farmer_id > 54 and farmer_id <= 59:
-                self.add_command(f"{farmer_id} ARROSER 4")
-        if need_water_5 != 0:
-            if farmer_id > 59 and farmer_id <= 64:
+            if 20 < farmer_id <= 25 or 59 < farmer_id <= 64:
                 self.add_command(f"{farmer_id} ARROSER 5")
 
     def stocker_field1(self, content, need_water, farmer_id, farmer_pos):
@@ -175,7 +149,7 @@ class Game:
             and (farmer_id == 34 + field_index or farmer_id == 73 + field_index)
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
-            self.add_command(f"{farmer_id} STOCKER {field_index} 3")
+            self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
             return True
         return False
 
