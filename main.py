@@ -31,7 +31,7 @@ class PlayerGameClient(Client):
             print(my_farm)
 
             farms = my_farm
-            fields json = farms["fields"]
+            fields_json = farms["fields"]
             self.game.update_fields(fields_json)
             farmers = farms["employees"]
 
