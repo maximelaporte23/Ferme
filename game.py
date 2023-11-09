@@ -72,13 +72,12 @@ class Game:
             self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
     def saw(self, fields):
-        farmer_num = 26
         vegetables = ["PATATE", "TOMATE", "OIGNON", "COURGETTE", "POIREAU"]
         vegetable_to_seed = vegetables[self.vegetable_index]
 
         for i, field in enumerate(fields):
             if field["content"] == "NONE":
-                self.add_command(f"{self.nbt(farmer_num) + i} SEMER {vegetable_to_seed} {i + 1}")
+                self.add_command(f"{self.nbt(26) + i} SEMER {vegetable_to_seed} {i + 1}")
 
                 self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
 
@@ -93,35 +92,26 @@ class Game:
         farmer_location,
     ):
         if need_water_1 != 0:
-            if farmer_id <= 5 or 40 < farmer_id <= 44:
+            if self.nbt(0) < farmer_id <= self.nbt(5):
                 self.add_command(f"{farmer_id} ARROSER 1")
         if need_water_2 != 0:
-            if 5 < farmer_id <= 10 or 44 < farmer_id <= 49:
+            if self.nbt(5) < farmer_id <= self.nbt(10):
                 self.add_command(f"{farmer_id} ARROSER 2")
         if need_water_3 != 0:
-            if 10 < farmer_id <= 15 or 49 < farmer_id <= 54:
+            if self.nbt(10) < farmer_id <= self.nbt(15):
                 self.add_command(f"{farmer_id} ARROSER 3")
         if need_water_4 != 0:
-            if 15 < farmer_id <= 20 or 54 < farmer_id <= 59:
+            if self.nbt(15) < farmer_id <= self.nbt(20):
                 self.add_command(f"{farmer_id} ARROSER 4")
         if need_water_5 != 0:
-            if 20 < farmer_id <= 25 or 59 < farmer_id <= 64:
+            if self.nbt(20) < farmer_id <= self.nbt(25):
                 self.add_command(f"{farmer_id} ARROSER 5")
 
-    def stocker_field1(self, content, need_water, farmer_id, farmer_pos):
-        if content != "NONE" and (farmer_id == 35 or farmer_id == 74):
+    def stocker_field1_2(self, field_pos, content, need_water, farmer_id, farmer_pos):
+        field_index = int(field_pos[0])
+        if content != "NONE" and farmer_id == self.nbt(34) + field_index:
             if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD3"):
-                self.add_command(f"{farmer_id} STOCKER 1 1")
-                return True
-            if 1 <= need_water <= 5 and farmer_pos == "SOUP_FACTORY":
-                self.add_command(f"{farmer_id} ARROSER 3")
-                return True
-        return False
-
-    def stocker_field2(self, content, need_water, farmer_id, farmer_pos):
-        if content != "NONE" and (farmer_id == 36 or farmer_id == 75):
-            if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD3"):
-                self.add_command(f"{farmer_id} STOCKER 2 2")
+                self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
                 return True
             if 1 <= need_water <= 5 and farmer_pos == "SOUP_FACTORY":
                 self.add_command(f"{farmer_id} ARROSER 3")
@@ -133,7 +123,7 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and (farmer_id == 34 + field_index or farmer_id == 73 + field_index)
+            and farmer_id == self.nbt(34) + field_index
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
             self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")

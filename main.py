@@ -47,7 +47,7 @@ class PlayerGameClient(Client):
                 self.game.saw(fields=fields_json)
                 for farmer in farmers:
                     for field in fields_json:
-                        if field["location"] == "FIELD1":
+                        if field["location"] in ("FIELD1", "FIELD2"):
                             self.game.water(
                                 need_water_1=field["needed_water"],
                                 need_water_2=3,
@@ -57,14 +57,8 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_location=farmer["location"],
                             )
-                            self.game.stocker_field1(
-                                content=field["content"],
-                                need_water=field["needed_water"],
-                                farmer_id=farmer["id"],
-                                farmer_pos=farmer["location"],
-                            )
-                        if field["location"] == "FIELD2":
-                            self.game.stocker_field2(
+                            self.game.stocker_field1_2(
+                                field_pos=field["location"],
                                 content=field["content"],
                                 need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
