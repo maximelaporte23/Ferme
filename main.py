@@ -91,8 +91,10 @@ class PlayerGameClient(Client):
                 self.game.distribute_cook_2()
 
             if game_data["day"] == 902:
-                self.game.add_command("65 ARROSER 1")
-                self.game.add_command("66 ARROSER 2")
+                for farmer_num in range(1, 6):
+                    self.add_command(f"{self.nbt(farmer_num)} ARROSER 1")
+                for farmer_num in range(6, 11):
+                    self.add_command(f"{self.nbt(farmer_num)} ARROSER 2")
             
             if game_data["day"] == 903:
                 self.game.add_command("74 STOCKER 1 1")
