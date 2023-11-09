@@ -90,24 +90,6 @@ class PlayerGameClient(Client):
                 self.game.distribute_farmers()
                 self.game.distribute_cook_2()
 
-            if game_data["day"] == 902:
-                self.game.add_command("40 ARROSER 1")
-                self.game.add_command("41 ARROSER 1")
-                self.game.add_command("42 ARROSER 1")
-                self.game.add_command("43 ARROSER 1")
-                self.game.add_command("44 ARROSER 1")
-            
-            if game_data["day"] == 903:
-                self.game.add_command("45 ARROSER 2")
-                self.game.add_command("46 ARROSER 2")
-                self.game.add_command("47 ARROSER 2")
-                self.game.add_command("48 ARROSER 2")
-                self.game.add_command("49 ARROSER 2")
-
-            if game_data["day"] == 904:
-                self.game.add_command("74 STOCKER 1 1")
-                self.game.add_command("75 STOCKER 2 2")
-
             if game_data["day"] == 1441:
                 for _ in range(1, 4):
                     self.game.add_command("0 EMPLOYER")
