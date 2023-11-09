@@ -89,6 +89,8 @@ class PlayerGameClient(Client):
                 self.game.distribute_sawer_2()
                 self.game.distribute_farmers()
                 self.game.distribute_cook_2()
+
+            if game_data["day"] == 903:
                 self.game.add_command("74 STOCKER 1 1")
                 self.game.add_command("75 STOCKER 2 2")
 
