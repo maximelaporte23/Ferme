@@ -91,8 +91,8 @@ class PlayerGameClient(Client):
                 self.game.distribute_cook_2()
 
             if game_data["day"] == 902:
-                self.add_command("65 ARROSER 1")
-                self.add_command("66 ARROSER 2")
+                self.game.add_command("65 ARROSER 1")
+                self.game.add_command("66 ARROSER 2")
                 self.game.add_command("74 STOCKER 1 1")
                 self.game.add_command("75 STOCKER 2 2")
 
