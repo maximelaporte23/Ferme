@@ -107,22 +107,25 @@ class Game:
             if self.nbt(20) < farmer_id <= self.nbt(25):
                 self.add_command(f"{farmer_id} ARROSER 5")
 
-    def stocker_field1_2(self, field_pos, content, need_water, farmer_id, farmer_pos):
-        field_index = None
-        for i, field in enumerate(self.fields, start=1):
-            if field_pos.endswith(str(i)):
-                field_index = i
-                break
-
-        if field_index is not None and content != "NONE" and farmer_id == self.nbt(34) + field_index:
+    def stocker_field1(self, content, need_water, farmer_id, farmer_pos):
+        if content != "NONE" and farmer_id == self.nbt(35):
             if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD3"):
-                self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
+                self.add_command(f"{farmer_id} STOCKER 1 1")
                 return True
             if 1 <= need_water <= 5 and farmer_pos == "SOUP_FACTORY":
                 self.add_command(f"{farmer_id} ARROSER 3")
                 return True
         return False
 
+    def stocker_field2(self, content, need_water, farmer_id, farmer_pos):
+        if content != "NONE" and farmer_id == self.nbt(36):
+            if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD3"):
+                self.add_command(f"{farmer_id} STOCKER 2 2")
+                return True
+            if 1 <= need_water <= 5 and farmer_pos == "SOUP_FACTORY":
+                self.add_command(f"{farmer_id} ARROSER 3")
+                return True
+        return False
 
     def stocker_field3_4_5(self, field_pos, content, need_water, farmer_id, farmer_pos):
         field_index = int(field_pos[-1])
