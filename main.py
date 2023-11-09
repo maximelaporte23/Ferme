@@ -93,10 +93,10 @@ class PlayerGameClient(Client):
             if game_data["day"] == 902:
                 for farmer_num in range(1, 6):
                     self.game.add_command(f"{self.nbt(farmer_num)} ARROSER 1")
-                for farmer_num in range(6, 11):
-                    self.game.add_command(f"{self.nbt(farmer_num)} ARROSER 2")
             
             if game_data["day"] == 903:
+                for farmer_num in range(6, 11):
+                    self.game.add_command(f"{self.nbt(farmer_num)} ARROSER 2")
                 self.game.add_command("74 STOCKER 1 1")
                 self.game.add_command("75 STOCKER 2 2")
 
