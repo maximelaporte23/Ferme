@@ -110,6 +110,7 @@ class Game:
 
     def stocker_field1(self, content, need_water, farmer_id, farmer_pos):
         if content != "NONE" and (farmer_id == 35 or farmer_id == 74):
+            print("content != NONE")
             if need_water == 0 and farmer_pos == "FARM":
                 self.add_command(f"{farmer_id} STOCKER 1 1")
                 return True

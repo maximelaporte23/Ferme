@@ -23,7 +23,8 @@ class PlayerGameClient(Client):
                     break
             else:
                 raise ValueError(f"My farm is not found ({self.username})")
-            print(my_farm)
+            #print(my_farm)
+            print(game_data["day"])
 
             farms = my_farm
             fields_json = farms["fields"]
