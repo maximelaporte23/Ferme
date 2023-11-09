@@ -32,7 +32,7 @@ class PlayerGameClient(Client):
             farmers = farms["employees"]
 
             if game_data["day"] == 0:
-                self.game.add_command("0 EMPRUNTER 150000")
+                self.game.add_command("0 EMPRUNTER 160000")
                 for _ in range(5):
                     self.game.add_command("0 ACHETER_CHAMP")
                 for _ in range(5):
