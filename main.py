@@ -89,8 +89,8 @@ class PlayerGameClient(Client):
                 self.game.distribute_sawer_2()
                 self.game.distribute_farmers()
                 self.game.distribute_cook_2()
-                self.game.add_command("74 STOKER 1 1")
-                self.game.add_command("75 STOKER 2 2")
+                self.game.add_command("74 STOCKER 1 1")
+                self.game.add_command("75 STOCKER 2 2")
 
             if game_data["day"] == 1441:
                 for _ in range(1, 4):
