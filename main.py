@@ -103,6 +103,8 @@ class PlayerGameClient(Client):
                 self.game.add_command("47 ARROSER 2")
                 self.game.add_command("48 ARROSER 2")
                 self.game.add_command("49 ARROSER 2")
+
+            if game_data["day"] == 904:
                 self.game.add_command("74 STOCKER 1 1")
                 self.game.add_command("75 STOCKER 2 2")
 
