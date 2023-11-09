@@ -43,7 +43,7 @@ class PlayerGameClient(Client):
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
 
-            if 5 <= game_data["day"] <= 899 or game_data["day"] >= 906:
+            if 5 <= game_data["day"] <= 899 or game_data["day"] >= 907:
                 self.game.saw(fields=fields_json)
                 for farmer in farmers:
                     for field in fields_json:
@@ -78,7 +78,7 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                             )
-            if 30 <= game_data["day"] <= 899 or game_data["day"] >= 906:
+            if 45 <= game_data["day"] <= 899 or game_data["day"] >= 906:
                 self.game.cook()
 
             if game_data["day"] == 900:
@@ -90,7 +90,7 @@ class PlayerGameClient(Client):
                 self.game.distribute_farmers()
                 self.game.distribute_cook_2()
 
-            if game_data["day"] == 903:
+            if game_data["day"] == 904:
                 self.game.add_command("74 STOCKER 1 1")
                 self.game.add_command("75 STOCKER 2 2")
 
