@@ -81,12 +81,16 @@ class PlayerGameClient(Client):
             if 52 <= game_data["day"] <= 899 or game_data["day"] >= 906:
                 self.game.cook()
 
+            if game_data["day"] == 898:
+                self.game.fire_stocker()
+
             if game_data["day"] == 900:
+                self.game.sell(fields=fields_json)
                 self.game.fire()
                 for _ in range(1, 40):
                     self.game.add_command("0 EMPLOYER")
                 self.game.team = 1
-                #self.game.distribute_sawer_2()
+                self.game.distribute_sawer_2()
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
 

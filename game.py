@@ -44,11 +44,11 @@ class Game:
         #        self.add_command(f"{self.nbt(farmer_num)} SEMER PATATE {field}")
 
     def distribute_sawer_2(self):
-        self.add_command("65 ARROSER 1")
-        self.add_command("66 ARROSER 2")
-        self.add_command("67 ARROSER 3")
-        self.add_command("68 ARROSER 4")
-        self.add_command("69 ARROSER 5")
+        self.add_command("65 SEMER PATATE 1")
+        self.add_command("66 SEMER PATATE 2")
+        self.add_command("67 SEMER PATATE 3")
+        self.add_command("68 SEMER PATATE 4")
+        self.add_command("69 SEMER PATATE 5")
 
     def distribute_cook(self):
         for farmer_num in range(31, 35):
@@ -133,8 +133,16 @@ class Game:
         return False
 
     def fire(self):
-        for OUVRIER in range(1, 40):
-            self.add_command(f"0 LICENCIER {OUVRIER}")
+        for farmer_id in range(1, 35):
+            self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
+
+    def fire_stocker(self):
+        for farmer_id in range(35, 40):
+            self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
+
+    def sell(self, fields):
+        for i, field in enumerate(fields):
+            self.add_command(f"0 VENDRE {i + 1}")
 
     def end_game(self):
         for OUVRIER in range(79, 82):
