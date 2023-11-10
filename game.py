@@ -34,9 +34,14 @@ class Game:
             self.add_command(f"{self.nbt(farmer_num)} ARROSER 5")
 
     def distribute_sawer(self):
-        for field in range(1, 6):
-            for farmer_num in range(26, 31):
-                self.add_command(f"{self.nbt(farmer_num)} SEMER PATATE {field}")
+        self.add_command("26 SEMER PATATE 1")
+        self.add_command("27 SEMER PATATE 2")
+        self.add_command("28 SEMER PATATE 3")
+        self.add_command("29 SEMER PATATE 4")
+        self.add_command("30 SEMER PATATE 5")
+        #for field in range(1, 6):
+        #    for farmer_num in range(26, 31):
+        #        self.add_command(f"{self.nbt(farmer_num)} SEMER PATATE {field}")
 
     def distribute_sawer_2(self):
         self.add_command("65 ARROSER 1")
