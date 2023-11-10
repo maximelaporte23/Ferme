@@ -34,14 +34,9 @@ class Game:
             self.add_command(f"{self.nbt(farmer_num)} ARROSER 5")
 
     def distribute_sawer(self):
-        self.add_command("26 SEMER PATATE 1")
-        self.add_command("27 SEMER PATATE 2")
-        self.add_command("28 SEMER PATATE 3")
-        self.add_command("29 SEMER PATATE 4")
-        self.add_command("30 SEMER PATATE 5")
-        #for field in fields:
-        #    for farmer_num in range(26, 31):
-        #        self.add_command(f"{farmer_num} SEMER PATATE {field}")
+        for field in range(1, 6):
+            for farmer_num in range(26, 31):
+                self.add_command(f"{self.nbt(farmer_num)} SEMER PATATE {field}")
 
     def distribute_sawer_2(self):
         self.add_command("65 ARROSER 1")
@@ -49,17 +44,10 @@ class Game:
         self.add_command("67 ARROSER 3")
         self.add_command("68 ARROSER 4")
         self.add_command("69 ARROSER 5")
-        #for field in fields:
-        #    for farmer_num in range(65, 70):
-        #        self.add_command(f"{farmer_num} ARROSER {field}")
 
     def distribute_cook(self):
-        self.add_command("31 CUISINER")
-        self.add_command("32 CUISINER")
-        self.add_command("33 CUISINER")
-        self.add_command("34 CUISINER")
-        #for farmer_num in range(31, 35):
-        #    self.add_command(f"{self.nbt(farmer_num)} CUISINER")
+        for farmer_num in range(31, 35):
+            self.add_command(f"{self.nbt(farmer_num)} CUISINER")
     
     def distribute_cook_2(self):
         self.add_command("70 CUISINER")
@@ -112,7 +100,7 @@ class Game:
             if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD3"):
                 self.add_command(f"{farmer_id} STOCKER 1 1")
                 return True
-            if 1 <= need_water <= 5 and farmer_pos == "SOUP_FACTORY":
+            if need_water == 5 and farmer_pos == "SOUP_FACTORY":
                 self.add_command(f"{farmer_id} ARROSER 3")
                 return True
         return False
@@ -122,7 +110,7 @@ class Game:
             if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD3"):
                 self.add_command(f"{farmer_id} STOCKER 2 2")
                 return True
-            if 1 <= need_water <= 5 and farmer_pos == "SOUP_FACTORY":
+            if need_water == 5 and farmer_pos == "SOUP_FACTORY":
                 self.add_command(f"{farmer_id} ARROSER 3")
                 return True
         return False
