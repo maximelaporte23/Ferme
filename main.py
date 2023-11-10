@@ -83,9 +83,11 @@ class PlayerGameClient(Client):
 
             if game_data["day"] == 898:
                 self.game.fire_stocker()
+                self.game.add_command("0 VENDRE 1")
 
             if game_data["day"] == 900:
-                self.game.sell(fields=fields_json)
+                self.game.add_command("0 VENDRE 2")
+                #self.game.sell(fields=fields_json)
                 self.game.fire()
                 for _ in range(1, 40):
                     self.game.add_command("0 EMPLOYER")
