@@ -1,3 +1,5 @@
+#3 945 000
+
 import argparse
 
 from typing import NoReturn
