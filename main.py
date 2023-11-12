@@ -30,6 +30,7 @@ class PlayerGameClient(Client):
             fields_json = farms["fields"]
             self.game.update_fields(fields_json)
             farmers = farms["employees"]
+            soup_factory = farms["soup_factory"]
 
             if game_data["day"] == 0:
                 self.game.add_command("0 EMPRUNTER 160000")
@@ -44,7 +45,7 @@ class PlayerGameClient(Client):
                 self.game.distribute_cook()
 
             if 5 <= game_data["day"] <= 897 or game_data["day"] >= 908:
-                self.game.saw(fields=fields_json)
+                self.game.saw(fields=fields_json, stock=soup_factory["stock"])
                 for farmer in farmers:
                     for field in fields_json:
                         if field["location"] == "FIELD1":
