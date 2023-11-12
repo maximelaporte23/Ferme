@@ -1,6 +1,7 @@
 from field import Field
 from location import Location
 from vegetable import Vegetable
+from itertools import chain
 
 
 class Game:
@@ -132,17 +133,20 @@ class Game:
             return True
         return False
 
-    def fire(self):
-        for farmer_id in range(1, 35):
+    def fire_other(self):
+        for farmer_id in chain(range(1, 26), range(31, 35)):
             self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
 
-    def fire_stocker(self):
-        for farmer_id in range(35, 40):
+    def fire_stocker_sawer(self):
+        for farmer_id in chain(range(26, 31), range(35, 40)):
             self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
 
-    def sell(self, fields):
-        for i, field in enumerate(fields):
-            self.add_command(f"0 VENDRE {i + 1}")
+    def sell(self, fields, need_water):
+        for field in fields:
+            if field["location"] == "FIELD1" and need_water == 0:
+                self.add_command("0 VENDRE 1")
+            elif field["location"] == "FIELD2" and need_water == 0:
+                self.add_command("0 VENDRE 2")
 
     def end_game(self):
         for OUVRIER in range(79, 82):
