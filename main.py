@@ -96,7 +96,7 @@ class PlayerGameClient(Client):
                                     )
             
             if game_data["day"] == 900:
-                self.game.sell(fields=fields_json, need_water=field["needed_water"])
+                self.game.add_command("0 VENDRE 1")
 
             if game_data["day"] == 903:
                 self.game.fire_other()
@@ -106,7 +106,7 @@ class PlayerGameClient(Client):
                 self.game.distribute_sawer_2()
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
-                self.game.sell(fields=fields_json, need_water=field["needed_water"])
+                self.game.add_command("0 VENDRE 2")
 
             if game_data["day"] == 1441:
                 for _ in range(1, 4):
