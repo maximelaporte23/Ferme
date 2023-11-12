@@ -39,7 +39,7 @@ class Game:
         self.add_command("28 SEMER PATATE 3")
         self.add_command("29 SEMER PATATE 4")
         self.add_command("30 SEMER PATATE 5")
-        #for i, field in fields:
+        #for i, field in enumerate(fields):
         #    for farmer_num in range(26, 31):
         #        self.add_command(f"{self.nbt(farmer_num)} SEMER PATATE {i + 1}")
 
@@ -79,7 +79,7 @@ class Game:
         elif min_veggie == "ZUCCHINI":
             min_veggie_fr = "COURGETTE"
 
-        for i, field in fields:
+        for i, field in enumerate(fields):
             if field["content"] == "NONE":
                 for farmer_num in range(26, 31):
                     self.add_command(f"{self.nbt(farmer_num)} SEMER {min_veggie_fr} {i + 1}")
