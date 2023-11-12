@@ -1,4 +1,4 @@
-#3 945 000
+#3 967 000
 
 import argparse
 
@@ -100,8 +100,7 @@ class PlayerGameClient(Client):
                 self.game.end_game()
 
             if game_data["day"] >= 1447:
-                for farmer_id in range(77, 81):
-                    self.game.add_command(f"{farmer_id} CUISINER")
+                self.game.cook_end(stock=soup_factory["stock"])
 
             if game_data["day"] == 1797:
                 self.game.sell(need_water=field["needed_water"])

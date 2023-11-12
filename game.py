@@ -55,6 +55,17 @@ class Game:
         ):
             for farmer_num in range(31, 35):
                 self.add_command(f"{self.nbt(farmer_num)} CUISINER")
+    
+    def cook_end(self, stock):
+        if (
+            stock["POTATO"] != 0
+            and stock["LEEK"] != 0
+            and stock["TOMATO"] != 0
+            and stock["ONION"] != 0
+            and stock["ZUCCHINI"] != 0
+        ):
+            for farmer_id in range(77, 81):
+                self.add_command(f"{farmer_id} CUISINER")
 
     def saw(self, fields, stock):
         min_veggie = min(stock, key=stock.get)
