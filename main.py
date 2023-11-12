@@ -43,7 +43,7 @@ class PlayerGameClient(Client):
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
 
-            if 5 <= game_data["day"] <= 897 or game_data["day"] >= 906:
+            if 5 <= game_data["day"] <= 897 or game_data["day"] >= 907:
                 self.game.saw(fields=fields_json)
                 for farmer in farmers:
                     for field in fields_json:
@@ -78,7 +78,7 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                             )
-            if 52 <= game_data["day"] <= 901 or game_data["day"] >= 906:
+            if 52 <= game_data["day"] <= 901 or game_data["day"] >= 907:
                 self.game.cook()
 
             if game_data["day"] == 898:
@@ -95,16 +95,6 @@ class PlayerGameClient(Client):
                                 )
             
             if game_data["day"] == 899:
-                if field["location"] == "FIELD1":
-                    self.game.water(
-                                    need_water_1=field["needed_water"],
-                                    need_water_2=3,
-                                    need_water_3=3,
-                                    need_water_4=3,
-                                    need_water_5=3,
-                                    farmer_id=farmer["id"],
-                                    farmer_location=farmer["location"],
-                                )
                 self.game.sell(fields=fields_json, need_water=field["needed_water"])
 
             if game_data["day"] == 902:
@@ -115,9 +105,7 @@ class PlayerGameClient(Client):
                 self.game.distribute_sawer_2()
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
-            
-            if game_data["day"] == 903:
-                self.game.add_command("0 VENDRE 2")
+                self.game.sell(fields=fields_json, need_water=field["needed_water"])
 
             if game_data["day"] == 1441:
                 for _ in range(1, 4):
