@@ -81,8 +81,7 @@ class Game:
 
         for i, field in enumerate(fields):
             if field["content"] == "NONE":
-                for farmer_num in range(26, 31):
-                    self.add_command(f"{self.nbt(farmer_num)} SEMER {min_veggie_fr} {i + 1}")
+                self.add_command(f"{self.nbt(26) + (i + 1)} SEMER {min_veggie_fr} {i + 1}")
         #field1 = fields[0]
         #field2 = fields[1]
         #field3 = fields[2]
