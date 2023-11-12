@@ -58,12 +58,13 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_location=farmer["location"],
                             )
-                            self.game.stocker_field1(
-                                content=field["content"],
-                                need_water=field["needed_water"],
-                                farmer_id=farmer["id"],
-                                farmer_pos=farmer["location"],
-                            )
+                            if game_data["day"] > 1797:
+                                self.game.stocker_field1(
+                                    content=field["content"],
+                                    need_water=field["needed_water"],
+                                    farmer_id=farmer["id"],
+                                    farmer_pos=farmer["location"],
+                                )
                         if field["location"] == "FIELD2":
                             self.game.stocker_field2(
                                 content=field["content"],
@@ -83,9 +84,8 @@ class PlayerGameClient(Client):
                 self.game.cook(stock=soup_factory["stock"])
 
             if game_data["day"] == 899:
-                self.game.fire_stocker_sawer()
-                self.game.fire_other()
-                for _ in range(1, 40):
+                self.game.fire()
+                for _ in range(1, 38):
                     self.game.add_command("0 EMPLOYER")
                 self.game.team = 1
                 self.game.distribute_sawer_2()
@@ -98,8 +98,11 @@ class PlayerGameClient(Client):
                 self.game.end_game()
 
             if game_data["day"] >= 1447:
-                for farmer_id in range(79, 82):
+                for farmer_id in range(77, 80):
                     self.game.add_command(f"{farmer_id} CUISINER")
+
+            if game_data["day"] == 1797:
+                self.game.add_command("0 VENDRE 1")
 
             self.send_commands()
 

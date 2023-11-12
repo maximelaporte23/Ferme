@@ -1,7 +1,6 @@
 from field import Field
 from location import Location
 from vegetable import Vegetable
-from itertools import chain
 
 
 class Game:
@@ -54,12 +53,6 @@ class Game:
     def distribute_cook(self):
         for farmer_num in range(31, 35):
             self.add_command(f"{self.nbt(farmer_num)} CUISINER")
-    
-    def distribute_cook_2(self):
-        self.add_command("70 CUISINER")
-        self.add_command("71 CUISINER")
-        self.add_command("72 CUISINER")
-        self.add_command("73 CUISINER")
 
     def cook(self, stock):
         if (
@@ -160,12 +153,8 @@ class Game:
             return True
         return False
 
-    def fire_other(self):
-        for farmer_id in chain(range(1, 26), range(31, 35)):
-            self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
-
-    def fire_stocker_sawer(self):
-        for farmer_id in chain(range(26, 31), range(35, 40)):
+    def fire(self):
+        for farmer_id in range(1, 38):
             self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
 
     def end_game(self):
