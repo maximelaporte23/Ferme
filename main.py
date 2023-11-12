@@ -83,16 +83,17 @@ class PlayerGameClient(Client):
 
             if game_data["day"] == 898:
                 self.game.fire_stocker_sawer()
-                if field["location"] == "FIELD1":
-                    self.game.water(
-                                    need_water_1=field["needed_water"],
-                                    need_water_2=3,
-                                    need_water_3=3,
-                                    need_water_4=3,
-                                    need_water_5=3,
-                                    farmer_id=farmer["id"],
-                                    farmer_location=farmer["location"],
-                                )
+                if 898 <= game_data["day"] <= 899:
+                    if field["location"] == "FIELD1":
+                        self.game.water(
+                                        need_water_1=field["needed_water"],
+                                        need_water_2=3,
+                                        need_water_3=3,
+                                        need_water_4=3,
+                                        need_water_5=3,
+                                        farmer_id=farmer["id"],
+                                        farmer_location=farmer["location"],
+                                    )
             
             if game_data["day"] == 899:
                 self.game.sell(fields=fields_json, need_water=field["needed_water"])
