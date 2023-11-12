@@ -35,7 +35,7 @@ class PlayerGameClient(Client):
             soup_factory = farms["soup_factory"]
 
             if game_data["day"] == 0:
-                self.game.add_command("0 EMPRUNTER 150000")
+                self.game.add_command("0 EMPRUNTER 100000")
                 for _ in range(5):
                     self.game.add_command("0 ACHETER_CHAMP")
                 for _ in range(5):
