@@ -65,15 +65,35 @@ class Game:
         for farmer_num in range(31, 35):
             self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
-    def saw(self, fields):
-        vegetables = ["PATATE", "TOMATE", "OIGNON", "COURGETTE", "POIREAU"]
-        vegetable_to_seed = vegetables[self.vegetable_index]
+    def saw(self, fields, stock):
+        min_veggie = min(stock, key=stock.get)
+        min_veggie_fr = ""
+        if min_veggie == "POTATO":
+            min_veggie_fr = "PATATE"
+        elif min_veggie == "LEEK":
+            min_veggie_fr = "POIREAU"
+        elif min_veggie == "TOMATO":
+            min_veggie_fr = "TOMATE"
+        elif min_veggie == "ONION":
+            min_veggie_fr = "OIGNON"
+        elif min_veggie == "ZUCCHINI":
+            min_veggie_fr = "COURGETTE"
 
-        for i, field in enumerate(fields):
-            if field["content"] == "NONE":
-                self.add_command(f"{self.nbt(26) + i} SEMER {vegetable_to_seed} {i + 1}")
-
-                self.vegetable_index = (self.vegetable_index + 1) % len(vegetables)
+        field1 = fields[0]
+        field2 = fields[1]
+        field3 = fields[2]
+        field4 = fields[3]
+        field5 = fields[4]
+        if field1["content"] == "NONE":
+            self.add_command(f"{self.nbt(35)} SEMER {min_veggie_fr} 1")
+        if field2["content"] == "NONE":
+            self.add_command(f"{self.nbt(36)} SEMER {min_veggie_fr} 2")
+        if field3["content"] == "NONE":
+            self.add_command(f"{self.nbt(37)} SEMER {min_veggie_fr} 3")
+        if field4["content"] == "NONE":
+            self.add_command(f"{self.nbt(38)} SEMER {min_veggie_fr} 4")
+        if field5["content"] == "NONE":
+            self.add_command(f"{self.nbt(39)} SEMER {min_veggie_fr} 5")
 
     def water(
         self,
@@ -102,7 +122,7 @@ class Game:
                 self.add_command(f"{farmer_id} ARROSER 5")
 
     def stocker_field1(self, content, need_water, farmer_id, farmer_pos):
-        if content != "NONE" and farmer_id == 38:
+        if content != "NONE" and farmer_id == self.nbt(35):
             if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD1"):
                 self.add_command(f"{farmer_id} STOCKER 1 1")
                 return True
@@ -112,7 +132,7 @@ class Game:
         return False
 
     def stocker_field2(self, content, need_water, farmer_id, farmer_pos):
-        if content != "NONE" and farmer_id == 39:
+        if content != "NONE" and farmer_id == self.nbt(36):
             if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD2"):
                 self.add_command(f"{farmer_id} STOCKER 2 2")
                 return True
@@ -126,7 +146,7 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == self.nbt(32) + field_index
+            and farmer_id == self.nbt(34) + field_index
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
             self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
@@ -138,7 +158,7 @@ class Game:
             self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
 
     def fire_stocker_sawer(self):
-        for farmer_id in chain(range(26, 31), range(35, 38)):
+        for farmer_id in chain(range(26, 31), range(35, 40)):
             self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
 
     def sell(self, fields, need_water):
