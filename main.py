@@ -44,7 +44,7 @@ class PlayerGameClient(Client):
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
 
-            if 5 <= game_data["day"] <= 897 or game_data["day"] >= 908:
+            if 5 <= game_data["day"] <= 898 or game_data["day"] >= 905:
                 self.game.saw(fields=fields_json, stock=soup_factory["stock"])
                 for farmer in farmers:
                     for field in fields_json:
@@ -79,27 +79,11 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                             )
-            if 30 <= game_data["day"] <= 902 or game_data["day"] >= 910:
+            if 30 <= game_data["day"] <= 898 or game_data["day"] >= 905:
                 self.game.cook(stock=soup_factory["stock"])
 
-            if game_data["day"] == 898:
+            if game_data["day"] == 899:
                 self.game.fire_stocker_sawer()
-                if 898 <= game_data["day"] <= 899:
-                    if field["location"] == "FIELD1":
-                        self.game.water(
-                                        need_water_1=field["needed_water"],
-                                        need_water_2=3,
-                                        need_water_3=3,
-                                        need_water_4=3,
-                                        need_water_5=3,
-                                        farmer_id=farmer["id"],
-                                        farmer_location=farmer["location"],
-                                    )
-            
-            if game_data["day"] == 900:
-                self.game.add_command("0 VENDRE 1")
-
-            if game_data["day"] == 903:
                 self.game.fire_other()
                 for _ in range(1, 38):
                     self.game.add_command("0 EMPLOYER")
@@ -107,7 +91,6 @@ class PlayerGameClient(Client):
                 self.game.distribute_sawer_2()
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
-                self.game.add_command("0 VENDRE 2")
 
             if game_data["day"] == 1441:
                 for _ in range(1, 4):

@@ -45,8 +45,8 @@ class Game:
         #        self.add_command(f"{self.nbt(farmer_num)} SEMER PATATE {field}")
 
     def distribute_sawer_2(self):
-        self.add_command("65 SEMER PATATE 1")
-        self.add_command("66 SEMER PATATE 2")
+        self.add_command("65 ARROSER 1")
+        self.add_command("66 ARROSER 2")
         self.add_command("67 ARROSER 3")
         self.add_command("68 ARROSER 4")
         self.add_command("69 ARROSER 5")
