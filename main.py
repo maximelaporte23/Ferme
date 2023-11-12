@@ -78,7 +78,7 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                             )
-            if 52 <= game_data["day"] <= 902 or game_data["day"] >= 908:
+            if 52 <= game_data["day"] <= 902 or game_data["day"] >= 910:
                 self.game.cook()
 
             if game_data["day"] == 898:
