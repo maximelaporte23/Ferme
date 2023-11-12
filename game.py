@@ -61,9 +61,16 @@ class Game:
         self.add_command("72 CUISINER")
         self.add_command("73 CUISINER")
 
-    def cook(self):
-        for farmer_num in range(31, 35):
-            self.add_command(f"{self.nbt(farmer_num)} CUISINER")
+    def cook(self, stock):
+        if (
+            stock["POTATO"] != 0
+            and stock["LEEK"] != 0
+            and stock["TOMATO"] != 0
+            and stock["ONION"] != 0
+            and stock["ZUCCHINI"] != 0
+        ):
+            for farmer_num in range(31, 35):
+                self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
     def saw(self, fields, stock):
         min_veggie = min(stock, key=stock.get)
@@ -122,7 +129,7 @@ class Game:
                 self.add_command(f"{farmer_id} ARROSER 5")
 
     def stocker_field1(self, content, need_water, farmer_id, farmer_pos):
-        if content != "NONE" and farmer_id == self.nbt(35):
+        if content != "NONE" and farmer_id == 38:
             if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD1"):
                 self.add_command(f"{farmer_id} STOCKER 1 1")
                 return True
@@ -132,7 +139,7 @@ class Game:
         return False
 
     def stocker_field2(self, content, need_water, farmer_id, farmer_pos):
-        if content != "NONE" and farmer_id == self.nbt(36):
+        if content != "NONE" and farmer_id == 39:
             if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD2"):
                 self.add_command(f"{farmer_id} STOCKER 2 2")
                 return True
@@ -146,7 +153,7 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == self.nbt(34) + field_index
+            and farmer_id == self.nbt(32) + field_index
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
             self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
@@ -158,19 +165,12 @@ class Game:
             self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
 
     def fire_stocker_sawer(self):
-        for farmer_id in chain(range(26, 31), range(35, 40)):
+        for farmer_id in chain(range(26, 31), range(35, 38)):
             self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
 
-    def sell(self, fields, need_water):
-        for field in fields:
-            if field["location"] == "FIELD1" and need_water == 0:
-                self.add_command("0 VENDRE 1")
-            elif field["location"] == "FIELD2" and need_water == 0:
-                self.add_command("0 VENDRE 2")
-
     def end_game(self):
-        for OUVRIER in range(79, 82):
-            self.add_command(f"{OUVRIER} CUISINER")
+        for farmer_id in range(77, 80):
+            self.add_command(f"{farmer_id} CUISINER")
 
     def add_command(self: "Game", command: str) -> None:
         self.commands.append(command)

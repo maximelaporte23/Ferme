@@ -33,7 +33,7 @@ class PlayerGameClient(Client):
             soup_factory = farms["soup_factory"]
 
             if game_data["day"] == 0:
-                self.game.add_command("0 EMPRUNTER 160000")
+                self.game.add_command("0 EMPRUNTER 150000")
                 for _ in range(5):
                     self.game.add_command("0 ACHETER_CHAMP")
                 for _ in range(5):
@@ -79,8 +79,8 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                             )
-            if 52 <= game_data["day"] <= 902 or game_data["day"] >= 910:
-                self.game.cook()
+            if 30 <= game_data["day"] <= 902 or game_data["day"] >= 910:
+                self.game.cook(stock=soup_factory["stock"])
 
             if game_data["day"] == 898:
                 self.game.fire_stocker_sawer()
@@ -101,7 +101,7 @@ class PlayerGameClient(Client):
 
             if game_data["day"] == 903:
                 self.game.fire_other()
-                for _ in range(1, 40):
+                for _ in range(1, 38):
                     self.game.add_command("0 EMPLOYER")
                 self.game.team = 1
                 self.game.distribute_sawer_2()
@@ -115,8 +115,8 @@ class PlayerGameClient(Client):
                 self.game.end_game()
 
             if game_data["day"] >= 1447:
-                for OUVRIER in range(79, 82):
-                    self.game.add_command(f"{OUVRIER} CUISINER")
+                for farmer_id in range(79, 82):
+                    self.game.add_command(f"{farmer_id} CUISINER")
 
             self.send_commands()
 
