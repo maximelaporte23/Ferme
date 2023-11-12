@@ -103,7 +103,7 @@ class Game:
 
     def stocker_field1(self, content, need_water, farmer_id, farmer_pos):
         if content != "NONE" and farmer_id == self.nbt(35):
-            if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD3"):
+            if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD1"):
                 self.add_command(f"{farmer_id} STOCKER 1 1")
                 return True
             if need_water > 5 and farmer_pos == "SOUP_FACTORY":
@@ -113,7 +113,7 @@ class Game:
 
     def stocker_field2(self, content, need_water, farmer_id, farmer_pos):
         if content != "NONE" and farmer_id == self.nbt(36):
-            if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD3"):
+            if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD2"):
                 self.add_command(f"{farmer_id} STOCKER 2 2")
                 return True
             if need_water > 5 and farmer_pos == "SOUP_FACTORY":
