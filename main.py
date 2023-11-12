@@ -85,7 +85,7 @@ class PlayerGameClient(Client):
             if game_data["day"] == 899:
                 self.game.fire_stocker_sawer()
                 self.game.fire_other()
-                for _ in range(1, 38):
+                for _ in range(1, 40):
                     self.game.add_command("0 EMPLOYER")
                 self.game.team = 1
                 self.game.distribute_sawer_2()
