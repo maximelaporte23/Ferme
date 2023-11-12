@@ -58,7 +58,7 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_location=farmer["location"],
                             )
-                            if game_data["day"] < 1797:
+                            if game_data["day"] < 1795:
                                 self.game.stocker_field1(
                                     content=field["content"],
                                     need_water=field["needed_water"],
@@ -102,7 +102,7 @@ class PlayerGameClient(Client):
                     self.game.add_command(f"{farmer_id} CUISINER")
 
             if game_data["day"] == 1797:
-                self.game.add_command("0 VENDRE 1")
+                self.game.sell(need_water=field["needed_water"])
 
             self.send_commands()
 

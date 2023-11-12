@@ -39,9 +39,9 @@ class Game:
         self.add_command("28 SEMER PATATE 3")
         self.add_command("29 SEMER PATATE 4")
         self.add_command("30 SEMER PATATE 5")
-        #for field in range(1, 6):
+        #for i, field in fields:
         #    for farmer_num in range(26, 31):
-        #        self.add_command(f"{self.nbt(farmer_num)} SEMER PATATE {field}")
+        #        self.add_command(f"{self.nbt(farmer_num)} SEMER PATATE {i + 1}")
 
     def distribute_sawer_2(self):
         self.add_command("65 ARROSER 1")
@@ -79,21 +79,25 @@ class Game:
         elif min_veggie == "ZUCCHINI":
             min_veggie_fr = "COURGETTE"
 
-        field1 = fields[0]
-        field2 = fields[1]
-        field3 = fields[2]
-        field4 = fields[3]
-        field5 = fields[4]
-        if field1["content"] == "NONE":
-            self.add_command(f"{self.nbt(26)} SEMER {min_veggie_fr} 1")
-        if field2["content"] == "NONE":
-            self.add_command(f"{self.nbt(27)} SEMER {min_veggie_fr} 2")
-        if field3["content"] == "NONE":
-            self.add_command(f"{self.nbt(28)} SEMER {min_veggie_fr} 3")
-        if field4["content"] == "NONE":
-            self.add_command(f"{self.nbt(29)} SEMER {min_veggie_fr} 4")
-        if field5["content"] == "NONE":
-            self.add_command(f"{self.nbt(30)} SEMER {min_veggie_fr} 5")
+        for i, field in fields:
+            if field["content"] == "NONE":
+                for farmer_num in range(26, 31):
+                    self.add_command(f"{self.nbt(farmer_num)} SEMER {min_veggie_fr} {i + 1}")
+        #field1 = fields[0]
+        #field2 = fields[1]
+        #field3 = fields[2]
+        #field4 = fields[3]
+        #field5 = fields[4]
+        #if field1["content"] == "NONE":
+        #    self.add_command(f"{self.nbt(26)} SEMER {min_veggie_fr} 1")
+        #if field2["content"] == "NONE":
+        #    self.add_command(f"{self.nbt(27)} SEMER {min_veggie_fr} 2")
+        #if field3["content"] == "NONE":
+        #    self.add_command(f"{self.nbt(28)} SEMER {min_veggie_fr} 3")
+        #if field4["content"] == "NONE":
+        #    self.add_command(f"{self.nbt(29)} SEMER {min_veggie_fr} 4")
+        #if field5["content"] == "NONE":
+        #    self.add_command(f"{self.nbt(30)} SEMER {min_veggie_fr} 5")
 
     def water(
         self,
@@ -158,8 +162,12 @@ class Game:
             self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
 
     def end_game(self):
-        for farmer_id in range(79, 82):
+        for farmer_id in range(77, 80):
             self.add_command(f"{farmer_id} CUISINER")
+
+    def sell(self, need_water):
+        if need_water == 0:
+            self.add_command("0 VENDRE 1")
 
     def add_command(self: "Game", command: str) -> None:
         self.commands.append(command)
