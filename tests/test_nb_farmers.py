@@ -1,4 +1,4 @@
-from nb_farmers import Farmer, nb_farmers_on_field
+from notre_ferme.nb_farmers import Farmer, nb_farmers_on_field
 
 
 def test_farmers_in_field_1():

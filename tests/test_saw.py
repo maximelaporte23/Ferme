@@ -1,4 +1,4 @@
-from game import Game
+from notre_ferme.game import Game
 
 
 def test_saw_function():

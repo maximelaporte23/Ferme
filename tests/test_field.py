@@ -1,6 +1,6 @@
-from vegetable import Vegetable
-from field import Field
-from location import fields
+from notre_ferme.vegetable import Vegetable
+from notre_ferme.field import Field
+from notre_ferme.location import fields
 
 
 def test_field_initialization():

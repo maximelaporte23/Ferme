@@ -1,6 +1,6 @@
-from field import Field
-from location import fields
-from vegetable import Vegetable
+from notre_ferme.field import Field
+from notre_ferme.location import fields
+from notre_ferme.vegetable import Vegetable
 
 
 def test_is_sowable():

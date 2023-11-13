@@ -1,7 +1,7 @@
 import argparse
 
 from typing import NoReturn
-from game import Game
+from notre_ferme.game import Game
 
 from chronobio.network.client import Client
 

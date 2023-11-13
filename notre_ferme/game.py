@@ -1,6 +1,6 @@
-from field import Field
-from location import Location
-from vegetable import Vegetable
+from notre_ferme.field import Field
+from notre_ferme.location import Location
+from notre_ferme.vegetable import Vegetable
 
 
 class Game:
