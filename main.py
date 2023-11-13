@@ -102,7 +102,7 @@ class PlayerGameClient(Client):
                 self.game.cook_end(stock=soup_factory["stock"])
             
             if game_data["day"] >= 1795:
-                self.game.add_command("38 CUISINER")
+                self.game.add_command("1 CUISINER")
 
             if game_data["day"] == 1797:
                 self.game.sell(need_water=field["needed_water"])

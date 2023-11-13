@@ -5,8 +5,8 @@ from vegetable import Vegetable
 
 class Game:
     def __init__(self: "Game") -> None:
-        self.commands = []
-        self.farmer = []
+        self.commands: list[str] = []
+        self.farmer: list[str] = []
         self.fields: list[Field] = [Field(Location.FIELD1), Field(Location.FIELD2), Field(Location.FIELD3), Field(Location.FIELD4), Field(Location.FIELD5)]
         self.vegetable_index = 0
         self.team = 0
@@ -136,8 +136,8 @@ class Game:
             self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
 
     def end_game(self):
-        for farmer_id in range(77, 81):
-            self.add_command(f"{farmer_id} CUISINER")
+        for farmer_id in range(40, 44):
+            self.add_command(f"{self.nbt(farmer_id)} CUISINER")
 
     def cook_end(self, stock):
         if (
@@ -147,8 +147,8 @@ class Game:
             and stock["ONION"] != 0
             and stock["ZUCCHINI"] != 0
         ):
-            for farmer_id in range(77, 81):
-                self.add_command(f"{farmer_id} CUISINER")
+            for farmer_id in range(40, 44):
+                self.add_command(f"{self.nbt(farmer_id)} CUISINER")
 
     def sell(self, need_water):
         if need_water == 0:
