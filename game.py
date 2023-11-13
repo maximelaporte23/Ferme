@@ -19,30 +19,30 @@ class Game:
             field.content = Vegetable[field_json["content"]]
 
     def nbt(self, number):
-        return 39 * self.team + number
+        return 37 * self.team + 2 + number
 
     def distribute_farmers(self):
-        for farmer_num in range(1, 6):
+        for farmer_num in range(3, 8):
             self.add_command(f"{self.nbt(farmer_num)} ARROSER 1")
-        for farmer_num in range(6, 11):
+        for farmer_num in range(8, 13):
             self.add_command(f"{self.nbt(farmer_num)} ARROSER 2")
-        for farmer_num in range(11, 16):
+        for farmer_num in range(13, 18):
             self.add_command(f"{self.nbt(farmer_num)} ARROSER 3")
-        for farmer_num in range(16, 21):
+        for farmer_num in range(18, 23):
             self.add_command(f"{self.nbt(farmer_num)} ARROSER 4")
-        for farmer_num in range(21, 26):
+        for farmer_num in range(23, 28):
             self.add_command(f"{self.nbt(farmer_num)} ARROSER 5")
 
     def distribute_sawer(self, fields):
         for i, field in enumerate(fields):
-            self.add_command(f"{self.nbt(26) + i} SEMER PATATE {i + 1}")
+            self.add_command(f"{self.nbt(28) + i} SEMER PATATE {i + 1}")
 
     def distribute_sawer_2(self, fields):
         for i, field in enumerate(fields):
-            self.add_command(f"{self.nbt(26) + i} ARROSER {i + 1}")
+            self.add_command(f"{self.nbt(28) + i} ARROSER {i + 1}")
 
     def distribute_cook(self):
-        for farmer_num in range(31, 35):
+        for farmer_num in range(33, 37):
             self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
     def cook(self, stock):
@@ -53,7 +53,7 @@ class Game:
             and stock["ONION"] != 0
             and stock["ZUCCHINI"] != 0
         ):
-            for farmer_num in range(31, 35):
+            for farmer_num in range(33, 37):
                 self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
     def saw(self, fields, stock):
@@ -72,7 +72,7 @@ class Game:
 
         for i, field in enumerate(fields):
             if field["content"] == "NONE":
-                self.add_command(f"{self.nbt(26) + i} SEMER {min_veggie_fr} {i + 1}")
+                self.add_command(f"{self.nbt(28) + i} SEMER {min_veggie_fr} {i + 1}")
 
     def water(
         self,
@@ -85,23 +85,23 @@ class Game:
         farmer_location,
     ):
         if need_water_1 != 0:
-            if self.nbt(0) < farmer_id <= self.nbt(5):
+            if self.nbt(2) < farmer_id <= self.nbt(7):
                 self.add_command(f"{farmer_id} ARROSER 1")
         if need_water_2 != 0:
-            if self.nbt(5) < farmer_id <= self.nbt(10):
+            if self.nbt(7) < farmer_id <= self.nbt(12):
                 self.add_command(f"{farmer_id} ARROSER 2")
         if need_water_3 != 0:
-            if self.nbt(10) < farmer_id <= self.nbt(15):
+            if self.nbt(12) < farmer_id <= self.nbt(17):
                 self.add_command(f"{farmer_id} ARROSER 3")
         if need_water_4 != 0:
-            if self.nbt(15) < farmer_id <= self.nbt(20):
+            if self.nbt(17) < farmer_id <= self.nbt(22):
                 self.add_command(f"{farmer_id} ARROSER 4")
         if need_water_5 != 0:
-            if self.nbt(20) < farmer_id <= self.nbt(25):
+            if self.nbt(22) < farmer_id <= self.nbt(27):
                 self.add_command(f"{farmer_id} ARROSER 5")
 
     def stocker_field1(self, content, need_water, farmer_id, farmer_pos):
-        if content != "NONE" and farmer_id == 38:
+        if content != "NONE" and farmer_id == 1:
             if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD1"):
                 self.add_command(f"{farmer_id} STOCKER 1 1")
                 return True
@@ -111,7 +111,7 @@ class Game:
         return False
 
     def stocker_field2(self, content, need_water, farmer_id, farmer_pos):
-        if content != "NONE" and farmer_id == 39:
+        if content != "NONE" and farmer_id == 2:
             if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD2"):
                 self.add_command(f"{farmer_id} STOCKER 2 2")
                 return True
@@ -125,7 +125,7 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == self.nbt(32) + field_index
+            and farmer_id == self.nbt(34) + field_index
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
             self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
@@ -133,7 +133,7 @@ class Game:
         return False
 
     def fire(self):
-        for farmer_id in range(1, 38):
+        for farmer_id in range(3, 40):
             self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
 
     def end_game(self):
