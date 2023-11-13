@@ -87,6 +87,7 @@ class PlayerGameClient(Client):
                                 need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
+                                stock=soup_factory["stock"]
                             )
             if (
                 5 <= game_data["day"] < 480

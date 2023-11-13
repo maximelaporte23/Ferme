@@ -125,14 +125,26 @@ class Game:
                 return True
         return False
 
-    def stocker_field3_4_5(self, field_pos, content, need_water, farmer_id, farmer_pos):
+    def stocker_field3_4_5(
+        self, field_pos, content, need_water, farmer_id, farmer_pos, stock
+    ):
         field_index = int(field_pos[-1])
         if content != "NONE" and farmer_id == self.nbt(33) + field_index:
-            if need_water == 0 and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM"):
+            if (
+                need_water == 0
+                and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
+            ):
                 self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
                 return True
             if need_water != 0 and farmer_pos == "SOUP_FACTORY":
-                self.add_command(f"{farmer_id} CUISINER")
+                if (
+                    stock["POTATO"] != 0
+                    and stock["LEEK"] != 0
+                    and stock["TOMATO"] != 0
+                    and stock["ONION"] != 0
+                    and stock["ZUCCHINI"] != 0
+                ):
+                    self.add_command(f"{farmer_id} CUISINER")
                 return True
         return False
 
