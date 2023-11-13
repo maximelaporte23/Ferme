@@ -7,11 +7,13 @@ class Game:
     def __init__(self: "Game") -> None:
         self.commands: list[str] = []
         self.farmer: list[str] = []
-        self.fields: list[Field] = [Field(Location.FIELD1),
-                                    Field(Location.FIELD2),
-                                    Field(Location.FIELD3),
-                                    Field(Location.FIELD4),
-                                    Field(Location.FIELD5)]
+        self.fields: list[Field] = [
+            Field(Location.FIELD1),
+            Field(Location.FIELD2),
+            Field(Location.FIELD3),
+            Field(Location.FIELD4),
+            Field(Location.FIELD5)
+        ]
         self.vegetable_index = 0
         self.team = 0
 
