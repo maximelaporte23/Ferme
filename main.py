@@ -1,5 +1,3 @@
-#4 073 976
-
 import argparse
 
 from typing import NoReturn
@@ -25,8 +23,7 @@ class PlayerGameClient(Client):
                     break
             else:
                 raise ValueError(f"My farm is not found ({self.username})")
-            #print(my_farm)
-            print(game_data["day"])
+            print(my_farm)
 
             farms = my_farm
             fields_json = farms["fields"]
