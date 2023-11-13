@@ -1,5 +1,5 @@
-from vegetable import Vegetable
-from location import Location
+from notre_ferme.vegetable import Vegetable
+from notre_ferme.location import Location
 
 
 class Field:

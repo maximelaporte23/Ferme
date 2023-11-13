@@ -1,7 +1,7 @@
 import argparse
 
 from typing import NoReturn
-from game import Game
+from notre_ferme.game import Game
 
 from chronobio.network.client import Client
 
@@ -37,7 +37,7 @@ class PlayerGameClient(Client):
                     self.game.add_command("0 ACHETER_CHAMP")
                 for _ in range(5):
                     self.game.add_command("0 ACHETER_TRACTEUR")
-                for _ in range(1, 40):
+                for _ in range(1, 39):
                     self.game.add_command("0 EMPLOYER")
                 self.game.distribute_sawer(fields=fields_json)
                 self.game.distribute_farmers()
@@ -87,6 +87,7 @@ class PlayerGameClient(Client):
                                 need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
+                                stock=soup_factory["stock"]
                             )
             if (
                 5 <= game_data["day"] < 480
@@ -103,7 +104,7 @@ class PlayerGameClient(Client):
 
             ):
                 self.game.fire()
-                for _ in range(1, 38):
+                for _ in range(1, 37):
                     self.game.add_command("0 EMPLOYER")
                 if game_data["day"] == 480:
                     self.game.team = 1

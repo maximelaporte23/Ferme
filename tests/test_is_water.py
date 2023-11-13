@@ -1,6 +1,6 @@
-from location import Location
-from field import Field
-from vegetable import Vegetable
+from notre_ferme.location import Location
+from notre_ferme.field import Field
+from notre_ferme.vegetable import Vegetable
 
 
 def test_is_water_without_enough_water():

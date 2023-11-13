@@ -1,6 +1,6 @@
-from field import Field
-from vegetable import Vegetable
-from location import Location
+from notre_ferme.field import Field
+from notre_ferme.vegetable import Vegetable
+from notre_ferme.location import Location
 
 
 def test_is_seedable_with_valid_input():
