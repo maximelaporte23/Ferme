@@ -1,4 +1,4 @@
-#4 014 966
+#4 073 976
 
 import argparse
 
@@ -46,6 +46,11 @@ class PlayerGameClient(Client):
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
 
+            if game_data["day"] == 8:
+                for field in fields_json:
+                    if field["location"] == "FIELD1":
+                        self.game.sell(need_water=field["needed_water"])
+
             if (
                 5 <= game_data["day"] < 480
                 or 485 <= game_data["day"] < 960
@@ -64,7 +69,7 @@ class PlayerGameClient(Client):
                                 need_water_5=3,
                                 farmer_id=farmer["id"],
                             )
-                            if game_data["day"] < 1795:
+                            if game_data["day"] > 8:
                                 self.game.stocker_field1(
                                     content=field["content"],
                                     need_water=field["needed_water"],
@@ -120,12 +125,6 @@ class PlayerGameClient(Client):
 
             if game_data["day"] >= 1447:
                 self.game.cook_end(stock=soup_factory["stock"])
-
-            if game_data["day"] >= 1795:
-                self.game.add_command("1 CUISINER")
-
-            if game_data["day"] == 1797:
-                self.game.sell(need_water=field["needed_water"])
 
             self.send_commands()
 
