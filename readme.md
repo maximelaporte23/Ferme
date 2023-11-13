@@ -47,7 +47,7 @@ Voici le contenu présent dans le fichier requirements:
 flake8==3.9.0
 pytest==7.2.2
 pytest-cov==4.0.0
-pre-commit
+pre-commit==3.5.0
 ```
 
 Ensuite, pour installer le module qui permet de lancer les tests en local:
@@ -68,7 +68,7 @@ Nous avons créer dans notre repo un dossier "github" puis un workflow ou nous a
 
 Mypy permet d'aider le programmeur à bien formater le code.
 
-##  GitHub Actions
+##  GitHub Actions et qualimétrie
 
 Installation de [Flake8](https://flake8.pycqa.org/en/latest/):
 
@@ -83,7 +83,7 @@ Ceci est lancé dans le fichier qui a été créer à la racine du projet ferme 
 
 ### Tests des pré-commit
 
-La commande qui permet de lancer les pre-commit dls fichiers les fichiers sans faire de commit précedement : `pre-commit run --all-files`
+La commande qui permet de lancer les pre-commit dans les fichiers les fichiers sans faire de commit précedement : `pre-commit run --all-files`
 
 
 
