@@ -104,7 +104,7 @@ class Game:
             if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD1"):
                 self.add_command(f"{farmer_id} STOCKER 1 1")
                 return True
-            if need_water > 5 and farmer_pos == "SOUP_FACTORY":
+            if need_water >= 4 and farmer_pos == "SOUP_FACTORY":
                 self.add_command(f"{farmer_id} ARROSER 1")
                 return True
         return False
@@ -114,7 +114,7 @@ class Game:
             if need_water == 0 and (farmer_pos == "FARM" or farmer_pos == "FIELD2"):
                 self.add_command(f"{farmer_id} STOCKER 2 2")
                 return True
-            if need_water > 5 and farmer_pos == "SOUP_FACTORY":
+            if need_water >= 4 and farmer_pos == "SOUP_FACTORY":
                 self.add_command(f"{farmer_id} ARROSER 2")
                 return True
         return False
