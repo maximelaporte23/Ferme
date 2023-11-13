@@ -25,7 +25,7 @@ class Game:
             field.content = Vegetable[field_json["content"]]
 
     def nbt(self, number):
-        return 37 * self.team + number
+        return 35 * self.team + number
 
     def distribute_farmers(self):
         for farmer_num in range(3, 8):
@@ -48,7 +48,7 @@ class Game:
             self.add_command(f"{self.nbt(28) + i} ARROSER {i + 1}")
 
     def distribute_cook(self):
-        for farmer_num in range(33, 37):
+        for farmer_num in range(33, 35):
             self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
     def cook(self, stock):
@@ -59,7 +59,7 @@ class Game:
             and stock["ONION"] != 0
             and stock["ZUCCHINI"] != 0
         ):
-            for farmer_num in range(33, 37):
+            for farmer_num in range(33, 35):
                 self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
     def saw(self, fields, stock):
@@ -127,7 +127,7 @@ class Game:
 
     def stocker_field3_4_5(self, field_pos, content, need_water, farmer_id, farmer_pos):
         field_index = int(field_pos[-1])
-        if content != "NONE" and farmer_id == self.nbt(34) + field_index:
+        if content != "NONE" and farmer_id == self.nbt(32) + field_index:
             if need_water == 0 and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM"):
                 self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
                 return True
@@ -137,11 +137,11 @@ class Game:
         return False
 
     def fire(self):
-        for farmer_id in range(3, 40):
+        for farmer_id in range(3, 38):
             self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
 
     def end_game(self):
-        for farmer_id in range(40, 44):
+        for farmer_id in range(38, 42):
             self.add_command(f"{self.nbt(farmer_id)} CUISINER")
 
     def cook_end(self, stock):
@@ -152,7 +152,7 @@ class Game:
             and stock["ONION"] != 0
             and stock["ZUCCHINI"] != 0
         ):
-            for farmer_id in range(40, 44):
+            for farmer_id in range(38, 42):
                 self.add_command(f"{self.nbt(farmer_id)} CUISINER")
 
     def sell(self, need_water):
