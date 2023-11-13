@@ -104,30 +104,6 @@ class PlayerGameClient(Client):
             ):
                 self.game.cook(stock=soup_factory["stock"])
 
-            if game_data["day"] == 200:
-                self.game.team = 1
-
-            if game_data["day"] == 400:
-                self.game.team = 2
-
-            if game_data["day"] == 600:
-                self.game.team = 3
-
-            if game_data["day"] == 800:
-                self.game.team = 4
-
-            if game_data["day"] == 1000:
-                self.game.team = 5
-
-            if game_data["day"] == 1200:
-                self.game.team = 6
-
-            if game_data["day"] == 1400:
-                self.game.team = 7
-
-            if game_data["day"] == 1600:
-                self.game.team = 8
-
             if (
                 game_data["day"] == 200
                 or game_data["day"] == 400
@@ -142,6 +118,29 @@ class PlayerGameClient(Client):
                 self.game.fire()
                 for _ in range(1, 38):
                     self.game.add_command("0 EMPLOYER")
+                if game_data["day"] == 200:
+                    self.game.team = 1
+
+                if game_data["day"] == 400:
+                    self.game.team = 2
+
+                if game_data["day"] == 600:
+                    self.game.team = 3
+
+                if game_data["day"] == 800:
+                    self.game.team = 4
+
+                if game_data["day"] == 1000:
+                    self.game.team = 5
+
+                if game_data["day"] == 1200:
+                    self.game.team = 6
+
+                if game_data["day"] == 1400:
+                    self.game.team = 7
+
+                if game_data["day"] == 1600:
+                    self.game.team = 8
                 self.game.distribute_sawer_2(fields=fields_json)
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
