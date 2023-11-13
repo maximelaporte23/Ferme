@@ -1,6 +1,7 @@
-# Projet Ferme
+# Equipe Ferme
 
-### By Dellau Landry, Gonzalez Célia, Laporte Maxime et Madelpech Aimy
+### Jeux python par Vincent Poulailleau
+Développement du PlayerGameClient par Dellau Landry, Gonzalez Célia, Laporte Maxime et Madelpech Aimy
 
 # Mise en place du projet
 ### Travail en local
@@ -15,7 +16,7 @@ Pour cela nous avons besoin de créer un environnement virtuel "venv" qui nous p
 Nous avons créer notre repository "Ferme" qui contient un dossier "chronobio" ceci nous permet de pouvoir lancer notre compétition en mode réseau.
 
 ### Installation des outils
-- Pour nous permettre de lancer la simulation dans l'environnement virtuel de la meilleure des façons, il est important d'avoir une version de python la plus récente car les versions antérieur à python3.10 ne lancent pas la simulation.
+- Pour nous permettre de lancer la simulation dans l'environnement virtuel de la meilleure des façons, il est important d'avoir une version de python la plus récente car les versions antérieur à python3.10 ne lancent pas le plateau de jeu de la simulation.
 - Installation de python3.10: `pip install python3.10`
 - Installation des requirements pour les dépendances: `python3 -m pip install -r requirements.txt`
 
@@ -32,51 +33,57 @@ Nous avons créer notre repository "Ferme" qui contient un dossier "chronobio" c
 ### Arrêt de la simulation
 - Afin d'interrompre la simulation du jeux la ligne de commande à exécuter est dans le chemin du projet chronobio et il faut lancer dans le terminal le script : `python killal.py`
 
-# GitHub Actions
-## Installations de pytest
+## Automatisation des tests :
 
-Pour installer le module des tests:
+### Installations de Pytest
+
+Documentation de [PyTest](https://pypi.org/project/pytest/).
+
+Le fichier d'installation de pytest :
+`pip install -r requirements-test.txt`
+
+Voici le contenu présent dans le fichier requirements:
+```
+flake8==3.9.0
+pytest==7.2.2
+pytest-cov==4.0.0
+pre-commit
+```
+
+Ensuite, pour installer le module qui permet de lancer les tests en local:
 `pip install pytest`
 
-Nous avons créer dans notre repo un dossier "github" puis un workflow ou nous avons intégrer un fichier qui nous permet de pouvoir automatiser des tests.
-```
-/.github/workflows/run_test.yml
-```
+Enfin, la documentation python_coverage:
 
-# Gestion des Tests
-### Outils de formatage de code
+- [Pytest-cov 4.1.0 ](https://pypi.org/project/pytest-cov/)
 
-Pour pouvoir vérifier l'intégrité de notre code nous avons installé des des dépendances qui vérifie les normes, tel que la pep20 par exemple, avcec Flake8 ou ruff.
+Nous avons créer dans notre repo un dossier "github" puis un workflow ou nous avons intégrer un fichier qui nous permet de pouvoir automatiser des tests dans le workflow de github.
+[run_test.yml](/.github/workflows/run_test.yml).
 
-    `pip install flake8`
-    `pip install ruff`
 
-Installation de `mypy`:
 
-    `pip install mypy`
+### Installation de `mypy`:
 
-Ceci sont des aides de formatage de code.
+[MyPy](https://pypi.org/project/mypy/):`pip install mypy`
+
+Mypy permet d'aider le programmeur à bien formater le code.
+
+##  GitHub Actions
+
+Installation de [Flake8](https://flake8.pycqa.org/en/latest/):
+
+Nous avons ajouté GitHub Action qui nous permet de lancer un script run_flake8.yml dont flake8 nous permet de faire de l'intégration continu dans pytest.
+Celui-ci permet l'intégrité de notre code et qui vérifie les normes:
+
 
 ### Installation des pré-commit
 Pré-commit nous sert à détecter et à reformater le code si il y a des erreurs de formattage.
-Dans le répertoire .github dans le répertoire de "ferme", nous avons mis dans le dossier workflows, le fichier `run_test.yml`
+Dans le répertoire .github dans le répertoire de "ferme", nous avons mis dans le dossier workflows, le fichier `run_test.yml`, ce fichier permet de vérfifier nos dépendances et les hooks du projet qui sont installés lors des pré-commit.
+Ceci est lancé dans le fichier qui a été créer à la racine du projet ferme : `.pre-commit-config.yml`.
 
-
-
-### Installation des Utilisation de pytest
-### Utilisation de outils dans le projet
 ### Tests des pré-commit
 
-### Navigation dans le projet
-
-# Installation des pré-commit
-### Installation des Utilisation de pytest
-### Utilisation de outils dans le projet
-### Tests des pré-commit
-
-
-
-# Le plan d'action
+La commande qui permet de lancer les pre-commit dls fichiers les fichiers sans faire de commit précedement : `pre-commit run --all-files`
 
 
 
@@ -85,12 +92,12 @@ Dans le répertoire .github dans le répertoire de "ferme", nous avons mis dans 
 ### Théorie :
 
 Lors du développement du projet nous devions prendre en compte plusieurs éléments :
-    • Achat champs 
-    • Achat tracteurs 
-    • Gestion des employés 
-    • Gestion des licenciements 
-    • Gestion des déplacements 
-    • Gestion production soupe 
+    • Achat champs
+    • Achat tracteurs
+    • Gestion des employés
+    • Gestion des licenciements
+    • Gestion des déplacements
+    • Gestion production soupe
     • Vente de légumes du champ
 
 ### Gestion champs/tracteurs
@@ -112,7 +119,7 @@ Pour la gestion des licenciements nous avons fait une simulation sur plusieurs d
 ### Explication pattern
 Lorsque nous avons un groupe d'employés sur un champ nous avons les actions suivantes effectuées :
     • 1 employé plante 1 des 5 légumes (Dès qu’un légume est planté, le prochain dans la liste est planté, un légume après l’autre)
-    • 5 employés arrosent le champ 
+    • 5 employés arrosent le champ
 Lorsqu'un tracteur est appelé sur un champ c'est pour stocker la récolte dans l'usine. Les 4 cuisiniers produisent en permanence des soupes. Ensuite, au bout de 4 ans, 3 cuisiniers supplémentaires sont embauchés pour vider les stocks dans l’usine à soupe.
 
 ### Gestion de la production soupe
@@ -122,4 +129,5 @@ Nous avons employé 3 cuisiniers dans un premier temps afin de gonfler les stock
 
 ### Scores obtenus
 Mode Local : 3 500 000
+
 Mode Réseau : 2 000 000
