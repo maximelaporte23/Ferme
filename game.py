@@ -73,21 +73,6 @@ class Game:
         for i, field in enumerate(fields):
             if field["content"] == "NONE":
                 self.add_command(f"{self.nbt(26) + i} SEMER {min_veggie_fr} {i + 1}")
-        #field1 = fields[0]
-        #field2 = fields[1]
-        #field3 = fields[2]
-        #field4 = fields[3]
-        #field5 = fields[4]
-        #if field1["content"] == "NONE":
-        #    self.add_command(f"{self.nbt(26)} SEMER {min_veggie_fr} 1")
-        #if field2["content"] == "NONE":
-        #    self.add_command(f"{self.nbt(27)} SEMER {min_veggie_fr} 2")
-        #if field3["content"] == "NONE":
-        #    self.add_command(f"{self.nbt(28)} SEMER {min_veggie_fr} 3")
-        #if field4["content"] == "NONE":
-        #    self.add_command(f"{self.nbt(29)} SEMER {min_veggie_fr} 4")
-        #if field5["content"] == "NONE":
-        #    self.add_command(f"{self.nbt(30)} SEMER {min_veggie_fr} 5")
 
     def water(
         self,

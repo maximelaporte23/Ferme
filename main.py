@@ -82,10 +82,10 @@ class PlayerGameClient(Client):
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
                             )
-            if 30 <= game_data["day"] <= 898 or game_data["day"] >= 905:
+            if 30 <= game_data["day"] <= 899 or game_data["day"] >= 906:
                 self.game.cook(stock=soup_factory["stock"])
 
-            if game_data["day"] == 899:
+            if game_data["day"] == 900:
                 self.game.fire()
                 for _ in range(1, 38):
                     self.game.add_command("0 EMPLOYER")
