@@ -35,11 +35,11 @@ class Game:
 
     def distribute_sawer(self, fields):
         for i, field in enumerate(fields):
-            self.add_command(f"{self.nbt(28) + i} SEMER PATATE {field}")
+            self.add_command(f"{self.nbt(28) + i} SEMER PATATE {i + 1}")
 
     def distribute_sawer_2(self, fields):
         for i, field in enumerate(fields):
-            self.add_command(f"{self.nbt(28) + i} ARROSER {field}")
+            self.add_command(f"{self.nbt(28) + i} ARROSER {i + 1}")
 
     def distribute_cook(self):
         for farmer_num in range(33, 37):
