@@ -125,7 +125,7 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == self.nbt(34) + field_index
+            and farmer_id == self.nbt(32) + field_index
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
             self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
