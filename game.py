@@ -127,14 +127,13 @@ class Game:
 
     def stocker_field3_4_5(self, field_pos, content, need_water, farmer_id, farmer_pos):
         field_index = int(field_pos[-1])
-        if (
-            need_water == 0
-            and content != "NONE"
-            and farmer_id == self.nbt(34) + field_index
-            and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
-        ):
-            self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
-            return True
+        if content != "NONE" and farmer_id == self.nbt(34) + field_index:
+            if need_water == 0 and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM"):
+                self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
+                return True
+            if need_water != 0 and farmer_pos == "SOUP_FACTORY":
+                self.add_command(f"{farmer_id} CUISINER")
+                return True
         return False
 
     def fire(self):
