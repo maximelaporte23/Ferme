@@ -47,14 +47,14 @@ class PlayerGameClient(Client):
                 self.game.distribute_cook()
 
             if (
-                5 <= game_data["day"] <= 200
-                or 205 <= game_data["day"] <= 400
-                or 405 <= game_data["day"] <= 600
-                or 605 <= game_data["day"] <= 800
-                or 805 <= game_data["day"] <= 1000
-                or 1005 <= game_data["day"] <= 1200
-                or 1205 <= game_data["day"] <= 1400
-                or 1405 <= game_data["day"] <= 1600
+                5 <= game_data["day"] < 200
+                or 205 <= game_data["day"] < 400
+                or 405 <= game_data["day"] < 600
+                or 605 <= game_data["day"] < 800
+                or 805 <= game_data["day"] < 1000
+                or 1005 <= game_data["day"] < 1200
+                or 1205 <= game_data["day"] < 1400
+                or 1405 <= game_data["day"] < 1600
                 or game_data["day"] >= 1605
             ):
                 self.game.saw(fields=fields_json, stock=soup_factory["stock"])
@@ -92,35 +92,17 @@ class PlayerGameClient(Client):
                                 farmer_pos=farmer["location"],
                             )
             if (
-                5 <= game_data["day"] <= 200
-                or 206 <= game_data["day"] <= 400
-                or 406 <= game_data["day"] <= 600
-                or 606 <= game_data["day"] <= 800
-                or 806 <= game_data["day"] <= 1000
-                or 1006 <= game_data["day"] <= 1200
-                or 1206 <= game_data["day"] <= 1400
-                or 1406 <= game_data["day"] <= 1600
+                5 <= game_data["day"] < 200
+                or 206 <= game_data["day"] < 400
+                or 406 <= game_data["day"] < 600
+                or 606 <= game_data["day"] < 800
+                or 806 <= game_data["day"] < 1000
+                or 1006 <= game_data["day"] < 1200
+                or 1206 <= game_data["day"] < 1400
+                or 1406 <= game_data["day"] < 1600
                 or game_data["day"] >= 1605
             ):
                 self.game.cook(stock=soup_factory["stock"])
-
-            if (
-                game_data["day"] == 200
-                or game_data["day"] == 400
-                or game_data["day"] == 600
-                or game_data["day"] == 800
-                or game_data["day"] == 1000
-                or game_data["day"] == 1200
-                or game_data["day"] == 1400
-                or game_data["day"] == 1600
-
-            ):
-                self.game.fire()
-                for _ in range(1, 38):
-                    self.game.add_command("0 EMPLOYER")
-                self.game.distribute_sawer_2(fields=fields_json)
-                self.game.distribute_farmers()
-                self.game.distribute_cook()
 
             if game_data["day"] == 200:
                 self.game.team = 1
@@ -145,6 +127,24 @@ class PlayerGameClient(Client):
 
             if game_data["day"] == 1600:
                 self.game.team = 8
+
+            if (
+                game_data["day"] == 200
+                or game_data["day"] == 400
+                or game_data["day"] == 600
+                or game_data["day"] == 800
+                or game_data["day"] == 1000
+                or game_data["day"] == 1200
+                or game_data["day"] == 1400
+                or game_data["day"] == 1600
+
+            ):
+                self.game.fire()
+                for _ in range(1, 38):
+                    self.game.add_command("0 EMPLOYER")
+                self.game.distribute_sawer_2(fields=fields_json)
+                self.game.distribute_farmers()
+                self.game.distribute_cook()
 
             if game_data["day"] == 1441:
                 for _ in range(1, 5):
