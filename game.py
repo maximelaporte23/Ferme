@@ -19,7 +19,7 @@ class Game:
             field.content = Vegetable[field_json["content"]]
 
     def nbt(self, number):
-        return 37 * self.team + 2 + number
+        return 37 * self.team + number
 
     def distribute_farmers(self):
         for farmer_num in range(3, 8):
@@ -34,11 +34,11 @@ class Game:
             self.add_command(f"{self.nbt(farmer_num)} ARROSER 5")
 
     def distribute_sawer(self, fields):
-        for i, field in enumerate(fields):
+        for i in enumerate(fields):
             self.add_command(f"{self.nbt(28) + i} SEMER PATATE {i + 1}")
 
     def distribute_sawer_2(self, fields):
-        for i, field in enumerate(fields):
+        for i in enumerate(fields):
             self.add_command(f"{self.nbt(28) + i} ARROSER {i + 1}")
 
     def distribute_cook(self):
@@ -82,7 +82,6 @@ class Game:
         need_water_4,
         need_water_5,
         farmer_id,
-        farmer_location,
     ):
         if need_water_1 != 0:
             if self.nbt(2) < farmer_id <= self.nbt(7):
@@ -125,7 +124,7 @@ class Game:
         if (
             need_water == 0
             and content != "NONE"
-            and farmer_id == self.nbt(32) + field_index
+            and farmer_id == self.nbt(34) + field_index
             and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
         ):
             self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
@@ -139,7 +138,7 @@ class Game:
     def end_game(self):
         for farmer_id in range(77, 81):
             self.add_command(f"{farmer_id} CUISINER")
-    
+
     def cook_end(self, stock):
         if (
             stock["POTATO"] != 0

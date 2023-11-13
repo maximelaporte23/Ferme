@@ -58,7 +58,6 @@ class PlayerGameClient(Client):
                                 need_water_4=3,
                                 need_water_5=3,
                                 farmer_id=farmer["id"],
-                                farmer_location=farmer["location"],
                             )
                             if game_data["day"] < 1795:
                                 self.game.stocker_field1(
