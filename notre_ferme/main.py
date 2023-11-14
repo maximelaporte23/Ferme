@@ -43,7 +43,7 @@ class PlayerGameClient(Client):
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
 
-            if game_data["day"] == 2 and game_data["day"] == 3:
+            if game_data["day"] == 2 or game_data["day"] == 3:
                 for farmer_num in range(3, 8):
                     self.game.add_command(f"{farmer_num} ARROSER 1")
 
