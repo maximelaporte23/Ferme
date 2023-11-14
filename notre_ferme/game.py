@@ -79,8 +79,8 @@ class Game:
         for i, field in enumerate(fields):
             if field["content"] == "NONE":
                 self.add_command(f"{self.nbt(28) + i} SEMER {min_veggie_fr} {i + 1}")
-            if field["content"] != "NONE":
-                self.add_command("32 CUISINER")
+        if field["content"] != "NONE":
+            self.add_command("32 CUISINER")
 
     def water(
         self,
