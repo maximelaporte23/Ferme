@@ -161,7 +161,7 @@ class Game:
             self.add_command(f"0 LICENCIER {self.nbt(farmer_id)}")
 
     def end_game(self):
-        for farmer_id in range(38, 41):
+        for farmer_id in range(38, 42):
             self.add_command(f"{self.nbt(farmer_id)} CUISINER")
 
     def cook_end(self, stock):
