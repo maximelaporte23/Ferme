@@ -68,7 +68,7 @@ class Game:
             for farmer_num in range(31, 34):
                 self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
-    def min_veggie(self, fields, stock, farmer_pos, farmer_id):
+    def saw(self, fields, stock, farmer_pos, farmer_id):
         min_veggie = min(stock, key=stock.get)
         min_veggie_fr = ""
         if min_veggie == "POTATO":
@@ -117,7 +117,7 @@ class Game:
                 self.add_command(f"{farmer_id} ARROSER 2")
         if need_water_3 != 0:
             if self.nbt(12) < farmer_id <= self.nbt(17):
-                self.add_command(f"{farmer_id} ARROSER 3")
+                self.add_command(f"{ffarmer_id=farmer["id"]armer_id} ARROSER 3")
         if need_water_4 != 0:
             if self.nbt(17) < farmer_id <= self.nbt(22):
                 self.add_command(f"{farmer_id} ARROSER 4")
