@@ -84,13 +84,6 @@ class PlayerGameClient(Client):
                                 farmer_pos=farmer["location"],
                                 stock=soup_factory["stock"]
                             )
-            if (
-                5 <= game_data["day"] < 480
-                or 486 <= game_data["day"] < 960
-                or 966 <= game_data["day"] < 1440
-                or game_data["day"] >= 1446
-            ):
-                self.game.cook(stock=soup_factory["stock"])
 
             if (
                 game_data["day"] == 480
@@ -108,7 +101,6 @@ class PlayerGameClient(Client):
                     self.game.team = 3
                 self.game.distribute_sawer_2(fields=fields_json)
                 self.game.distribute_farmers()
-                self.game.distribute_cook()
 
             if game_data["day"] == 1441:
                 for _ in range(1, 5):
