@@ -55,6 +55,11 @@ class PlayerGameClient(Client):
             ):
                 for farmer in farmers:
                     for field in fields_json:
+                        self.game.saw(
+                            farmer_pos=farmer["location"],
+                            fields=fields_json,
+                            stock=soup_factory["stock"]
+                        )
                         self.game.field1_2(
                             content=field["content"],
                             farmer_id=farmer["id"],
