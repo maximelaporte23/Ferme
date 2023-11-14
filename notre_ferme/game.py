@@ -6,7 +6,7 @@ from notre_ferme.vegetable import Vegetable
 class Game:
     def __init__(self: "Game") -> None:
         self.commands: list[str] = []
-        self.farmer: list[str] = []
+        self.farmer = []
         self.fields: list[Field] = [
             Field(Location.FIELD1),
             Field(Location.FIELD2),
