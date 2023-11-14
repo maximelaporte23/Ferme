@@ -118,7 +118,7 @@ class Game:
                 self.add_command(f"{farmer_id} ARROSER 2")
         if need_water_3 != 0:
             if self.nbt(12) < farmer_id <= self.nbt(17):
-                self.add_command(f"{ffarmer_id=farmer["id"]armer_id} ARROSER 3")
+                self.add_command(f"{farmer_id} ARROSER 3")
         if need_water_4 != 0:
             if self.nbt(17) < farmer_id <= self.nbt(22):
                 self.add_command(f"{farmer_id} ARROSER 4")
