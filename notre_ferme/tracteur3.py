@@ -49,10 +49,10 @@ class PlayerGameClient(Client):
                         self.game.sell(need_water=field["needed_water"])
 
             if (
-                5 <= game_data["day"] < 480
-                or 485 <= game_data["day"] < 960
-                or 965 <= game_data["day"] < 1440
-                or game_data["day"] >= 1445
+                4 <= game_data["day"] < 480
+                or 484 <= game_data["day"] < 960
+                or 964 <= game_data["day"] < 1440
+                or game_data["day"] >= 1444
             ):
                 self.game.saw(fields=fields_json, stock=soup_factory["stock"])
                 for farmer in farmers:
@@ -91,9 +91,9 @@ class PlayerGameClient(Client):
                             )
             if (
                 5 <= game_data["day"] < 480
-                or 486 <= game_data["day"] < 960
-                or 966 <= game_data["day"] < 1440
-                or game_data["day"] >= 1446
+                or 485 <= game_data["day"] < 960
+                or 965 <= game_data["day"] < 1440
+                or game_data["day"] >= 1445
             ):
                 self.game.cook(stock=soup_factory["stock"])
 
