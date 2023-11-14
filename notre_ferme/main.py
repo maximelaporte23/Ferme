@@ -41,7 +41,6 @@ class PlayerGameClient(Client):
                     self.game.add_command("0 EMPLOYER")
                 self.game.distribute_sawer(fields=fields_json)
                 self.game.distribute_farmers()
-                self.game.distribute_cook()
 
             if game_data["day"] == 8:
                 for field in fields_json:
