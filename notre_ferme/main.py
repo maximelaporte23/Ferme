@@ -41,6 +41,7 @@ class PlayerGameClient(Client):
                     self.game.add_command("0 EMPLOYER")
                 self.game.distribute_sawer(fields=fields_json)
                 self.game.distribute_farmers()
+                self.game.distribute_cook()
 
             if game_data["day"] == 8:
                 for field in fields_json:
@@ -53,32 +54,31 @@ class PlayerGameClient(Client):
                 or 965 <= game_data["day"] < 1440
                 or game_data["day"] >= 1445
             ):
+                self.game.saw(fields=fields_json, stock=soup_factory["stock"])
                 for farmer in farmers:
                     for field in fields_json:
-                        self.game.saw(
-                            farmer_pos=farmer["location"],
-                            fields=fields_json,
-                            stock=soup_factory["stock"]
-                        )
-                        self.game.field1_2(
-                            content=field["content"],
-                            farmer_id=farmer["id"],
-                            farmer_pos=farmer["location"]
-                        )
                         if field["location"] == "FIELD1":
+                            self.game.water(
+                                need_water_1=field["needed_water"],
+                                need_water_2=3,
+                                need_water_3=3,
+                                need_water_4=3,
+                                need_water_5=3,
+                                farmer_id=farmer["id"],
+                            )
                             if game_data["day"] > 8:
                                 self.game.stocker_field1(
                                     content=field["content"],
                                     need_water=field["needed_water"],
                                     farmer_id=farmer["id"],
-                                    farmer_pos=farmer["location"]
+                                    farmer_pos=farmer["location"],
                                 )
                         if field["location"] == "FIELD2":
                             self.game.stocker_field2(
                                 content=field["content"],
                                 need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
-                                farmer_pos=farmer["location"]
+                                farmer_pos=farmer["location"],
                             )
                         if field["location"] in ("FIELD3", "FIELD4", "FIELD5"):
                             self.game.stocker_field3_4_5(
@@ -87,8 +87,15 @@ class PlayerGameClient(Client):
                                 need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
-                                stock=soup_factory["stock"]
+                                stock=soup_factory["stock"],
                             )
+            if (
+                5 <= game_data["day"] < 480
+                or 486 <= game_data["day"] < 960
+                or 966 <= game_data["day"] < 1440
+                or game_data["day"] >= 1446
+            ):
+                self.game.cook(stock=soup_factory["stock"])
 
             if (
                 game_data["day"] == 480
@@ -106,6 +113,7 @@ class PlayerGameClient(Client):
                     self.game.team = 3
                 self.game.distribute_sawer_2(fields=fields_json)
                 self.game.distribute_farmers()
+                self.game.distribute_cook()
 
             if game_data["day"] == 1441:
                 for _ in range(1, 5):
