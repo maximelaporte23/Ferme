@@ -45,7 +45,7 @@ class PlayerGameClient(Client):
 
             if game_data["day"] == 2:
                 for farmer_num in range(3, 8):
-                    self.add_command(f"{self.nbt(farmer_num)} ARROSER 1")
+                    self.game.add_command(f"{self.nbt(farmer_num)} ARROSER 1")
 
             if game_data["day"] == 3:
                 for field in fields_json:
