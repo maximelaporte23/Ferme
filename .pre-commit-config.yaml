@@ -5,7 +5,8 @@ repos:
     -   id: check-yaml
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
--   repo: https://github.com/psf/black
-    rev: 22.10.0
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.7.0
     hooks:
-    -   id: black
+    -   id: mypy
+        exclude: "/chronobio/.*\\.py"
