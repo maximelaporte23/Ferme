@@ -10,3 +10,7 @@ repos:
     hooks:
     -   id: mypy
         exclude: "/chronobio/network/.*\\.py"
+-   repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+    -   id: black
