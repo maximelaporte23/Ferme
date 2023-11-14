@@ -130,5 +130,5 @@ Initialement, nous avons évalué la capacité optimale de stockage des légumes
 Nous avons engagé trois cuisiniers pour augmenter le stock de légumes dans l'usine à soupe. À la fin de la dernière année, nous avons recruté 4 cuisiniers supplémentaires dans le but de liquider les stocks et d'optimiser les bénéfices.
 
 ### Scores obtenus
-Mode Local : 4 140 041
+Mode Local : 4 189 861
 Mode Réseau : 3 996 030
