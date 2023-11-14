@@ -10,7 +10,7 @@ repos:
     rev: v1.7.0
     hooks:
     -   id: mypy
-    exclude: ^(?!(chronobio/)).*$
+    exclude: ^(?!(notre_ferme/|tests/)).*$
     # args: ["--ignore-missing-imports", "--scripts-are-modules", "notre_ferme", "test"]
 
 
