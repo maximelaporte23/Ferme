@@ -87,7 +87,8 @@ class Game:
                 and stock["ONION"] != 0
                 and stock["ZUCCHINI"] != 0
             ):
-                self.add_command("32 CUISINER")
+                self.add_command(f"{self.nbt(31)} CUISINER")
+                self.add_command(f"{self.nbt(32)} CUISINER")
 
     def water(
         self,
