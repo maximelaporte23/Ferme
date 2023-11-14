@@ -87,7 +87,7 @@ class PlayerGameClient(Client):
                                 need_water=field["needed_water"],
                                 farmer_id=farmer["id"],
                                 farmer_pos=farmer["location"],
-                                stock=soup_factory["stock"]
+                                stock=soup_factory["stock"],
                             )
             if (
                 5 <= game_data["day"] < 480
@@ -101,7 +101,6 @@ class PlayerGameClient(Client):
                 game_data["day"] == 480
                 or game_data["day"] == 960
                 or game_data["day"] == 1440
-
             ):
                 self.game.fire()
                 for _ in range(1, 35):

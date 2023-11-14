@@ -1,9 +1,8 @@
 class Farmer:
-
     def __init__(self, id, field):
         self.id = id
         self.field = field
-        
+
     def farmers_in_field_1(self, id, field):
         field.farmers = Farmer(2, 1)
 
