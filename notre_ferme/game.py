@@ -12,7 +12,7 @@ class Game:
             Field(Location.FIELD2),
             Field(Location.FIELD3),
             Field(Location.FIELD4),
-            Field(Location.FIELD5)
+            Field(Location.FIELD5),
         ]
         self.vegetable_index = 0
         self.team = 0
@@ -130,9 +130,8 @@ class Game:
     ):
         field_index = int(field_pos[-1])
         if content != "NONE" and farmer_id == self.nbt(33) + field_index:
-            if (
-                need_water == 0
-                and (farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM")
+            if need_water == 0 and (
+                farmer_pos == "SOUP_FACTORY" or farmer_pos == "FARM"
             ):
                 self.add_command(f"{farmer_id} STOCKER {field_index} {field_index}")
                 return True
