@@ -43,7 +43,11 @@ class PlayerGameClient(Client):
                 self.game.distribute_farmers()
                 self.game.distribute_cook()
 
-            if game_data["day"] == 8:
+            if game_data["day"] == 2:
+                for farmer_num in range(3, 8):
+                    self.add_command(f"{self.nbt(farmer_num)} ARROSER 1")
+
+            if game_data["day"] == 3:
                 for field in fields_json:
                     if field["location"] == "FIELD1":
                         self.game.sell(need_water=field["needed_water"])
@@ -66,12 +70,11 @@ class PlayerGameClient(Client):
                                 need_water_5=3,
                                 farmer_id=farmer["id"],
                             )
-                            if game_data["day"] > 8:
-                                self.game.stocker_field1(
-                                    content=field["content"],
-                                    need_water=field["needed_water"],
-                                    farmer_id=farmer["id"],
-                                    farmer_pos=farmer["location"],
+                            self.game.stocker_field1(
+                                content=field["content"],
+                                need_water=field["needed_water"],
+                                farmer_id=farmer["id"],
+                                farmer_pos=farmer["location"],
                                 )
                         if field["location"] == "FIELD2":
                             self.game.stocker_field2(
