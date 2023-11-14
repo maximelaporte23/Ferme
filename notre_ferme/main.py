@@ -103,7 +103,7 @@ class PlayerGameClient(Client):
                 or game_data["day"] == 1440
             ):
                 self.game.fire()
-                for _ in range(1, 35):
+                for _ in range(1, 37):
                     self.game.add_command("0 EMPLOYER")
                 if game_data["day"] == 480:
                     self.game.team = 1
