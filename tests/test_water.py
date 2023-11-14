@@ -1,20 +1,37 @@
 from notre_ferme.game import Game
 
 
-def test_water_function():
-    instance = Game()
-    instance.water(1, 0, 2, 0, 3, 4, "FIELD")
+def test_water_with_need_water_1():
+    game = Game()
+    farmer_id = 5
 
-    expected_commands = [
-        "4 ARROSER 1",
-        "4 ARROSER 3",
-        "4 ARROSER 3",
-        "4 ARROSER 5",
-        "4 ARROSER 5",
-        "4 ARROSER 5",
-    ]
+    game.water(1, 0, 0, 0, 0, farmer_id)
+    commands = game.commands
 
-    if instance.commands == expected_commands:
-        print("La méthode water a réussi le test.")
-    else:
-        print("La méthode water a échoué. Les commandes ne sont pas correctes.")
+    expected_commands = [f"{farmer_id} ARROSER 1"]
+
+    assert commands == expected_commands, "Le test a échoué avec need_water_1."
+
+
+def test_water_with_need_water_2():
+    game = Game()
+    farmer_id = 10
+
+    game.water(0, 1, 0, 0, 0, farmer_id)
+    commands = game.commands
+
+    expected_commands = [f"{farmer_id} ARROSER 2"]
+
+    assert commands == expected_commands, "Le test a échoué avec need_water_2."
+
+
+def test_water_with_no_need_water():
+    game = Game()
+    farmer_id = 20
+
+    game.water(0, 0, 0, 0, 0, farmer_id)
+    commands = game.commands
+
+    expected_commands = []  # Aucune commande ne devrait être générée sans besoin d'eau
+
+    assert commands == expected_commands, "Le test a échoué sans besoin d'eau."
