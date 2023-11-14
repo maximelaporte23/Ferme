@@ -37,7 +37,7 @@ class PlayerGameClient(Client):
                     self.game.add_command("0 ACHETER_CHAMP")
                 for _ in range(5):
                     self.game.add_command("0 ACHETER_TRACTEUR")
-                for _ in range(1, 39):
+                for _ in range(1, 37):
                     self.game.add_command("0 EMPLOYER")
                 self.game.distribute_sawer(fields=fields_json)
                 self.game.distribute_farmers()
@@ -104,7 +104,7 @@ class PlayerGameClient(Client):
 
             ):
                 self.game.fire()
-                for _ in range(1, 37):
+                for _ in range(1, 35):
                     self.game.add_command("0 EMPLOYER")
                 if game_data["day"] == 480:
                     self.game.team = 1
