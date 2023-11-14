@@ -93,7 +93,7 @@ class PlayerGameClient(Client):
                                 stock=soup_factory["stock"],
                             )
             if (
-                5 <= game_data["day"] < 480
+                6 <= game_data["day"] < 480
                 or 486 <= game_data["day"] < 960
                 or 966 <= game_data["day"] < 1440
                 or game_data["day"] >= 1446
