@@ -9,7 +9,8 @@ repos:
     rev: v1.7.0
     hooks:
     -   id: mypy
-        exclude: '^(Ferme/chronobio/)|(Fermpe/chronobio/)'
+        args: ["--ignore-missing-imports", "--scripts-are-modules"]
+        exclude: ^Ferme/chronobio/
 
 
 -   repo: https://github.com/psf/black
