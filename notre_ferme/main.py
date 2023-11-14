@@ -55,7 +55,6 @@ class PlayerGameClient(Client):
                 or game_data["day"] >= 1445
             ):
                 for farmer in farmers:
-                    self.game.saw(fields=fields_json, stock=soup_factory["stock"], farmer_pos=farmer["location"])
                     for field in fields_json:
                         if field["location"] == "FIELD1":
                             self.game.water(
