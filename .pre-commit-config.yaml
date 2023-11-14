@@ -9,7 +9,7 @@ repos:
     rev: v1.7.0
     hooks:
     -   id: mypy
-        -- exclude: "/chronobio/network/.*\\.py"
+        args: ['--exclude', 'chronobio']
 
 
 -   repo: https://github.com/psf/black
