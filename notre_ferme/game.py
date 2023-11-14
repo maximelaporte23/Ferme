@@ -69,7 +69,7 @@ class Game:
             for farmer_num in range(31, 34):
                 self.add_command(f"{self.nbt(farmer_num)} CUISINER")
 
-    def saw(self, fields, stock, farmer_pos):
+    def saw(self, fields, stock, farmer_pos, farmer_id):
         min_veggie = min(stock, key=stock.get)
         min_veggie_fr = ""
         if min_veggie == "POTATO":
@@ -84,18 +84,22 @@ class Game:
             min_veggie_fr = "COURGETTE"
 
         for field in enumerate(fields):
-            if field["content"] == "NONE" and farmer_pos == "FIELD1":
-                self.add_command(f"28 SEMER {min_veggie_fr} 2")
-            if field["content"] == "NONE" and farmer_pos == "FIELD2":
-                self.add_command(f"28 SEMER {min_veggie_fr} 1")
-            if field["content"] == "NONE" and farmer_pos == "FIELD3":
-                self.add_command(f"29 SEMER {min_veggie_fr} 4")
-            if field["content"] == "NONE" and farmer_pos == "FIELD4":
-                self.add_command(f"29 SEMER {min_veggie_fr} 3")
-            if field["content"] == "NONE" and farmer_pos == "FIELD5":
-                self.add_command("30 CUISINER")
-            if field["content"] == "NONE" and farmer_pos == "SOUP_FACTORY":
-                self.add_command(f"30 SEMER {min_veggie_fr} 5")
+            if field["content"] == "NONE":
+                if farmer_id == 28:
+                    if farmer_pos == "FIELD1":
+                        self.add_command(f"{farmer_id} SEMER {min_veggie_fr} 2")
+                    if farmer_pos == "FIELD2":
+                        self.add_command(f"{farmer_id} SEMER {min_veggie_fr} 1")
+                if farmer_id == 29:
+                    if farmer_pos == "FIELD3":
+                        self.add_command(f"{farmer_id} SEMER {min_veggie_fr} 4")
+                    if farmer_pos == "FIELD4":
+                        self.add_command(f"{farmer_id} SEMER {min_veggie_fr} 3")
+                if farmer_id == 30:
+                    if farmer_pos == "FIELD5":
+                        self.add_command(f"{farmer_id} CUISINER")
+                    if farmer_pos == "SOUP_FACTORY":
+                        self.add_command(f"{farmer_id} SEMER {min_veggie_fr} 5")
 
     def water(
         self,
@@ -114,7 +118,7 @@ class Game:
                 self.add_command(f"{farmer_id} ARROSER 2")
         if need_water_3 != 0:
             if self.nbt(12) < farmer_id <= self.nbt(17):
-                self.add_command(f"{farmer_id} ARROSER 3")
+                self.add_command(f"{ffarmer_id=farmer["id"]armer_id} ARROSER 3")
         if need_water_4 != 0:
             if self.nbt(17) < farmer_id <= self.nbt(22):
                 self.add_command(f"{farmer_id} ARROSER 4")
