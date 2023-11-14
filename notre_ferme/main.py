@@ -47,7 +47,7 @@ class PlayerGameClient(Client):
                 for farmer_num in range(3, 8):
                     self.game.add_command(f"{farmer_num} ARROSER 1")
 
-            if game_data["day"] == 3:
+            if game_data["day"] == 4:
                 for field in fields_json:
                     if field["location"] == "FIELD1":
                         self.game.sell(need_water=field["needed_water"])
