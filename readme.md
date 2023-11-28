@@ -132,3 +132,11 @@ Nous avons engagé trois cuisiniers pour augmenter le stock de légumes dans l'u
 ### Scores obtenus
 Mode Local : 4 189 861
 Mode Réseau : 3 996 030
+
+### Problèmes rencontrés
+
+Lors de la vérification des passage de tests et du respect des règles python nous avons rencontré deux erreurs détectées par Mypy sur la ligne 19 et 157 du main, qui sont des lignes réutilisées par l'intervenant Mr Vincent Poulailleau. Malgrés des recherches approfondie pour connaitre la source de ces erreurs nous n'avons pas pu rétablir ces deux lignes. 
+
+`notre_ferme/main.py:19: error: Incompatible types in assignment (expression has type "object", variable has type "dict[Any, Any]")  [assignment]`
+
+`notre_ferme/main.py:157: error: Need type annotation for "client"  [var-annotated]`

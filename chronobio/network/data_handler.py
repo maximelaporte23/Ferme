@@ -49,7 +49,7 @@ class DataHandler:
         with self._input_lock:
             index = self._input.index("\n")
             line = self._input[:index]
-            self._input = self._input[index + 1 :]
+            self._input = self._input[index + 1:]
             return line
 
     def read_json(self: "DataHandler", timeout: int = DEFAULT_TIMEOUT) -> object:
