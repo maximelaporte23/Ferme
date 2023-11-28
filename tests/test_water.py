@@ -32,6 +32,6 @@ def test_water_with_no_need_water():
     game.water(0, 0, 0, 0, 0, farmer_id)
     commands = game.commands
 
-    expected_commands = []  # Aucune commande ne devrait être générée sans besoin d'eau
+    expected_commands = []
 
     assert commands == expected_commands, "Le test a échoué sans besoin d'eau."

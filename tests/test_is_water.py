@@ -15,10 +15,3 @@ def test_is_water_with_enough_water():
     field.needed_water = 0
 
     assert field.is_watered()
-
-
-# def test_is_water_without_enough_water():
-#     farm_without_enough_water = Field(Location.FIELD2, 5)
-#     assert (
-#         not farm_without_enough_water.is_water()
-#     ), "La champ ne devrait pas avoir assez d'eau"

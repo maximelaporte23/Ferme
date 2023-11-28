@@ -22,6 +22,3 @@ def test_fire():
         print('méthode fire réussie')
     else:
         print("méthode fire ratée")
-
-
-
