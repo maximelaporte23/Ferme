@@ -96,7 +96,7 @@ class Game:
         need_water_3,
         need_water_4,
         need_water_5,
-        farmer_id,
+        farmer_id
     ):
         if need_water_1 != 0:
             if self.nbt(2) < farmer_id <= self.nbt(7):
